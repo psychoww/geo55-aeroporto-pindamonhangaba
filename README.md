@@ -15,6 +15,23 @@ Trabalho do 2º bimestre de 2026 (exame): projeto geométrico e de terraplenagem
 | `aeroporto_trabalho/figuras/` | Figuras da apresentação (PNG) |
 | `aeroporto_trabalho/apresentacao_deck/` | Fonte dos slides (formato Slides do claude.ai) |
 
+## Arquivos que não estão no repositório
+
+Estes arquivos ficaram de fora porque são material da professora, anotações pessoais, outro projeto, dados grandes ou dependem de um programa. Eles fazem falta para entender (ou refazer) o trabalho:
+
+| Arquivo | Para que serve | Onde conseguir |
+|---|---|---|
+| `trabalho segundo bimestre 2026.pdf` | **Enunciado do trabalho**: PPD, faixa, seção, declividades, pavimento, etapas e datas. O texto fala em 2300 m, mas vale a figura: **1900 m**, como a professora confirmou em 03/11. | Classroom de GEO-55 (arquivo da Profa. Cláudia) |
+| `aula 7 - anotacoes 13-10.md` | Anotações da aula de terraplenagem. Daí vêm as regras aplicadas: limpeza de 15 cm, aterro nunca sobre a camada vegetal, pavimento desconsiderado, Fh = 1,1, formato do memorial e ordenadas de Brückner. | Com o Guilherme (anotações pessoais de aula) |
+| `aula 8 - anotacoes 20-10.md` | Anotações da aula de diagrama de massas: linha de compensação, DMT, momento de transporte em m³·dam, bota-fora e empréstimo a 150 m, e a regra de fazer à mão o volume entre duas estacas. | Com o Guilherme |
+| Slides das aulas 7 e 8 (terraplenagem e diagrama de massas) | Teoria de referência para o memorial e para o diagrama de massas. | Classroom de GEO-55 |
+| `diagrama_massas/` (programa em MATLAB) | Programa feito para a aula 8: lê o memorial, desenha o diagrama de Brückner e otimiza as linhas de compensação (DMT e momento de transporte). Vai ser usado na próxima etapa. | Com o Guilherme (projeto separado) |
+| Apresentação (Slides do claude.ai) | A versão para apresentar e baixar em .pptx/PDF. Neste repositório está só a fonte, em `aeroporto_trabalho/apresentacao_deck/`. | Link do Guilherme (precisa ser compartilhado com cada um) |
+| `aeroporto_trabalho/dados/*.tif`, `vento_era5.json`, `tiles_esri/` | Dados brutos da busca do sítio: modelo de terreno Copernicus, uso do solo WorldCover, vento ERA5 e cache da imagem de satélite (≈ 230 MB). | `python baixar_dados.py` (a imagem é baixada de novo por `exporta_civil3d.py`) |
+| Autodesk Civil 3D 2027 | Abrir o `Aeroporto_PPD_Civil3D.dwg` e rodar os scripts `civil3d_*.ps1`. | Licença educacional da Autodesk |
+
+Para só ler o projeto, bastam este README, o enunciado, a planilha `Memorial_terraplenagem_PPD.xlsx`, o `Roteiro_aeroporto.pdf` e as figuras. As anotações das aulas 7 e 8 explicam o porquê das regras do memorial.
+
 ## O projeto em números
 
 - **Sítio:** terraço a oeste de Pindamonhangaba-SP, centro (−22,9300; −45,4993), SIRGAS 2000 / UTM 23S. PPD de 1900 × 45 m, rumo 060°/240° (cabeceiras 06 e 24), faixa de pista de 2020 × 300 m.
