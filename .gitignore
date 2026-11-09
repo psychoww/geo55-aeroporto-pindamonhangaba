@@ -1,0 +1,21 @@
+# Repositório só do trabalho do aeroporto: tudo o mais nesta pasta (aulas, material da professora,
+# anotações pessoais, outros projetos) fica de fora. Lista branca.
+/*
+!/.gitignore
+!/README.md
+!/Aeroporto_PPD_Civil3D.dwg
+!/Memorial_terraplenagem_PPD.xlsx
+!/Roteiro_aeroporto.pdf
+!/aeroporto_trabalho/
+
+# dentro do trabalho: dados brutos e caches (baixar_dados.py recria)
+/aeroporto_trabalho/dados/*.tif
+/aeroporto_trabalho/dados/*.npz
+/aeroporto_trabalho/dados/tiles_esri/
+/aeroporto_trabalho/dados/vento_era5.json
+/aeroporto_trabalho/dados/*.png
+__pycache__/
+*.bak
+*.dwl
+*.dwl2
+~$*

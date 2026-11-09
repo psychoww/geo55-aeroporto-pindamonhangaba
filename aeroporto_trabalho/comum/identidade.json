@@ -1,0 +1,24 @@
+{
+  "instituicao": "INSTITUTO TECNOLÓGICO DE AERONÁUTICA",
+  "divisao": "Divisão de Engenharia Civil-Aeronáutica",
+  "disciplina": "GEO-48 Engenharia de Pavimentos",
+  "professor": "Prof. Régis Martins Rodrigues",
+  "alunos": "Guilherme · Matheus",
+  "local": "São José dos Campos",
+  "revisao": "2",
+  "data": "20/10/2026",
+  "mes_ano": "outubro de 2026",
+  "cores": {
+    "navy": "13306B",
+    "azul": "1F4FD8",
+    "ouro": "C99A06",
+    "ouro_claro": "FBF1CF",
+    "papel": "F8F6EF",
+    "grafite": "1E1E1E",
+    "cinza": "5B6270",
+    "linha": "C9CFDB",
+    "verde": "1B7F3B",
+    "resultado": "E4EBF8",
+    "dado": "EEF0F4"
+  }
+}

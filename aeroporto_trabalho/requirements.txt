@@ -1,0 +1,9 @@
+numpy
+scipy
+matplotlib
+pyproj
+tifffile
+imagecodecs
+Pillow
+openpyxl
+reportlab

@@ -1,0 +1,19 @@
+{
+  "v": 4,
+  "createdOnFiles": {"v": 1, "at": "2026-11-09T20:40:00Z"},
+  "lists": "css",
+  "title": "GEO-55 Aeroporto Pindamonhangaba — prévia",
+  "order": ["cover", "requisitos", "metodo", "regiao", "sitio", "vento", "ols", "civil3d", "secaotipo", "perfil", "secoes", "c3dsecoes", "volumes", "mao", "brueckner", "proximos"],
+  "sections": {
+    "s1": {"description": "O que o enunciado pede", "start": "cover"},
+    "s2": {"description": "Etapa 1: escolha do sítio pelo terreno, pelas superfícies de proteção e pelo vento", "start": "metodo"},
+    "s3": {"description": "Etapa 2: modelo no Civil 3D, seção-tipo e alinhamentos", "start": "civil3d"},
+    "s4": {"description": "Etapa 3: seções, volumes por áreas médias e diagrama de massas", "start": "secoes"},
+    "s5": {"description": "O que falta até a entrega de 17/11", "start": "proximos"}
+  },
+  "faces": {
+    "caladea": {"family": "Caladea", "href": "https://fonts.googleapis.com/css2?family=Caladea:wght@400;700&family=Barlow:wght@400;600&display=swap"},
+    "barlow": {"family": "Barlow", "href": "https://fonts.googleapis.com/css2?family=Caladea:wght@400;700&family=Barlow:wght@400;600&display=swap"}
+  },
+  "designSystems": []
+}
