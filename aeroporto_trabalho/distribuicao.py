@@ -13,6 +13,7 @@ transportá-lo 2 000 m; somando 150 m do bota-fora e 150 m do empréstimo, cada 
 import json
 import os
 import subprocess
+import sys
 import numpy as np
 import matplotlib
 matplotlib.use('Agg')
@@ -33,16 +34,15 @@ with open('Tabelas/entrada_diagrama_massas.csv', 'w', encoding='utf-8') as f:
 
 MATLAB = r'C:\Program Files\MATLAB\R2026a\bin\matlab.exe'
 cmd = (f"distribuicao_massas('Tabelas/entrada_diagrama_massas.csv', {p.FH}, {DEXT}, 'dados/distribuicao.json', {DEXT_ECO})")
-r = subprocess.run([MATLAB, '-batch', cmd], capture_output=True, text=True, encoding='utf-8', errors='replace')
-print(r.stdout[-3000:], r.stderr[-2000:])
+if '--so-figura' not in sys.argv:          # --so-figura: reaproveita dados/distribuicao.json (sem MATLAB)
+    r = subprocess.run([MATLAB, '-batch', cmd], capture_output=True, text=True, encoding='utf-8', errors='replace')
+    print(r.stdout[-3000:], r.stderr[-2000:])
 R = json.load(open('dados/distribuicao.json', encoding='utf-8'))
 
 # ---------------------------------------------------------------- figura
-plt.rcParams.update({'font.family': ['Bahnschrift', 'Segoe UI', 'Arial'], 'axes.unicode_minus': False, 'font.size': 11,
-                     'axes.spines.top': False, 'axes.spines.right': False, 'axes.edgecolor': '#898781',
-                     'axes.labelcolor': '#52514e', 'xtick.color': '#52514e', 'ytick.color': '#52514e',
-                     'axes.titleweight': 'bold', 'axes.titlesize': 13, 'figure.dpi': 150})
-CORTE, ATERRO, INK, MUTED, VERM = '#C99A06', '#1F4FD8', '#13306B', '#5B6270', '#B3261E'
+import paleta
+from paleta import CORTE, ATERRO, INK, MUTED, MARF, ALERTA as VERM
+paleta.aplica()
 x = np.array(R['x']); O = np.array(R['O'])
 
 
@@ -82,7 +82,7 @@ painel(axs[0], c1, 'Recomendada: 1 LC do P0 ao PF (compensa tudo)')
 painel(axs[1], c2, 'Ótimo do modelo da aula (bota-fora e empréstimo a 150 m)')
 axs[1].set_xlabel('Distância ao P0 (m)')
 fig.tight_layout()
-fig.savefig('figuras/11_distribuicao.png', bbox_inches='tight', facecolor='white')
+fig.savefig('figuras/11_distribuicao.png', bbox_inches='tight', facecolor=MARF)
 print('ok figuras/11_distribuicao.png')
 for k, c in R['cenarios'].items():
     print(f"{k:12s} MT {c['MT']:>14,.0f}  int {c['MTint']:>12,.0f}  ext {c['MText']:>12,.0f}  BF {c['Vbf']:>10,.0f}  EMP {c['Vemp']:>10,.0f}  "

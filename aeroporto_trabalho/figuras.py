@@ -1,4 +1,5 @@
-"""Figuras da apresentação (PNG em figuras/). Paleta: corte = laranja #eb6834, aterro = azul #2a78d6, terreno = cinza."""
+"""Figuras da apresentação (PNG em figuras/). Paleta e fonte em paleta.py (identidade do modelo de advocacia):
+corte = petróleo, aterro = lavanda escura, terreno = cinza, projeto = índigo; fundo marfim; fonte Spectral."""
 import json
 import os
 import numpy as np
@@ -7,22 +8,20 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from matplotlib.colors import LightSource
 import projeto as p
+import paleta
+from paleta import CORTE, ATERRO, TN, INK, MUTED, VIOL, MARF, ALERTA, BEGE, BEGE_ESC, GRADE, SEQ
 import ols
 from dem import geo2utm
 
 os.makedirs('figuras', exist_ok=True)
-plt.rcParams.update({'font.family': ['Bahnschrift', 'Segoe UI', 'Arial'], 'axes.unicode_minus': False, 'font.size': 11, 'axes.spines.top': False, 'axes.spines.right': False,
-                     'axes.edgecolor': '#898781', 'axes.labelcolor': '#52514e', 'xtick.color': '#52514e', 'ytick.color': '#52514e',
-                     'axes.titleweight': 'bold', 'axes.titlesize': 13, 'figure.dpi': 150})
-# identidade visual ITA (geo48/comum/identidade.json): ouro e azul do brasão, navy, cinza
-CORTE, ATERRO, TN, INK, MUTED, VIOL = '#C99A06', '#1F4FD8', '#8C919B', '#13306B', '#5B6270', '#13306B'
+paleta.aplica()
 M = json.load(open('dados/memorial.json'))
 PV = [tuple(x) for x in M['pvis']]
 C3 = json.load(open('dados/areas_civil3d.json'))['por_estaca']
 
 
 def salva(fig, nome):
-    fig.savefig(f'figuras/{nome}', bbox_inches='tight', facecolor='white'); plt.close(fig); print('ok', nome)
+    fig.savefig(f'figuras/{nome}', bbox_inches='tight', facecolor=MARF); plt.close(fig); print('ok', nome)
 
 
 # 1. Relevo regional + filtros da busca --------------------------------------
@@ -30,14 +29,14 @@ Z, X0, Y0, P = ols.Z, ols.X0, ols.Y0, ols.P
 ls = LightSource(azdeg=315, altdeg=40)
 fig, ax = plt.subplots(figsize=(11, 8))
 ext = [X0 / 1000, (X0 + Z.shape[1] * P) / 1000, Y0 / 1000, (Y0 + Z.shape[0] * P) / 1000]
-rgb = ls.shade(Z, cmap=plt.cm.gist_earth, vert_exag=3, blend_mode='soft', vmin=480, vmax=1500)
+rgb = ls.shade(Z, cmap=plt.cm.bone, vert_exag=3, blend_mode='soft', vmin=480, vmax=1500)
 ax.imshow(rgb, origin='lower', extent=ext)
 for nome, (lo, la) in {'SBSJ': (-45.8711, -23.2292), 'SBTA': (-45.5158, -23.0389)}.items():
     x, y = geo2utm.transform(lo, la)
     ax.add_patch(plt.Circle((x / 1000, y / 1000), 10, fill=False, ls='--', color='white', lw=1.2))
     ax.plot(x / 1000, y / 1000, 'w^', ms=8); ax.annotate(nome + ' (raio 10 km)', (x / 1000, y / 1000), xytext=(6, 6), textcoords='offset points', color='white', fontsize=10, weight='bold')
 _vx, _vy = geo2utm.transform(-45.8096, -23.1256)  # melhor ponto da 1ª rodada (só terraplenagem): várzea, descartado
-for c, cor, rot in [(dict(x=_vx, y=_vy), '#e34948', '1ª rodada: várzea (descartada)')]:
+for c, cor, rot in [(dict(x=_vx, y=_vy), ALERTA, '1ª rodada: várzea (descartada)')]:
     ax.plot(c['x'] / 1000, c['y'] / 1000, 'o', mfc='none', mec=cor, mew=2, ms=12)
     ax.annotate(rot, (c['x'] / 1000, c['y'] / 1000), xytext=(8, -14), textcoords='offset points', color='white', fontsize=10)
 u = p.U; v = p.V
@@ -63,7 +62,7 @@ ax.set_theta_zero_location('N'); ax.set_theta_direction(-1)
 bins = np.arange(-11.25, 360, 22.5)
 cent = np.radians(np.arange(0, 360, 22.5)); larg = np.radians(22.5) * 0.9
 base = np.zeros(16)
-for (v0, v1), cor, rot in zip([(3, 6), (6, 10), (10, 99)], ['#A9BEF0', '#1F4FD8', '#13306B'], ['3–6 kt', '6–10 kt', '> 10 kt']):
+for (v0, v1), cor, rot in zip([(3, 6), (6, 10), (10, 99)], SEQ, ['3–6 kt', '6–10 kt', '> 10 kt']):
     sel = (vv >= v0) & (vv < v1)
     h, _ = np.histogram(np.mod(aa[sel] + 11.25, 360) - 11.25, bins=bins)
     h = h / vv.size * 100
@@ -85,14 +84,14 @@ r = ols.verifica(p.XC, p.YC, p.RUMO, passo=90)
 ze = r['ze']
 sup = ols.superficie(s, np.zeros_like(s), ze)
 fig, ax = plt.subplots(figsize=(12, 4.2))
-ax.fill_between(s / 1000, 480, zt, color='#d8d6cf')
+ax.fill_between(s / 1000, 480, zt, color=BEGE)
 ax.plot(s / 1000, zt, color=TN, lw=1, label='Terreno no prolongamento do eixo (DSM)')
 ax.plot(s / 1000, sup, color=VIOL, lw=2, label='Superfícies limitadoras (aproximação 2% / 2,5%, faixa)')
-ax.axvspan(-1.01, 1.01, color=CORTE, alpha=0.35, lw=0); ax.text(0, ze + 30, 'faixa', ha='center', color=MUTED)
+ax.axvspan(-1.01, 1.01, ymax=0.42, color=CORTE, alpha=0.35, lw=0); ax.text(0, ze + 30, 'faixa', ha='center', color=MUTED)
 ax.set_xlabel('Distância ao centro da pista ao longo do rumo 060° (km)'); ax.set_ylabel('Cota (m)')
 ax.set_ylim(480, max(zt.max(), sup[np.isfinite(sup)].max()) + 40)
 ax.set_title(f'Obstáculos: nenhuma penetração relevante (máx. {max(r["pen_max"], 0):.0f} m em {r["area_pen_ha"]:.0f} ha, provavelmente árvores)')
-ax.legend(frameon=False, loc='upper left', fontsize=9)
+ax.legend(frameon=False, loc='upper center', fontsize=9)
 ax.text(-15.8, 490, 'SW (cabeceira 06)', color=MUTED, fontsize=9); ax.text(15.8, 490, 'NE (cabeceira 24)', color=MUTED, fontsize=9, ha='right')
 salva(fig, '03_ols.png')
 
@@ -110,7 +109,7 @@ o = np.linspace(-185, 185, 3001); za, zt_ = linhas_secao(o)
 a1.plot(o, za, color=INK, lw=1.8)
 a1.fill_between(o, za, -12, where=o < -150, color=ATERRO, alpha=0.18, lw=0); a1.fill_between(o, za, 12, where=o > 150, color=CORTE, alpha=0.18, lw=0)
 for x_ in (-150, -30, -22.5, 0, 22.5, 30, 150):
-    a1.axvline(x_, color='#e1e0d9', lw=0.8, zorder=0)
+    a1.axvline(x_, color=GRADE, lw=0.8, zorder=0)
 a1.annotate('', xy=(-150, 1.2), xytext=(150, 1.2), arrowprops=dict(arrowstyle='<->', color=MUTED))
 a1.text(-75, 1.6, 'faixa de pista 300 m', ha='center', color=MUTED, fontsize=10)
 a1.text(-90, -1.9, '−2,5%', ha='center', fontsize=11, weight='bold'); a1.text(90, -1.9, '−2,5%', ha='center', fontsize=11, weight='bold')
@@ -120,17 +119,17 @@ a1.text(172, 6, 'corte\n1V:1,5H', ha='center', color=CORTE, fontsize=10, weight=
 a1.set_ylim(-12, 12); a1.set_xlim(-185, 185); a1.set_ylabel('Cota rel. ao eixo (m)')
 a1.set_title('Seção-tipo da faixa de pista (escala vertical exagerada ~8×)')
 o = np.linspace(0, 42, 2001); za, zt_ = linhas_secao(o)
-a2.fill_between(o, zt_, za, where=o <= 30.01, color='#c3c2b7', lw=0, label='Pavimento (desconsiderado no volume)')
+a2.fill_between(o, zt_, za, where=o <= 30.01, color=BEGE_ESC, lw=0, label='Pavimento (fora do volume de terraplenagem)')
 a2.plot(o, za, color=INK, lw=2, label='Superfície acabada')
 a2.plot(o, zt_, color=ATERRO, lw=2, ls='--', label='Plataforma de terraplenagem (topo do subleito)')
 for x_, t in [(0, 'eixo'), (22.5, '22,5 m'), (30, '30,0 m')]:
-    a2.axvline(x_, color='#e1e0d9', lw=0.8, zorder=0); a2.text(x_, 0.25, t, ha='center', fontsize=9, color=MUTED)
+    a2.axvline(x_, color=GRADE, lw=0.8, zorder=0); a2.text(x_, 0.25, t, ha='center', fontsize=9, color=MUTED)
 a2.text(11.25, -0.75, 'PPD: −1,5%\npavimento 1,10 m', ha='center', fontsize=10)
 a2.text(26.25, -0.95, 'acostamento 7,5 m\n−2,5%  pav. 0,50 m', ha='center', fontsize=9)
 a2.text(36, -0.45, 'faixa\n−2,5%', ha='center', fontsize=9)
 a2.set_xlim(-0.5, 42); a2.set_ylim(-1.9, 0.5); a2.set_xlabel('Afastamento do eixo (m)'); a2.set_ylabel('Cota rel. ao eixo (m)')
 a2.set_title('Detalhe: PPD e acostamento (o volume é medido na plataforma de terraplenagem)')
-a2.legend(frameon=False, loc='lower left', fontsize=9)
+a2.legend(frameon=False, loc='lower right', fontsize=9)
 plt.tight_layout()
 salva(fig, '04_secao_tipo.png')
 

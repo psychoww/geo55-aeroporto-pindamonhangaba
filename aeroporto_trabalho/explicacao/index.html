@@ -233,7 +233,7 @@ a { color: var(--navy) }
 área de aterro = soma das partes em que a diferença é negativa (em módulo)</div>
   <p>A limpeza é calculada à parte: 0,15 m × largura entre os dois pés de talude. Uma seção pode ter corte e aterro ao mesmo tempo (seção mista); isso é comum aqui porque a plataforma tem 300 m de largura.</p>
   <p>Conferência: um cálculo independente em Python, com o mesmo terreno e a mesma seção-tipo, difere do Civil 3D em <b class="num">-0,04%</b> no corte e <b class="num">+0,05%</b> no aterro (aba “Conferência”).</p>
-  <figure><img src="img/06_secoes.png" alt="Seções transversais típicas com áreas de corte e aterro"><figcaption>Seções típicas: corte em ouro, aterro em azul, terreno já sem os 15 cm de limpeza.</figcaption></figure>
+  <figure><img src="img/06_secoes.png" alt="Seções transversais típicas com áreas de corte e aterro"><figcaption>Seções típicas: corte em azul-petróleo, aterro em lavanda, terreno já sem os 15 cm de limpeza.</figcaption></figure>
   <div class="dizer"><b>Como dizer</b><p>“As áreas são do Civil 3D: geramos uma seção em cada estaca e nos pontos notáveis, e medimos a área entre o terreno já limpo e a plataforma de terraplenagem.”</p></div>
 </section>
 
@@ -301,7 +301,7 @@ ordenada de Brückner = ordenada anterior + (volume de corte − aterro corrigid
   <p><b>Leitura:</b> no modelo da aula, com bota-fora e empréstimo a só 150 m, o menor MT abre mão de parte da compensação: manda 143.554 m³ para bota-fora e traz 143.463 m³ de empréstimo, porque levar terra 150 m é mais curto que levá-la de um lado ao outro da obra. Só que o modelo não cobra a <b>escavação do empréstimo</b>, que exige achar uma jazida, licenciar e escavar. Esse foi o problema de Viracopos contado na aula 7.</p>
   <p>Na variante, o empréstimo também paga a escavação. Com os preços do exercício 6 da lista (R$ 3,20/m³ de escavação e R$ 1,60/(m³·km) de transporte), escavar 1 m³ custa o mesmo que transportá-lo 2 km. Somando 150 m do bota-fora e 150 m do empréstimo, cada m³ que deixa de ser compensado custa 2,3 km de transporte, ou 1 150 m por parcela externa. Com essa DMT externa equivalente, o ótimo passa a ser <b>uma LC única do P0 ao PF, que compensa tudo</b>: só os 91 m³ de sobra do saldo vão para bota-fora. É a solução adotada.</p>
   <p>Detalhe para não confundir: a busca de “LC única” do programa usa a convenção do exercício 2 (a LC vale entre o primeiro e o último cruzamento com o diagrama). Como o diagrama começa descendo, a LC na cota do saldo (+91 m³) só toca o diagrama no PF, e essa busca a corta. A otimização com degraus encontra a mesma LC começando no P0 com um degrau de 91 m³ (o bota-fora), e é ela a melhor solução com uma LC.</p>
-  <figure><img src="img/11_distribuicao.png" alt="Diagrama de massas com as linhas de compensação"><figcaption>Em cima, a LC única ótima; embaixo, o ótimo do modelo da aula, com 150 m. Ondas acima da LC em ouro (sentido do estaqueamento), abaixo em azul (sentido contrário).</figcaption></figure>
+  <figure><img src="img/11_distribuicao.png" alt="Diagrama de massas com as linhas de compensação"><figcaption>Em cima, a LC única ótima; embaixo, o ótimo do modelo da aula, com 150 m. Ondas acima da LC em azul-petróleo (sentido do estaqueamento), abaixo em lavanda (sentido contrário).</figcaption></figure>
   <h3>Ondas da solução recomendada</h3>
   <div class="tabela"><table>
     <tr><th>Onda</th><th class="n">De (m)</th><th class="n">Até (m)</th><th>Sentido</th><th class="n">V (m³)</th><th class="n">DMT (m)</th></tr>
