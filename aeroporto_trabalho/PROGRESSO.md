@@ -116,6 +116,11 @@ Pasta: `D:\documentos\ita\civil\4semestre\geo55\aeroporto_trabalho\`. Os scripts
    11. atualizar os números escritos nos slides, no README e no roteiro.
    - Não rodar MATLAB nem outros scripts junto com os scripts do Civil 3D.
 
+### Ideias para depois (Guilherme, 10/11, vendo as apresentações dos colegas)
+1. **Seguir o documento de escolha de sítio aeroportuário do professor CJ (ITA).** O arquivo não está na pasta: pedir ao Guilherme. Depois, comparar os critérios do documento com os da busca (terraplenagem, várzea, superfícies de proteção, entorno, vento) e cobrir os que faltarem.
+2. **Gráficos das orientações possíveis da pista com uma nota** que pese o ajuste ao anemograma contra o custo de terraplenagem (e as superfícies de proteção como restrição). Os dados já existem: índice de terraplenagem por rumo (busca) e vento ERA5. Cuidado: no sítio atual, a cobertura de vento passa de 99,9% em qualquer rumo, então o vento só diferencia rumos com um limite de vento cruzado mais apertado (por exemplo, 10 ou 13 kt) ou com a componente de proa/cauda.
+3. **Se for escolhido outro sítio: uma região mais carente de infraestrutura aeroportuária.** Muda a área de busca (hoje um recorte em volta de São José dos Campos) e acrescenta um critério de demanda (por exemplo, distância ao aeroporto com voo regular mais próximo e população atendida). Trocar o sítio refaz as etapas 2 e 3 inteiras: a cadeia de scripts roda de novo, mas o Civil 3D, as figuras e os slides também.
+
 ### Pendências
 - **A fazer depois (pedido em 10/11): conferir geologia e solo do sítio.** A frase "latossolo vermelho-amarelo poroso sobre o Grupo Taubaté" (slide `volumes`, roteiro, página explicativa, documento explicativo) foi escrita sem consultar mapa. Consultar no ponto (−22,9300; −45,4993) o mapa geológico do Serviço Geológico do Brasil (GeoSGB) e o mapa pedológico do Estado de SP. Suspeita: o terraço pode estar sobre a **Formação Pindamonhangaba** (Mioceno–Quaternário, sobre o Grupo Taubaté em discordância; Riccomini et al. 1991) ou terraços mais novos. Se der diferente, corrigir a frase nesses lugares (publicar slide só com autorização). O raciocínio do Fh = 1,25 (solo argilo-arenoso poroso) deve continuar valendo.
 - **Conta à mão (estacas 10 → 11): é do Guilherme.** Não preencher a aba "Cálculo à mão" nem os "[ … ]" do slide 16.
