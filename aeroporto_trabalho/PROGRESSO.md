@@ -74,6 +74,11 @@ Pasta: `D:\documentos\ita\civil\4semestre\geo55\aeroporto_trabalho\`. Os scripts
 - **Apresentação publicada** (versão 12, autorizada pelo Guilherme): figuras enviadas como asset e marcadores trocados por `apresentacao_deck/trocar_blobs.py` (no Git Bash, com `MSYS_NO_PATHCONV=1`: sem isso o /_blob/ virou C:/Program Files/Git/_blob/ em 4 slides; corrigido na versão 13). O modo automático bloqueia envio a artefato compartilhado por link sem autorização explícita.
 - Civil 3D: `civil3d_vistas_secoes.ps1` passou a falhar ("Parâmetro incorreto") em todas as vistas, mesmo rodando sozinho e sem redefinir o exagero; o mesmo laço sem `$ErrorActionPreference = Stop` e sem a etapa de apagar funciona: `civil3d_vistas_faltantes.ps1` (cria só as que faltam). 104 vistas criadas, DWG salvo. Capturas do Civil 3D (`figuras/08–10`) ainda são do modelo com Fh = 1,1 (diferença visual mínima).
 
+## 10/11 (manhã) — faixa de 300 m e pasta da apresentação
+- Faixa de 300 m mantida: a nota de serviço da aula 7 é só exemplo (ver item (a) abaixo). Apresentação v14 publicada.
+- **Pasta `../Apresentacao_aeroporto/`** (pedido: "Organize uma pasta aqui que tenham os arquivos desta apresentação"), montada por `montar_pasta_apresentacao.py`: `Apresentacao_PPD.html` (slides offline; setas, F = tela cheia, N = notas), `Apresentacao_PPD.pdf` (Edge headless, 21 páginas), `img/`, cópias do roteiro, memorial e DWG, `LEIA-ME.md`. As imagens /_blob/ do deck foram baixadas e conferidas por sha256: são idênticas às de `figuras/` (mapa `BLOBS` no script; 09_c3d_perfil não é usada). A pasta só tem cópias e fica fora do git; **rodar o script de novo depois de mudar slides, figuras, roteiro, memorial ou DWG.**
+- Slide `distribuicao` estourava a altura (título em 2 linhas + figura de 660 px; o parágrafo final ficava sob o rodapé). Corrigido no fonte: título "Linhas de compensação do programa da aula 8" e figura com 560 px. **Ainda não publicado na apresentação on-line** (precisa de autorização).
+
 ## Retomar daqui (fim da sessão de 09/11/2026, ~21h)
 
 ### Estado
