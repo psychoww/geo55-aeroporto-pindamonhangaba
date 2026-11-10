@@ -82,6 +82,8 @@ Pasta: `D:\documentos\ita\civil\4semestre\geo55\aeroporto_trabalho\`. Os scripts
 - **Área de busca exata** (pergunta: "A busca ocorreu somente no Vale do Paraíba ou em todo o Estado?"): nem um nem outro. Modelo de terreno (`dados/grade_utm30.npz`): lat −23,40 a −22,85, long −46,00 a −45,35 (67 × 61 km). Centros com 4 km de margem: lat −23,36 a −22,89, long −45,96 a −45,39 (59 × 53 km), em torno de São José dos Campos até Pindamonhangaba; 35 066 centros a cada 300 m → 28 099 fora dos 10 km de SBSJ/SBTA → 25 062 fora da várzea (≥ 12 m), × 36 rumos. O recorte foi premissa (região do ITA), não resultado da busca. Escrito no slide `metodo` (apresentação v16, publicada a pedido), no roteiro (pergunta nova), na página explicativa (v4) e no README.
 - `montar_pasta_apresentacao.py` agora avisa e segue quando uma cópia está aberta em outro programa (o roteiro estava aberto em 10/11; copiado depois de fechado).
 
+- **Texto explicativo completo** (pedido: "Gere um texto explicando do começo ao fim tudo que foi feito", fora do roteiro e da apresentação): documento Claude Docs https://claude.ai/artifact/L9u1kecHSBQXH3pUDuYMbt (privado), 11 seções, do enunciado às pendências.
+
 ## Retomar daqui (fim da sessão de 09/11/2026, ~21h)
 
 ### Estado
