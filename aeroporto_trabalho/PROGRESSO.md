@@ -117,6 +117,7 @@ Pasta: `D:\documentos\ita\civil\4semestre\geo55\aeroporto_trabalho\`. Os scripts
    - Não rodar MATLAB nem outros scripts junto com os scripts do Civil 3D.
 
 ### Pendências
+- **A fazer depois (pedido em 10/11): conferir geologia e solo do sítio.** A frase "latossolo vermelho-amarelo poroso sobre o Grupo Taubaté" (slide `volumes`, roteiro, página explicativa, documento explicativo) foi escrita sem consultar mapa. Consultar no ponto (−22,9300; −45,4993) o mapa geológico do Serviço Geológico do Brasil (GeoSGB) e o mapa pedológico do Estado de SP. Suspeita: o terraço pode estar sobre a **Formação Pindamonhangaba** (Mioceno–Quaternário, sobre o Grupo Taubaté em discordância; Riccomini et al. 1991) ou terraços mais novos. Se der diferente, corrigir a frase nesses lugares (publicar slide só com autorização). O raciocínio do Fh = 1,25 (solo argilo-arenoso poroso) deve continuar valendo.
 - **Conta à mão (estacas 10 → 11): é do Guilherme.** Não preencher a aba "Cálculo à mão" nem os "[ … ]" do slide 16.
 - **Capturas do Civil 3D** (`figuras/08_c3d_planta.png`, `09_c3d_perfil.png`, `10_c3d_secoes.png`, usadas nos slides civil3d e c3dsecoes) ainda são do modelo com Fh = 1,1. Refazer com `captura_civil3d.ps1` e trocar na apresentação.
 - **Para 17/11:**
