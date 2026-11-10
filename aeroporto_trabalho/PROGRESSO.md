@@ -74,10 +74,47 @@ Pasta: `D:\documentos\ita\civil\4semestre\geo55\aeroporto_trabalho\`. Os scripts
 - **Apresentação publicada** (versão 12, autorizada pelo Guilherme): figuras enviadas como asset e marcadores trocados por `apresentacao_deck/trocar_blobs.py` (no Git Bash, com `MSYS_NO_PATHCONV=1`: sem isso o /_blob/ virou C:/Program Files/Git/_blob/ em 4 slides; corrigido na versão 13). O modo automático bloqueia envio a artefato compartilhado por link sem autorização explícita.
 - Civil 3D: `civil3d_vistas_secoes.ps1` passou a falhar ("Parâmetro incorreto") em todas as vistas, mesmo rodando sozinho e sem redefinir o exagero; o mesmo laço sem `$ErrorActionPreference = Stop` e sem a etapa de apagar funciona: `civil3d_vistas_faltantes.ps1` (cria só as que faltam). 104 vistas criadas, DWG salvo. Capturas do Civil 3D (`figuras/08–10`) ainda são do modelo com Fh = 1,1 (diferença visual mínima).
 
-## Retomar daqui (fim da sessão de 09/11/2026, ~17h30)
-- Prévia pronta para ter 10/11 13h30: DWG, memorial, apresentação (artifact 8Ugecg9baS44AKMVL9Zja2, privada: o Guilherme precisa compartilhar), roteiro por etapas (ver a seção de 09/11 noite).
-- GitHub público https://github.com/psychoww/geo55-aeroporto-pindamonhangaba (README lista os arquivos que ficaram de fora). Após mudanças: `git add` + commit + push na pasta `geo55/` (o .gitignore é lista branca).
-- Oferecido e sem resposta: incluir no repositório as anotações das aulas 7 e 8.
-- **Depois da prévia, registrar o que a Cláudia respondeu:** (1) faixa de 300 m toda nivelada ou só a parte central (Anexo 14: ~75–105 m do eixo)? se só a central, mudar `B_FAIXA`/seção em `projeto.py` e rodar de novo otimiza_greide → memorial → landxml → civil3d_* → areas_civil3d → planilha_memorial → figuras; (2) taludes 1V:1,5H / 1V:2H; (3) Fh = 1,25 (adotado em 09/11).
-- **Para 17/11:** corredor com assembly da seção-tipo no Civil 3D (o COM não cria assembly: fazer à mão ou plugin .NET; não há SDK .NET instalado) e Compute Materials; pranchas; memorial final em PDF.
-- Civil 3D: o DWG está salvo; os scripts precisam do Civil 3D aberto com `Aeroporto_PPD_Civil3D.dwg` ativo.
+## Retomar daqui (fim da sessão de 09/11/2026, ~21h)
+
+### Estado
+- Prévia pronta para ter 10/11, 13h30. Arquivos: DWG (Fh = 1,25, 104 seções e 104 vistas), `../Memorial_terraplenagem_PPD.xlsx` (recalculada, 0 erros) e `../Roteiro_aeroporto.pdf` (por etapas, com perguntas por parte).
+- Apresentação: https://claude.ai/artifact/8Ugecg9baS44AKMVL9Zja2, versão 13, **compartilhada por link** (todos veem as atualizações). Tem 21 slides, divididos nas etapas 1, 2 e 3.
+- Página explicativa: https://claude.ai/artifact/9kwHf7hYZsok92DvXD9j2D (**privada**; compartilhar pelo Share se Pedro e Gilberto forem usar). Para atualizar: `PYTHONPATH=. python explicacao/gerar.py`, depois publicar de novo o mesmo `explicacao/index.html` (root `explicacao/`, com `img/`).
+- GitHub público: https://github.com/psychoww/geo55-aeroporto-pindamonhangaba, último commit `6edc590`. Depois de cada mudança: `git add` + commit + push na pasta `geo55/` (o .gitignore é lista branca; `aeroporto_trabalho/tmp/` fica fora).
+
+### Primeira coisa na próxima sessão
+1. **Perguntar o que a Cláudia respondeu na prévia** e registrar aqui e em `../anotacoes.md`:
+   - (a) faixa de 300 m toda nivelada (como na figura) ou só a parte central (±75 m, como na nota de serviço da aula 7 e no Anexo 14)?
+   - (b) taludes 1V:1,5H / 1V:2H?
+   - (c) Fh = 1,25?
+   - (d) quanto das etapas foi pedido e o que ela comentou.
+2. Se algo mudar (por exemplo, `B_FAIXA`, taludes ou `FH` em `projeto.py`), rodar de novo, **nesta ordem**:
+   1. `otimiza_greide.py 5` (com `PYTHONUTF8=1`; conferir o saldo no memorial e, se der déficit, baixar o greide alguns mm como em 09/11);
+   2. `memorial.py`, depois atualizar os `pvis` de `civil3d/projeto.json`;
+   3. `landxml.py`;
+   4. `civil3d_aeroporto.ps1 -Etapa superficies` e `-Etapa alinhamento`;
+   5. `civil3d_secoes.ps1`;
+   6. `civil3d_extrai_secoes.ps1` (~25 min; rodar em segundo plano);
+   7. `civil3d_vistas_faltantes.ps1` (veja abaixo);
+   8. `areas_civil3d.py`;
+   9. `distribuicao.py` (MATLAB, ~1 min);
+   10. `planilha_memorial.py`, `figuras.py`, `explicacao/gerar.py` e `roteiro_aeroporto.py`;
+   11. atualizar os números escritos nos slides, no README e no roteiro.
+   - Não rodar MATLAB nem outros scripts junto com os scripts do Civil 3D.
+
+### Pendências
+- **Conta à mão (estacas 10 → 11): é do Guilherme.** Não preencher a aba "Cálculo à mão" nem os "[ … ]" do slide 16.
+- **Capturas do Civil 3D** (`figuras/08_c3d_planta.png`, `09_c3d_perfil.png`, `10_c3d_secoes.png`, usadas nos slides civil3d e c3dsecoes) ainda são do modelo com Fh = 1,1. Refazer com `captura_civil3d.ps1` e trocar na apresentação.
+- **Para 17/11:**
+  - corredor com assembly da seção-tipo no Civil 3D (o COM não cria assembly: fazer à mão pelo roteiro ou plugin .NET, mas não há SDK .NET instalado);
+  - Compute Materials;
+  - pranchas (planta, perfil e seções);
+  - memorial final em PDF.
+- `civil3d_vistas_secoes.ps1` passou a falhar ("Parâmetro incorreto") em todas as vistas. Usar `civil3d_vistas_faltantes.ps1`, que cria só as vistas que faltam; para recriar todas, apagar as antigas antes. A causa não foi descoberta.
+- Oferecido e ainda sem resposta: incluir no repositório as anotações das aulas 7 e 8.
+
+### Cuidados
+- **Publicar na apresentação** (enviar figuras ou slides) só com autorização explícita do Guilherme: o modo automático bloqueia envio a artefato compartilhado por link.
+- Fluxo da apresentação: enviar as figuras como asset → `trocar_blobs.py` → publicar `project/...` com root `apresentacao_deck`. No Git Bash, `MSYS_NO_PATHCONV=1 python apresentacao_deck/trocar_blobs.py ...`; sem isso, `/_blob/` vira `C:/Program Files/Git/_blob/` (aconteceu em 09/11).
+- Heredoc no Bash às vezes falha com HTML e aspas. Para editar slides, usar a ferramenta Write/Edit ou um script `.py` em `tmp/`.
+- Os scripts do Civil 3D precisam do Civil 3D aberto com `Aeroporto_PPD_Civil3D.dwg` ativo.
