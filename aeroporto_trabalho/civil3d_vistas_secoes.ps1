@@ -6,7 +6,9 @@ $acad = [Runtime.InteropServices.Marshal]::GetActiveObject('AutoCAD.Application'
 $civ = $acad.GetInterfaceObject('AeccXUiLand.AeccApplication.13.9'); $cdoc = $civ.ActiveDocument; $adoc = $acad.ActiveDocument
 try { $l = $adoc.Layers.Item('VISTAS-SECOES') } catch { $l = $adoc.Layers.Add('VISTAS-SECOES') }
 $al = $cdoc.AlignmentsSiteless.Item('EIXO PPD 06-24'); $slg = $al.SampleLineGroups.Item('SL - PPD')
-$sty = $cdoc.SectionViewStyles.Item('Road Section'); $sty.GraphStyle.VerticalExaggeration = 5.0
+$sty = $cdoc.SectionViewStyles.Item('Road Section')
+# so altera o exagero se for diferente: redefinir o estilo dispara regeneracao e as vistas criadas em seguida falham ('Parametro incorreto')
+if ([double]$sty.GraphStyle.VerticalExaggeration -ne 5.0) { $sty.GraphStyle.VerticalExaggeration = 5.0; Start-Sleep 5 }
 $bds = $null; foreach ($b in $cdoc.SectionViewBandStyleSets) { if ($b.Name -eq 'Offsets Only') { $bds = $b } }; if (-not $bds) { $bds = $cdoc.SectionViewBandStyleSets.Item(0) }
 if (-not $SoFaltantes) {
     # SectionViews.Remove nao apaga a entidade: apaga todas as vistas de secao pelo espaco do modelo

@@ -10,7 +10,8 @@ Convenções
     30 a 150 m  faixa de pista nivelada, -2,5%; sem pavimento
     > 150 m     taludes: corte 1V:1,5H, aterro 1V:2H, até o terreno natural.
 - Terraplenagem (aula 7): seções no greide de terraplenagem (= acabado - pavimento); limpeza de 0,15 m em todo o
-  footprint, que não entra na compensação; aterro sobre o terreno já limpo; Fh = 1,1 no aterro corrigido.
+  footprint, que não entra na compensação; aterro sobre o terreno já limpo; Fh = 1,25 no aterro corrigido
+  (adotado para o solo do sítio; a aula usou 1,1 só no exercício).
 """
 import json
 import os
@@ -26,7 +27,7 @@ B_PPD, B_ACOST, B_FAIXA = 22.5, 30.0, 150.0
 I_PPD, I_FAIXA = 0.015, 0.025
 TALUDE_CORTE, TALUDE_ATERRO = 1.5, 2.0      # H:V
 LIMPEZA = 0.15
-FH = 1.1
+FH = 1.25   # adotado (09/11): latossolo vermelho-amarelo poroso sobre o Grupo Taubaté; ver PROGRESSO.md
 R_VERT = 30000.0   # raio mínimo de curva vertical (Anexo 14 / RBAC 154, código 4)
 
 XC, YC = geo2utm.transform(LON_C, LAT_C)

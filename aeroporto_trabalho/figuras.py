@@ -199,7 +199,7 @@ a1.set_title('Áreas por seção (corte acima, aterro abaixo do zero)')
 a2.plot(est, ordn / 1000, color=INK, lw=2)
 a2.axhline(0, color=MUTED, lw=0.8, ls='--')
 a2.set_ylabel('Ordenada (×10³ m³)'); a2.set_xlabel('Distância (m)')
-a2.set_title('Diagrama de massas (Brückner), Fh = 1,1 — ordenada final ' + f'{ordn[-1]:+,.0f}'.replace(',', '.') + ' m³ (greide compensado)')
+a2.set_title(f'Diagrama de massas (Brückner), Fh = {p.FH:.2f}'.replace('.', ',') + ' — ordenada final ' + f'{ordn[-1]:+,.0f}'.replace(',', '.') + ' m³ (greide compensado)')
 k = np.argmax(ordn); j = np.argmin(ordn)
 for kk in (k, j):
     a2.annotate(f'{ordn[kk] / 1000:,.1f}'.replace('.', ','), (est[kk], ordn[kk] / 1000), xytext=(0, 8 if kk == k else -14), textcoords='offset points', ha='center', fontsize=10)
