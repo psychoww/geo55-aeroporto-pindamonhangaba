@@ -1,17 +1,19 @@
-<section id="distribuicao" data-transition="fade" style="background:#F8F6EF;color:#13306B;font-family:'Barlow', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:24px">
+<section id="distribuicao" data-transition="fade" style="background:#FFFBF5;color:#33335B;font-family:'Spectral', Georgia, serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:24px">
+<div style="position:absolute;left:0px;top:330px;width:40px;height:420px;background:#9F9DB6"></div>
+<div style="position:absolute;left:1592px;top:1016px;width:200px;height:64px;background:#33335B"></div>
 <img src="/_blob/3603ec8169e4121cda33e4e85919be84" alt="" style="position:absolute;left:1612px;top:40px;width:180px;height:69px;object-fit:contain">
-<p style="font-size:24px;color:#8A6A04;letter-spacing:3px;text-transform:uppercase;font-weight:600">Etapa 3 · distribuição de massas</p>
-<h2 style="font-family:'Caladea', Cambria, Georgia, serif;font-size:64px;font-weight:700;color:#13306B;border-bottom:4px solid #C99A06;padding:0 0 16px 0">Linhas de compensação do programa da aula 8</h2>
+<div style="display:flex;align-items:center"><p style="font-size:30px;letter-spacing:4px;text-transform:uppercase;color:#FFFBF5;background:#33335B;padding:12px 32px 8px 32px;white-space:nowrap;font-weight:500">Etapa 3 · distribuição de massas</p><div style="flex:1;height:2px;background:#9B9B9B"></div></div>
+<h2 style="font-family:'Spectral', Georgia, serif;font-size:54px;font-weight:500;line-height:1.12;color:#33335B">Linhas de compensação do programa da aula 8</h2>
 <div style="display:grid;grid-template-columns:1fr 600px;gap:40px;align-items:center">
-<img src="/_blob/a1446a656ba24ab207c84aebe8df3617" alt="Diagrama de massas com duas soluções: em cima, uma LC do P0 ao PF que compensa tudo (MT 14,34 milhões de m³·dam); embaixo, o ótimo com bota-fora e empréstimo a 150 m (MT 12,32 milhões de m³·dam, com 144 mil m³ de bota-fora e 143 mil m³ de empréstimo)" style="width:1024px;height:560px;object-fit:contain">
-<table style="font-size:24px;color:#1E1E1E;width:600px">
-<tr style="background:#13306B"><th style="width:46%;color:#F8F6EF">Solução</th><th style="width:27%;color:#F8F6EF">MT (10⁶ m³·dam)</th><th style="width:27%;color:#F8F6EF">Bota-fora / empréstimo</th></tr>
+<img src="/_blob/a1446a656ba24ab207c84aebe8df3617" alt="Diagrama de massas com duas soluções: em cima, uma LC do P0 ao PF que compensa tudo (MT 14,34 milhões de m³·dam); embaixo, o ótimo com bota-fora e empréstimo a 150 m (MT 12,32 milhões de m³·dam, com 144 mil m³ de bota-fora e 143 mil m³ de empréstimo)" style="width:732px;height:470px;object-fit:contain;box-shadow:28px 28px 0 #B9B6CB">
+<table style="font-size:24px;color:#273348;width:600px">
+<tr style="background:#33335B"><th style="width:46%;color:#FFFBF5">Solução</th><th style="width:27%;color:#FFFBF5">MT (10⁶ m³·dam)</th><th style="width:27%;color:#FFFBF5">Bota-fora / empréstimo</th></tr>
 <tr><td><b>1 LC, compensa tudo</b></td><td><b>14,34</b></td><td><b>91 m³ / 0</b></td></tr>
 <tr><td>Ótimo a 150 m (6 LCs)</td><td>12,32</td><td>144 / 143 mil m³</td></tr>
 <tr><td>Ótimo contando a escavação do empréstimo</td><td>a mesma LC única</td><td>91 m³ / 0</td></tr>
 </table>
 </div>
-<p style="font-size:26px;line-height:1.4;color:#3F4654">Adotada: <b>compensar tudo</b>. O ótimo a 150 m troca transporte por 143 mil m³ de empréstimo, que exige jazida e escavação (exercício 6: R$ 3,20/m³ e R$ 1,60/(m³·km)).</p>
-<p style="position:absolute;left:128px;bottom:56px;font-size:24px;color:#5B6270;width:1664px">ITA · Engenharia Civil-Aeronáutica · GEO-55 · Programa diagrama_massas (MATLAB); DMT externa 150 m (aula 8); DMTs das ondas de 42 a 248 m</p>
+<p style="font-size:26px;line-height:1.4;color:#273348">Adotada: <b>compensar tudo</b>. O ótimo a 150 m troca transporte por 143 mil m³ de empréstimo, que exige jazida e escavação (exercício 6: R$ 3,20/m³ e R$ 1,60/(m³·km)).</p>
+<p style="position:absolute;left:128px;bottom:56px;font-size:24px;color:#6E6E80;width:1420px">ITA · Engenharia Civil-Aeronáutica · GEO-55 · Programa diagrama_massas (MATLAB); DMT externa 150 m (aula 8)</p>
 <aside>Usamos o programa de diagrama de massas feito para a aula de 20/10. Ele move a linha de compensação e procura o menor momento de transporte, com bota-fora e empréstimo a 150 metros, como na aula. O mínimo do modelo da aula usa seis LCs, manda 144 mil m³ para bota-fora e traz 143 mil de empréstimo, porque levar terra 150 metros é mais curto que atravessar a obra. Mas esse modelo não cobra a escavação do empréstimo. Com os preços do exercício 6, escavar 1 m³ custa o mesmo que transportá-lo 2 km; contando isso, o ótimo passa a ser uma LC única do P0 ao PF, que compensa tudo. Foi a solução adotada: só 91 m³ vão para bota-fora, além da limpeza.</aside>
 </section>

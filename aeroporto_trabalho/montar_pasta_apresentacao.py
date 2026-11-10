@@ -42,6 +42,7 @@ BLOBS = {
     '2d2e4649f1870d534c4f6239b1bf5f8f': '08_c3d_planta.png',
     'a28310fa95b57226b11eafeaf2a10abf': '10_c3d_secoes.png',
     'a1446a656ba24ab207c84aebe8df3617': '11_distribuicao.png',
+    '197e509a97d1b790a3cdfbc713a07011': '15_capa_sitio.png',
 }
 COPIAS = ['Roteiro_aeroporto.pdf', 'Memorial_terraplenagem_PPD.xlsx', 'Aeroporto_PPD_Civil3D.dwg']
 EDGE = [r'C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe',

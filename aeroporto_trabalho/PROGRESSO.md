@@ -104,11 +104,18 @@ Pasta: `D:\documentos\ita\civil\4semestre\geo55\aeroporto_trabalho\`. Os scripts
 - **Decisão pendente (Guilherme):** mudar para C1 (refazer etapas 2 e 3 inteiras: Civil 3D, memorial, Brückner, slides, roteiro, documento) ou manter a prévia justificando URB flexibilizado. Ver resumo dado a ele em 10/11.
 - `projeto.py` aceita `GEO55_SITIO="lat,lon,rumo"` (cache de terreno próprio) e `otimiza_greide.py` aceita `GEO55_SAIDA`, para testar outro sítio sem tocar no da prévia.
 
+## 10/11 (fim da tarde) — identidade visual do modelo de advocacia
+- Pedido: "Estou insatisfeito com o modelo da apresentação, pois fica igual a de todas as pessoas que geraram pelo Claude. Utilize o modelo de apresentação de advocacia que eu mandei para gerar a identidade visual." Modelo: `../Apresentação Advocacia Básico Azul e Bege.pptx` (Canva, 10 slides).
+- Extraído do XML: índigo #33335B, marfim #FFFBF5, ardósia #273348, cinza #9B9B9B, lavanda = índigo a 53% (#9F9DB6), azuis-petróleo #147699/#006A78/#88C0E6; fonte **Anaphora** (paga, embutida no .pptx) → trocada por **Spectral** (Google Fonts). Motivos: título em caixa alta num bloco índigo com linha cinza até a borda, barra lavanda na lateral, moldura deslocada atrás das imagens (`box-shadow`), bloco índigo no rodapé, fotos em preto e branco (`filter:grayscale`).
+- `apresentacao_deck/estilo_advocacia.py`: lê os slides ITA de `apresentacao_deck/slides_ita/` (cópia de segurança) e escreve `project/slides/`; capa refeita no layout do modelo com `figuras/15_capa_sitio.png` (asset `/_blob/197e509a97d1b790a3cdfbc713a07011`, sem eixos); caixas das figuras ajustadas à proporção do arquivo para a moldura acompanhar o desenho; faixas coloridas dos cartões removidas. **Para mudar conteúdo de um slide daqui em diante: editar `slides_ita/<slide>.html` e rodar o script**, ou editar direto `project/slides/` e não rodar mais o script.
+- `deck.json`: faces = Spectral. Apresentação **versão 18**, publicada a pedido. Pasta offline refeita.
+- Possíveis melhorias: refazer as figuras (gráficos ainda em ouro/azul do ITA) na paleta nova; foto em P&B nos slides de abertura de etapa (hoje com espaço vazio no meio).
+
 ## Retomar daqui (fim da sessão de 09/11/2026, ~21h)
 
 ### Estado
 - Prévia pronta para ter 10/11, 13h30. Arquivos: DWG (Fh = 1,25, 104 seções e 104 vistas), `../Memorial_terraplenagem_PPD.xlsx` (recalculada, 0 erros) e `../Roteiro_aeroporto.pdf` (por etapas, com perguntas por parte).
-- Apresentação: https://claude.ai/artifact/8Ugecg9baS44AKMVL9Zja2, versão 17 (10/11), **compartilhada por link** (todos veem as atualizações). Tem 21 slides, divididos nas etapas 1, 2 e 3.
+- Apresentação: https://claude.ai/artifact/8Ugecg9baS44AKMVL9Zja2, versão 18 (10/11, identidade do modelo de advocacia), **compartilhada por link** (todos veem as atualizações). Tem 21 slides, divididos nas etapas 1, 2 e 3.
 - Página explicativa: https://claude.ai/artifact/9kwHf7hYZsok92DvXD9j2D (**privada**; compartilhar pelo Share se Pedro e Gilberto forem usar). Para atualizar: `PYTHONPATH=. python explicacao/gerar.py`, depois publicar de novo o mesmo `explicacao/index.html` (root `explicacao/`, com `img/`).
 - GitHub público: https://github.com/psychoww/geo55-aeroporto-pindamonhangaba, último commit `6edc590`. Depois de cada mudança: `git add` + commit + push na pasta `geo55/` (o .gitignore é lista branca; `aeroporto_trabalho/tmp/` fica fora).
 
