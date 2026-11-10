@@ -1,0 +1,121 @@
+{
+ "precos": {
+  "P_ESC": 14.05,
+  "P_COMP": 6.38,
+  "CUB": 2690.33,
+  "VTN": 65000.0,
+  "VTN_FAIXA": [
+   40000.0,
+   120000.0
+  ],
+  "OCUP": 0.4,
+  "OCUP_FAIXA": [
+   0.25,
+   0.6
+  ]
+ },
+ "sitios": {
+  "Prévia (atual)": {
+   "Vc": 1227116.3511658832,
+   "Va": 981693.0803708908,
+   "terraplenagem": 23504186.586646944,
+   "constr_sitio_centrado_ha": 10.92,
+   "constr_A_ha": 0.48,
+   "desloc_A": [
+    490,
+    -225
+   ],
+   "constr_B_ha": 3.99,
+   "A": {
+    "area_ha": 450.0,
+    "terra": 29250000.0,
+    "benfeitorias": 5165433.6,
+    "desapropriacao": 34415433.6,
+    "total": 57919620.186646946,
+    "total_faixa": [
+     44732582.586646944,
+     85252336.98664695
+    ]
+   },
+   "B": {
+    "area_ha": 179.28,
+    "terra": 11653200.0,
+    "benfeitorias": 42937666.8,
+    "desapropriacao": 54590866.8,
+    "total": 78095053.38664694,
+    "total_faixa": [
+     57511428.336646944,
+     109424286.78664693
+    ]
+   }
+  },
+  "C1": {
+   "Vc": 435879.74968333694,
+   "Va": 348703.81425010023,
+   "terraplenagem": 8348840.8179665245,
+   "constr_sitio_centrado_ha": 9.98,
+   "constr_A_ha": 3.97,
+   "desloc_A": [
+    490,
+    -600
+   ],
+   "constr_B_ha": 3.1,
+   "A": {
+    "area_ha": 450.0,
+    "terra": 29250000.0,
+    "benfeitorias": 42722440.4,
+    "desapropriacao": 71972440.4,
+    "total": 80321281.21796653,
+    "total_faixa": [
+     53050366.06796652,
+     126432501.41796651
+    ]
+   },
+   "B": {
+    "area_ha": 179.28,
+    "terra": 11653200.0,
+    "benfeitorias": 33360092.0,
+    "desapropriacao": 45013292.0,
+    "total": 53362132.81796652,
+    "total_faixa": [
+     36370098.31796652,
+     79902578.81796652
+    ]
+   }
+  },
+  "C2": {
+   "Vc": 588065.3643060684,
+   "Va": 470452.28478693607,
+   "terraplenagem": 11263803.945440914,
+   "constr_sitio_centrado_ha": 10.6,
+   "constr_A_ha": 3.8,
+   "desloc_A": [
+    490,
+    -600
+   ],
+   "constr_B_ha": 3.59,
+   "A": {
+    "area_ha": 450.0,
+    "terra": 29250000.0,
+    "benfeitorias": 40893016.0,
+    "desapropriacao": 70143016.0,
+    "total": 81406819.94544092,
+    "total_faixa": [
+     54821938.94544092,
+     126603327.94544092
+    ]
+   },
+   "B": {
+    "area_ha": 179.28,
+    "terra": 11653200.0,
+    "benfeitorias": 38633138.8,
+    "desapropriacao": 50286338.8,
+    "total": 61550142.745440915,
+    "total_faixa": [
+     42580715.69544092,
+     90727112.1454409
+    ]
+   }
+  }
+ }
+}
