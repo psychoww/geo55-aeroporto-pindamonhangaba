@@ -21,6 +21,10 @@ from dem import carrega_dem, geo2utm, utm2geo
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
 LAT_C, LON_C, RUMO = -22.9300, -45.4993, 60.0
+# Teste de outro sítio sem mexer no da prévia: GEO55_SITIO="lat,lon,rumo" (usa cache de terreno próprio).
+_SITIO = os.environ.get('GEO55_SITIO')
+if _SITIO:
+    LAT_C, LON_C, RUMO = (float(v) for v in _SITIO.split(','))
 COMP = 2020.0
 H_PPD, H_ACOST = 1.10, 0.50
 B_PPD, B_ACOST, B_FAIXA = 22.5, 30.0, 150.0
@@ -46,7 +50,8 @@ def xy(est, off=0.0):
 # ---------------------------------------------------------------- terreno
 def pontos_terreno(s_lim=(-1800, 1800), t_lim=(-1000, 1000)):
     """Nós do MDE (grade de 1") convertidos para UTM, dentro do retângulo local (s ao longo do eixo, t transversal)."""
-    cache = os.path.join(AQUI, 'dados', 'pontos_terreno.npy')
+    cache = os.path.join(AQUI, 'dados', 'pontos_terreno.npy' if not _SITIO else
+                         'pontos_terreno_' + _SITIO.replace(',', '_').replace('-', 'm') + '.npy')
     if os.path.exists(cache):          # versionado no repositório: dispensa baixar o MDE
         return np.load(cache)
     dem = carrega_dem()

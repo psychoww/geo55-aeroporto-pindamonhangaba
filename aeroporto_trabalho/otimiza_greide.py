@@ -6,6 +6,7 @@ Complemento (Anexo 14/RBAC 154, código 4): raio vertical >= 30 000 m (L = R·|�
 >= 30 000·(|Δi1| + |Δi2|), mínimo 45 m; rampa <= 0,8% no primeiro e no último quarto da PPD.
 """
 import json
+import os
 import sys
 import numpy as np
 from scipy.optimize import minimize
@@ -78,4 +79,4 @@ print('PIVs:', [(round(a), round(b, 3), c) for a, b, c in pv])
 print('rampas %:', np.round(g * 100, 3), 'Δi %:', np.round(np.diff(g) * 100, 3))
 print(f'Vc = {Vc:,.0f}  Va = {Va:,.0f}  Fh*Va = {p.FH*Va:,.0f}  total = {Vc+Va:,.0f}')
 print('restrições (mín.):', cons(z).min())
-json.dump(dict(pvis=[[float(a), float(b), float(c)] for a, b, c in pv], Vc=Vc, Va=Va, N=N), open('dados/greide.json', 'w'), indent=1)
+json.dump(dict(pvis=[[float(a), float(b), float(c)] for a, b, c in pv], Vc=Vc, Va=Va, N=N), open(os.environ.get('GEO55_SAIDA', 'dados/greide.json'), 'w'), indent=1)
