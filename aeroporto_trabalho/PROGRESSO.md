@@ -131,11 +131,11 @@ Pasta: `D:\documentos\ita\civil\4semestre\geo55\aeroporto_trabalho\`. Os scripts
 - Gráficos: títulos e eixos do perfil e dos obstáculos agora calculados (perfil de C1: rampa máx. 0,28%, efetiva 0,06%).
 - Capturas do Civil 3D (08–10) refeitas para C1 (DWG reaberto) e recortadas para a área do desenho.
 - **Textos para C1:** `apresentacao_deck/atualiza_slides_c1.py` reescreve as fontes `slides_ita/` (sítio, obstáculos com o mapa 16, perfil, volumes, mão 52→53, Brückner, distribuição, equipamentos com DMT 745 m e SICRO 5501714, fechamento) e cria 4 slides MESA (`mesa_criterios`, `mesa_azimute`, `mesa_ranking`, `mesa_custo`): **25 slides**. Depois `estilo_advocacia.py`. Assets novos enviados (16 imagens; ids no `BLOBS` de `montar_pasta_apresentacao.py`). Roteiro (`tmp/roteiro_c1.py`), página explicativa (versão 6, publicada; `tmp/explicacao_c1.py`) e README (`tmp/readme_c1.py`) atualizados. Limpeza = 92.401 m³ (Civil 3D).
-- **Publicação da apresentação (25 slides) bloqueada pelo modo automático** (artefato compartilhado por link): pedir autorização ao Guilherme e publicar `project/deck.json` + os 25 `project/slides/*.html` com root `apresentacao_deck`.
+- Apresentação publicada (25 slides, **versão 20**) com autorização do Guilherme ("Publique").
 
 ## Retomar daqui (10/11/2026, noite) — sítio C1
 - Projeto em **C1** (−22,8885; −45,4874; rumo 060°). Prévia preservada na tag git `previa-10-11` e em `dados/previa/`.
-- Pendente: **publicar a apresentação** (autorização), documento explicativo (Claude Docs) ainda descreve a prévia, recálculo da planilha no LibreOffice (fórmulas), conferir `custo_sitios.py` com DMT 745 m (SICRO 5501714, R$ 18,14/m³), corredor/assembly, Compute Materials, pranchas, memorial final em PDF, conta à mão (Guilherme, estacas 52→53), conferir a geologia no mapa.
+- Pendente: documento explicativo (Claude Docs) ainda descreve a prévia, recálculo da planilha no LibreOffice (fórmulas), conferir `custo_sitios.py` com DMT 745 m (SICRO 5501714, R$ 18,14/m³), corredor/assembly, Compute Materials, pranchas, memorial final em PDF, conta à mão (Guilherme, estacas 52→53), conferir a geologia no mapa.
 
 ## Retomar daqui (fim da sessão de 09/11/2026, ~21h) — HISTÓRICO, sítio da prévia
 
