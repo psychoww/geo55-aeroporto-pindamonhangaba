@@ -149,8 +149,11 @@ def main():
     print('ok', html_path, len(deck['order']), 'slides,', len(usadas), 'imagens')
 
     for nome in COPIAS:
-        shutil.copy2(os.path.join(RAIZ, nome), os.path.join(SAIDA, nome))
-        print('ok', nome)
+        try:
+            shutil.copy2(os.path.join(RAIZ, nome), os.path.join(SAIDA, nome))
+            print('ok', nome)
+        except PermissionError:
+            print('NÃO COPIADO (arquivo aberto em outro programa; feche e rode de novo):', nome)
 
     pdf = os.path.join(SAIDA, 'Apresentacao_PPD.pdf')
     if '--sem-pdf' not in sys.argv:

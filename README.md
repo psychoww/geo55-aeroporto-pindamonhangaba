@@ -36,7 +36,7 @@ Para só ler o projeto, bastam este README, o enunciado, a planilha `Memorial_te
 ## O projeto em números
 
 - **Sítio:** terraço a oeste de Pindamonhangaba-SP, centro (−22,9300; −45,4993), SIRGAS 2000 / UTM 23S. PPD de 1900 × 45 m, rumo 060°/240° (cabeceiras 06 e 24), faixa de pista de 2020 × 300 m.
-- **Escolha do sítio:** busca automática em ~25 mil centros × 36 rumos no Vale do Paraíba. Critérios: terraplenagem, fora da várzea do Paraíba, superfícies limitadoras de obstáculos do Anexo 14 (código 4) livres, entorno (cidade, água, mata) e ≥ 10 km de SBSJ e SBTA. Vento (ERA5 2015–2024): cobertura ≥ 99,9% em qualquer rumo.
+- **Escolha do sítio:** busca automática em ~25 mil centros × 36 rumos num retângulo de 59 × 53 km em torno de São José dos Campos, até Pindamonhangaba (lat. −23,36° a −22,89°; long. −45,96° a −45,39°), fixado antes da busca. Critérios: terraplenagem, fora da várzea do Paraíba, superfícies limitadoras de obstáculos do Anexo 14 (código 4) livres, entorno (cidade, água, mata) e ≥ 10 km de SBSJ e SBTA. Vento (ERA5 2015–2024): cobertura ≥ 99,9% em qualquer rumo.
 - **Seção-tipo:** PPD 22,5 m para cada lado a −1,5% (pavimento 1,10 m); acostamento 7,5 m a −2,5% (0,50 m); faixa até 150 m a −2,5%; taludes 1V:1,5H (corte) e 1V:2H (aterro, adotados).
 - **Greide:** 5 PIVs e 3 curvas verticais (R ≥ 30 000 m), rampas −0,432% / +0,067% / +0,395% / −0,800%, declividade efetiva 0,16%, otimizado para corte = Fh × aterro.
 - **Fh = 1,25** (adotado): latossolo vermelho-amarelo poroso sobre o Grupo Taubaté; faixa usual de 1,2 a 1,3.

@@ -75,8 +75,12 @@ ETAPAS = [
     ('Etapa 1 · Identificação do local do sítio', 'etapa1', [
         ('Pedro', ['etapa1', 'metodo', 'regiao'], [
             ('Por que uma busca automática, e não escolher o local olhando o mapa?',
-             'Para que a escolha tenha critérios explícitos e verificáveis. Testamos 25 mil centros (a cada 300 m) em 36 rumos (a cada 5°) no Vale do Paraíba, '
+             'Para que a escolha tenha critérios explícitos e verificáveis. Testamos 25 mil centros (a cada 300 m) em 36 rumos (a cada 5°) '
              'com quatro filtros aplicados em sequência: terraplenagem, distância da várzea, superfícies de proteção e entorno.'),
+            ('Onde foi feita a busca? No Vale inteiro? No Estado?',
+             'Não. A área foi um retângulo de 59 × 53 km em torno de São José dos Campos, até Pindamonhangaba (lat. −23,36° a −22,89°; '
+             'long. −45,96° a −45,39°). Esse recorte foi fixado antes da busca, por ser a região do ITA; a busca escolheu o ponto dentro dele. '
+             'Nele havia 35 066 centros a cada 300 m; tirando 10 km em volta de SBSJ e SBTA e a várzea, sobraram 25 062.'),
             ('A várzea é mais plana. Por que não construir lá?',
              'Ela daria a menor terraplenagem, mas é a planície de inundação do Paraíba: argila mole e turfa, lençol raso, arrozais e cavas de areia. '
              'Seria preciso trocar solo, drenar e alteiar a plataforma acima da cheia. O sítio escolhido fica 21 m acima do fundo do vale.'),

@@ -79,11 +79,14 @@ Pasta: `D:\documentos\ita\civil\4semestre\geo55\aeroporto_trabalho\`. Os scripts
 - **Pasta `../Apresentacao_aeroporto/`** (pedido: "Organize uma pasta aqui que tenham os arquivos desta apresentação"), montada por `montar_pasta_apresentacao.py`: `Apresentacao_PPD.html` (slides offline; setas, F = tela cheia, N = notas), `Apresentacao_PPD.pdf` (Edge headless, 21 páginas), `img/`, cópias do roteiro, memorial e DWG, `LEIA-ME.md`. As imagens /_blob/ do deck foram baixadas e conferidas por sha256: são idênticas às de `figuras/` (mapa `BLOBS` no script; 09_c3d_perfil não é usada). A pasta só tem cópias e fica fora do git; **rodar o script de novo depois de mudar slides, figuras, roteiro, memorial ou DWG.**
 - Slide `distribuicao` estourava a altura (título em 2 linhas + figura de 660 px; o parágrafo final ficava sob o rodapé). Corrigido no fonte: título "Linhas de compensação do programa da aula 8" e figura com 560 px. Publicado com autorização: apresentação versão 15.
 
+- **Área de busca exata** (pergunta: "A busca ocorreu somente no Vale do Paraíba ou em todo o Estado?"): nem um nem outro. Modelo de terreno (`dados/grade_utm30.npz`): lat −23,40 a −22,85, long −46,00 a −45,35 (67 × 61 km). Centros com 4 km de margem: lat −23,36 a −22,89, long −45,96 a −45,39 (59 × 53 km), em torno de São José dos Campos até Pindamonhangaba; 35 066 centros a cada 300 m → 28 099 fora dos 10 km de SBSJ/SBTA → 25 062 fora da várzea (≥ 12 m), × 36 rumos. O recorte foi premissa (região do ITA), não resultado da busca. Escrito no slide `metodo` (apresentação v16, publicada a pedido), no roteiro (pergunta nova), na página explicativa (v4) e no README.
+- `montar_pasta_apresentacao.py` agora avisa e segue quando uma cópia está aberta em outro programa (o roteiro estava aberto e não foi copiado em 10/11; rodar de novo depois de fechá-lo).
+
 ## Retomar daqui (fim da sessão de 09/11/2026, ~21h)
 
 ### Estado
 - Prévia pronta para ter 10/11, 13h30. Arquivos: DWG (Fh = 1,25, 104 seções e 104 vistas), `../Memorial_terraplenagem_PPD.xlsx` (recalculada, 0 erros) e `../Roteiro_aeroporto.pdf` (por etapas, com perguntas por parte).
-- Apresentação: https://claude.ai/artifact/8Ugecg9baS44AKMVL9Zja2, versão 15 (10/11), **compartilhada por link** (todos veem as atualizações). Tem 21 slides, divididos nas etapas 1, 2 e 3.
+- Apresentação: https://claude.ai/artifact/8Ugecg9baS44AKMVL9Zja2, versão 16 (10/11), **compartilhada por link** (todos veem as atualizações). Tem 21 slides, divididos nas etapas 1, 2 e 3.
 - Página explicativa: https://claude.ai/artifact/9kwHf7hYZsok92DvXD9j2D (**privada**; compartilhar pelo Share se Pedro e Gilberto forem usar). Para atualizar: `PYTHONPATH=. python explicacao/gerar.py`, depois publicar de novo o mesmo `explicacao/index.html` (root `explicacao/`, com `img/`).
 - GitHub público: https://github.com/psychoww/geo55-aeroporto-pindamonhangaba, último commit `6edc590`. Depois de cada mudança: `git add` + commit + push na pasta `geo55/` (o .gitignore é lista branca; `aeroporto_trabalho/tmp/` fica fora).
 
