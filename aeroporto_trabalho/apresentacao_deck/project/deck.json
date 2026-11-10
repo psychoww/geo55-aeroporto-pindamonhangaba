@@ -5,12 +5,16 @@
     "at": "2026-11-09T20:40:00Z"
   },
   "lists": "css",
-  "title": "GEO-55 Aeroporto Pindamonhangaba — prévia",
+  "title": "GEO-55 Aeroporto Pindamonhangaba — PPD 06/24",
   "order": [
     "cover",
     "requisitos",
     "etapa1",
     "metodo",
+    "mesa_criterios",
+    "mesa_azimute",
+    "mesa_ranking",
+    "mesa_custo",
     "regiao",
     "sitio",
     "vento",
@@ -35,7 +39,7 @@
       "start": "cover"
     },
     "s2": {
-      "description": "Etapa 1: identificação do local do sítio (terreno, várzea, superfícies de proteção, entorno e vento)",
+      "description": "Etapa 1: busca, método MESA (critérios, rumo, ranking, custo) e o sítio C1",
       "start": "etapa1"
     },
     "s3": {
@@ -47,7 +51,7 @@
       "start": "etapa3"
     },
     "s5": {
-      "description": "O que falta até a entrega de 17/11 e perguntas à professora",
+      "description": "O que mudou desde a prévia e o que falta",
       "start": "proximos"
     }
   },

@@ -106,11 +106,11 @@ a { color: var(--navy) }
   <h1>Terraplenagem da PPD 06/24 em Pindamonhangaba</h1>
   <p class="lead">O que foi feito em cada etapa, de onde vem cada número e como explicar cada escolha. Os valores são os do projeto atual (Fh = 1,25), os mesmos da planilha <span class="num">Memorial_terraplenagem_PPD.xlsx</span> e do Civil 3D.</p>
   <div class="cartoes">
-    <div><small>Corte</small><strong>1.227.480 m³</strong></div>
-    <div><small>Aterro geométrico</small><strong>981.911 m³</strong></div>
-    <div><small>Aterro corrigido (× 1,25)</small><strong>1.227.389 m³</strong></div>
-    <div><small>Saldo (sobra de corte)</small><strong>+91 m³</strong></div>
-    <div><small>Limpeza de 15 cm</small><strong>95.095 m³</strong></div>
+    <div><small>Corte</small><strong>435.439 m³</strong></div>
+    <div><small>Aterro geométrico</small><strong>344.978 m³</strong></div>
+    <div><small>Aterro corrigido (× 1,25)</small><strong>431.223 m³</strong></div>
+    <div><small>Saldo (sobra de corte)</small><strong>+4.216 m³</strong></div>
+    <div><small>Limpeza de 15 cm</small><strong>92.401 m³</strong></div>
   </div>
 </header>
 
@@ -138,23 +138,25 @@ a { color: var(--navy) }
 <section id="sitio">
   <p class="olho">Etapa 1 do enunciado · identificação do local</p>
   <div class="etapa"><span>01</span><h2>Escolha do sítio</h2></div>
-  <p>O sítio fica num terraço a oeste de Pindamonhangaba, com centro em <span class="num">−22,9300; −45,4993</span>, a cerca de 556 m de altitude e 21 m acima da várzea do Paraíba. A PPD tem rumo 060°/240° (cabeceiras 06 e 24).</p>
+  <p>O sítio, chamado C1, fica ao norte do rio Paraíba, a 4,8 km do centro de Pindamonhangaba, com centro em <span class="num">−22,8885; −45,4874</span>, cota média de 540 m e 12,5 m acima do fundo da várzea. A PPD tem rumo 060°/240° (cabeceiras 06 e 24). Ele substituiu, depois da prévia de 10/11, o sítio a oeste da cidade (−22,9300; −45,4993), que ficava colado ao bairro.</p>
   <p>A escolha saiu de uma busca automática numa área fixada antes: um retângulo de 59 × 53 km em torno de São José dos Campos, até Pindamonhangaba (lat. <span class="num">−23,36° a −22,89°</span>; long. <span class="num">−45,96° a −45,39°</span>). Não foi o Vale do Paraíba inteiro nem o Estado. Nele há 35 066 centros a cada 300 m; tirando 10 km em volta de SBSJ e SBTA e a várzea, sobram 25 062, cada um testado em 36 rumos. Os filtros foram aplicados em quatro rodadas:</p>
   <ol>
     <li><b>Terraplenagem:</b> sozinha, ela leva todos os melhores locais para a várzea (arrozais, argila mole, turfa, lençol raso, área inundável). Por isso entrou o filtro de estar pelo menos 12 a 20 m acima do fundo do vale.</li>
     <li><b>Superfícies limitadoras de obstáculos</b> (Anexo 14, código 4, precisão CAT I) verificadas contra o modelo de terreno: quase todos os rumos têm morros furando a horizontal interna ou a cônica. Só os rumos no eixo do vale, de 50° a 70°, passam.</li>
     <li><b>Entorno:</b> pouca área urbana nos cones de aproximação (ruído), água a 3 km (risco aviário), no máximo 25% de mata e pelo menos 10 km dos aeroportos de São José dos Campos (SBSJ) e Taubaté (SBTA).</li>
-    <li>Sobraram dois locais. O B foi descartado porque uma rodovia corta a faixa e há uma indústria na cabeceira.</li>
+    <li>Sobraram dois locais; ficou o que não tinha rodovia nem indústria na faixa (o sítio da prévia).</li>
   </ol>
+  <p><b>Depois da prévia, o método MESA</b> (Manual de Apoio à Prospecção de Sítios Aeroportuários Regionais, SAC/MInfra e ITA, 2021) refinou posição e rumo: 50 778 combinações (centros a cada 200 m num raio de 6 km × 18 rumos), critérios eliminatórios (espaço aéreo, vento, ambiente, várzea, infraestrutura, relevo, aproximação e transição livres, 2 km da cidade) e nota pelos classificatórios com os pesos do exemplo do manual. O sítio da prévia caiu por estar colado à mancha urbana; <b>C1 ficou em 1º</b> (volume do proxy 369 mil m³, 3,4 km da cidade), e continua em 1º salvo com peso de ruído acima de 31% ou de volume abaixo de 8%.</p>
+  <p class="aviso">O preço de C1: os morros ao norte, no pé da Mantiqueira, passam acima da superfície horizontal interna (até 144 m, 675 ha) e da cônica (até 255 m, 1422 ha). As aproximações estão livres. O MESA elimina só por aproximação, decolagem e transição e manda documentar o resto; pelo Anexo 14, isso exigiria estudo aeronáutico. Também há uma pista particular asfaltada cruzando a ponta sudoeste, que seria desativada, e chácaras na faixa.</p>
   <p>O vento (ERA5, 2015–2024, 87 672 horas) não restringe o rumo: a cobertura passa de 99,9% em qualquer direção. Mesmo assim, 060° coincide com o vento predominante de ENE.</p>
-  <div class="dizer"><b>Como dizer</b><p>“O local não foi escolhido a olho. Fizemos uma busca com critérios explícitos: fora da várzea, superfícies de proteção livres, entorno sem conflito e vento. Dos 25 mil pontos testados, só dois passaram. Ficamos com o que não tinha rodovia nem indústria na faixa.”</p></div>
+  <div class="dizer"><b>Como dizer</b><p>“O local não foi escolhido a olho. Primeiro uma busca na região; depois o método MESA do manual da SAC com o ITA, que separa critérios eliminatórios de classificatórios. Ele tirou o sítio da prévia, colado à cidade, e escolheu C1, com um terço do volume. O ponto fraco são os morros ao norte, que documentamos.”</p></div>
 </section>
 
 <section id="modelo">
   <p class="olho">Etapa 2 do enunciado · modelo, alinhamentos e seção-tipo</p>
   <div class="etapa"><span>02</span><h2>Terreno, imagem e alinhamento no Civil 3D</h2></div>
   <ul>
-    <li><b>Terreno:</b> modelo digital Copernicus GLO-30 (grade de 1″, cerca de 30 m). Os nós viraram pontos em UTM 23S (SIRGAS 2000) e foram triangulados (Delaunay) na superfície <b>TN</b>. É um modelo de superfície, então árvores e construções aparecem como terreno. O sítio tem só 4% de mata.</li>
+    <li><b>Terreno:</b> modelo digital Copernicus GLO-30 (grade de 1″, cerca de 30 m). Os nós viraram pontos em UTM 23S (SIRGAS 2000) e foram triangulados (Delaunay) na superfície <b>TN</b>. É um modelo de superfície, então árvores e construções aparecem como terreno. O sítio tem cerca de 10% de árvores.</li>
     <li><b>TN_limpo</b> = TN − 0,15 m: o terreno depois da limpeza da camada vegetal. É dele que se medem corte e aterro.</li>
     <li><b>Imagem georreferenciada:</b> mosaico Esri World Imagery com 1 m de pixel, inserido no desenho com arquivo de coordenadas (.jgw).</li>
     <li><b>Alinhamento “EIXO PPD 06-24”:</b> uma reta de 2020 m no eixo da faixa. O P0 fica na extremidade SW da faixa e o PF na estaca 101. As cabeceiras ficam em 0+060 (estaca 3) e 1+960 (estaca 98). Estacas a cada 20 m.</li>
@@ -211,14 +213,14 @@ a { color: var(--navy) }
   </ul>
   <div class="tabela"><table>
     <tr><th>PIV</th><th class="n">Estaca (m)</th><th class="n">Cota (m)</th><th class="n">Curva L (m)</th><th class="n">Rampa seguinte</th></tr>
-    <tr><td>0</td><td class="n">0</td><td class="n">559,082</td><td class="n">—</td><td class="n">-0,432%</td></tr>
-    <tr><td>1</td><td class="n">500</td><td class="n">556,923</td><td class="n">160</td><td class="n">+0,067%</td></tr>
-    <tr><td>2</td><td class="n">1.000</td><td class="n">557,256</td><td class="n">100</td><td class="n">+0,395%</td></tr>
-    <tr><td>3</td><td class="n">1.520</td><td class="n">559,310</td><td class="n">360</td><td class="n">-0,800%</td></tr>
-    <tr><td>4</td><td class="n">2.020</td><td class="n">555,310</td><td class="n">—</td><td class="n">—</td></tr>
+    <tr><td>0</td><td class="n">0</td><td class="n">542,380</td><td class="n">—</td><td class="n">-0,282%</td></tr>
+    <tr><td>1</td><td class="n">500</td><td class="n">540,970</td><td class="n">160</td><td class="n">+0,210%</td></tr>
+    <tr><td>2</td><td class="n">1.000</td><td class="n">542,020</td><td class="n">120</td><td class="n">-0,154%</td></tr>
+    <tr><td>3</td><td class="n">1.520</td><td class="n">541,220</td><td class="n">60</td><td class="n">+0,000%</td></tr>
+    <tr><td>4</td><td class="n">2.020</td><td class="n">541,220</td><td class="n">—</td><td class="n">—</td></tr>
     
   </table></div>
-  <p>Declividade efetiva resultante: <b class="num">0,16%</b>. Maior mudança de rampa: <b class="num">1,195%</b> (limite 1,5%). O otimizador trabalha com as estacas inteiras. Depois disso, o greide foi baixado 3 mm por igual para que o memorial, que tem seções extras em PCV e PTV, também feche sem déficit.</p>
+  <p>Declividade efetiva resultante: <b class="num">0,06%</b>. Maior mudança de rampa: <b class="num">0,492%</b> (limite 1,5%). O otimizador trabalha com as estacas inteiras. Depois disso, as cotas dos PIVs foram arredondadas ao centímetro e baixadas 1 cm, para que o balanço feche sem faltar terra também com as áreas do Civil 3D e as seções extras em PCV e PTV.</p>
   <p>Com 7 ou 9 PIVs o volume cai só cerca de 2%; ficamos com 5 PIVs e 3 curvas verticais, que é o mais simples de construir.</p>
   <div class="dizer"><b>Como dizer</b><p>“O greide foi otimizado: o programa escolheu as cotas dos PIVs que minimizam corte mais aterro, com todas as restrições do enunciado e do Anexo 14, e com a condição de que o corte cubra o aterro corrigido pelo Fh. Por isso a declividade ficou muito abaixo do limite.”</p></div>
 </section>
@@ -232,7 +234,7 @@ a { color: var(--navy) }
 área de corte  = soma das partes em que a diferença é positiva
 área de aterro = soma das partes em que a diferença é negativa (em módulo)</div>
   <p>A limpeza é calculada à parte: 0,15 m × largura entre os dois pés de talude. Uma seção pode ter corte e aterro ao mesmo tempo (seção mista); isso é comum aqui porque a plataforma tem 300 m de largura.</p>
-  <p>Conferência: um cálculo independente em Python, com o mesmo terreno e a mesma seção-tipo, difere do Civil 3D em <b class="num">-0,04%</b> no corte e <b class="num">+0,05%</b> no aterro (aba “Conferência”).</p>
+  <p>Conferência: um cálculo independente em Python, com o mesmo terreno e a mesma seção-tipo, difere do Civil 3D em <b class="num">-0,64%</b> no corte e <b class="num">-0,39%</b> no aterro (aba “Conferência”).</p>
   <figure><img src="img/06_secoes.png" alt="Seções transversais típicas com áreas de corte e aterro"><figcaption>Seções típicas: corte em azul-petróleo, aterro em lavanda, terreno já sem os 15 cm de limpeza.</figcaption></figure>
   <div class="dizer"><b>Como dizer</b><p>“As áreas são do Civil 3D: geramos uma seção em cada estaca e nos pontos notáveis, e medimos a área entre o terreno já limpo e a plataforma de terraplenagem.”</p></div>
 </section>
@@ -242,10 +244,10 @@ a { color: var(--navy) }
   <p>O Fh relaciona o mesmo solo em dois estados (aula 7, parte 1, slide 9):</p>
   <div class="formula">Fh = γs compactado / γs in situ = V in situ / V compactado  &gt; 1</div>
   <p>Ou seja: para fazer 1 m³ de aterro compactado é preciso escavar Fh m³ de corte. Por isso o aterro é multiplicado por Fh antes de ser comparado com o corte.</p>
-  <p>O Fh depende do solo, e não da obra. No sítio, o solo esperado é <b>latossolo vermelho-amarelo, profundo e poroso</b>, sobre os sedimentos do Grupo Taubaté (argilas, siltes e areias). Um solo poroso tem massa específica natural baixa e ganha bastante densidade na compactação. Em ordem de grandeza, γs in situ fica perto de 1,3 a 1,4 t/m³ e γs compactado (Proctor normal) perto de 1,6 a 1,75 t/m³, o que dá Fh entre 1,2 e 1,3. Adotamos <b>1,25</b>, no meio da faixa.</p>
+  <p>O Fh depende do solo, e não da obra. No sítio, o solo esperado é <b>argiloso e poroso (latossolos e argissolos vermelho-amarelos)</b>, sobre os sedimentos terciários da Bacia de Taubaté (levantamento de solos de 1961, Bragantia). Um solo poroso tem massa específica natural baixa e ganha bastante densidade na compactação. Em ordem de grandeza, γs in situ fica perto de 1,3 a 1,4 t/m³ e γs compactado (Proctor normal) perto de 1,6 a 1,75 t/m³, o que dá Fh entre 1,2 e 1,3. Adotamos <b>1,25</b>, no meio da faixa.</p>
   <p class="aviso">O valor 1,1 aparece no exercício da aula. Ele é um dado de exercício, não do nosso solo. Num projeto real, o Fh sai de ensaios: massa específica in situ (frasco de areia) nos cortes e Proctor do material do aterro.</p>
-  <p>A mudança de 1,1 para 1,25 muda o projeto: como cada m³ de aterro consome mais corte, o otimizador baixou o greide (de 9 a 30 cm conforme o PIV), o que aumenta o corte e diminui o aterro até a compensação fechar de novo.</p>
-  <div class="dizer"><b>Como dizer</b><p>“O Fh é uma propriedade do solo. O nosso sítio é latossolo poroso do Vale do Paraíba, que compacta bastante, então adotamos 1,25 em vez do 1,1 do exercício. Num projeto real ele viria de ensaio in situ e de Proctor.”</p></div>
+  <p>A mudança de 1,1 para 1,25 muda o projeto: como cada m³ de aterro consome mais corte, o otimizador baixa o greide, o que aumenta o corte e diminui o aterro até a compensação fechar de novo.</p>
+  <div class="dizer"><b>Como dizer</b><p>“O Fh é uma propriedade do solo. O nosso sítio é solo argiloso poroso do Vale do Paraíba, que compacta bastante, então adotamos 1,25 em vez do 1,1 do exercício. Num projeto real ele viria de ensaio in situ e de Proctor.”</p></div>
 </section>
 
 <section id="memorial">
@@ -258,9 +260,9 @@ compensação lateral  = menor valor entre volume de corte e aterro corrigido do
 ordenada de Brückner = ordenada anterior + (volume de corte − aterro corrigido)</div>
   <p><b>Compensação lateral</b> (coluna 10 da tabela da aula 7, parte 2, slide 10) é o volume que se resolve dentro do próprio trecho: o corte de um lado da seção vai para o aterro do outro lado, sem transporte ao longo do eixo. Só o excedente entra no diagrama de massas e precisa de transporte longitudinal.</p>
   <div class="cartoes">
-    <div><small>Compensação lateral</small><strong>534.083 m³</strong></div>
-    <div><small>Corte que viaja ao longo do eixo</small><strong>693.397 m³</strong></div>
-    <div><small>Aterro corrigido que vem de outros trechos</small><strong>693.306 m³</strong></div>
+    <div><small>Compensação lateral</small><strong>238.421 m³</strong></div>
+    <div><small>Corte que viaja ao longo do eixo</small><strong>197.018 m³</strong></div>
+    <div><small>Aterro corrigido que vem de outros trechos</small><strong>192.802 m³</strong></div>
   </div>
   <p>Diferenças de forma em relação à tabela da aula: lá o Fh multiplica a área de aterro (coluna “At. cor.”) e o volume usa a semidistância; aqui o Fh multiplica o volume. Como o volume é linear na área, o resultado é idêntico.</p>
   <div class="dizer"><b>Como dizer</b><p>“A coluna de compensação lateral mostra quanto do corte de cada trecho é usado no aterro do próprio trecho. É material que não sai da seção. Só o que sobra vai para o diagrama de Brückner.”</p></div>
@@ -270,10 +272,10 @@ ordenada de Brückner = ordenada anterior + (volume de corte − aterro corrigid
   <div class="etapa"><span>08</span><h2>Conta à mão (fica com você)</h2></div>
   <div class="voce">
     <p>A regra da aula de 20/10 é fazer à mão o volume entre duas estacas consecutivas. A planilha tem a aba “Cálculo à mão” só com os dados e os campos amarelos em branco. Ao preencher, a coluna “Confere?” compara com o memorial.</p>
-    <p><b>Par sugerido:</b> estacas <span class="num">10 + 00,00</span> e <span class="num">11 + 00,00</span>, as primeiras duas seções mistas consecutivas com mais de 300 m² de corte e de aterro, d = 20 m.</p>
+    <p><b>Par sugerido:</b> estacas <span class="num">52 + 00,00</span> e <span class="num">53 + 00,00</span>, as primeiras duas seções mistas consecutivas com mais de 300 m² de corte e de aterro, d = 20 m.</p>
     <div class="tabela"><table>
       <tr><th>Estaca</th><th class="n">Área de corte (m²)</th><th class="n">Área de aterro (m²)</th></tr>
-      <tr><td>10 + 00,00</td><td class="n">303,57</td><td class="n">522,76</td></tr><tr><td>11 + 00,00</td><td class="n">388,35</td><td class="n">357,67</td></tr>
+      <tr><td>52 + 00,00</td><td class="n">286,27</td><td class="n">252,72</td></tr><tr><td>53 + 00,00</td><td class="n">231,39</td><td class="n">271,10</td></tr>
     </table></div>
     <p>Passos, na ordem do memorial: área média de corte e de aterro → volumes → aterro corrigido com Fh = 1,25 → compensação lateral → contribuição à ordenada.</p>
   </div>
@@ -291,41 +293,39 @@ ordenada de Brückner = ordenada anterior + (volume de corte − aterro corrigid
   </ul>
   <div class="tabela"><table>
     <tr><th>Cenário</th><th class="n">LCs</th><th class="n">MT (10⁶ m³·dam)</th><th class="n">Bota-fora (m³)</th><th class="n">Empréstimo (m³)</th></tr>
-    <tr class="rec"><td>Adotada: 1 LC do P0 ao PF (compensa tudo)</td><td class="n">1</td><td class="n">14,34</td><td class="n">91</td><td class="n">0</td></tr>
-    <tr><td>LC única entre cruzamentos (busca de LC única)</td><td class="n">1</td><td class="n">15,28</td><td class="n">91.916</td><td class="n">91.825</td></tr>
-    <tr><td>Até 2 LCs</td><td class="n">2</td><td class="n">13,05</td><td class="n">90.511</td><td class="n">90.420</td></tr>
-    <tr><td>Até 3 LCs</td><td class="n">3</td><td class="n">12,36</td><td class="n">129.045</td><td class="n">128.954</td></tr>
-    <tr><td>LCs livres: ótimo do modelo da aula (6 LCs)</td><td class="n">6</td><td class="n">12,32</td><td class="n">143.554</td><td class="n">143.463</td></tr>
+    <tr class="rec"><td>Adotada: 1 LC do P0 ao PF (compensa tudo)</td><td class="n">2</td><td class="n">6,61</td><td class="n">4.216</td><td class="n">0</td></tr>
+    <tr><td>LC única entre cruzamentos (busca de LC única)</td><td class="n">1</td><td class="n">4,06</td><td class="n">49.559</td><td class="n">45.342</td></tr>
+    <tr><td>Até 2 LCs</td><td class="n">2</td><td class="n">3,72</td><td class="n">51.887</td><td class="n">47.671</td></tr>
+    <tr><td>Até 3 LCs</td><td class="n">3</td><td class="n">3,55</td><td class="n">70.189</td><td class="n">65.973</td></tr>
+    <tr><td>LCs livres: ótimo do modelo da aula (6 LCs)</td><td class="n">7</td><td class="n">3,37</td><td class="n">62.840</td><td class="n">58.624</td></tr>
     
   </table></div>
-  <p><b>Leitura:</b> no modelo da aula, com bota-fora e empréstimo a só 150 m, o menor MT abre mão de parte da compensação: manda 143.554 m³ para bota-fora e traz 143.463 m³ de empréstimo, porque levar terra 150 m é mais curto que levá-la de um lado ao outro da obra. Só que o modelo não cobra a <b>escavação do empréstimo</b>, que exige achar uma jazida, licenciar e escavar. Esse foi o problema de Viracopos contado na aula 7.</p>
-  <p>Na variante, o empréstimo também paga a escavação. Com os preços do exercício 6 da lista (R$ 3,20/m³ de escavação e R$ 1,60/(m³·km) de transporte), escavar 1 m³ custa o mesmo que transportá-lo 2 km. Somando 150 m do bota-fora e 150 m do empréstimo, cada m³ que deixa de ser compensado custa 2,3 km de transporte, ou 1 150 m por parcela externa. Com essa DMT externa equivalente, o ótimo passa a ser <b>uma LC única do P0 ao PF, que compensa tudo</b>: só os 91 m³ de sobra do saldo vão para bota-fora. É a solução adotada.</p>
-  <p>Detalhe para não confundir: a busca de “LC única” do programa usa a convenção do exercício 2 (a LC vale entre o primeiro e o último cruzamento com o diagrama). Como o diagrama começa descendo, a LC na cota do saldo (+91 m³) só toca o diagrama no PF, e essa busca a corta. A otimização com degraus encontra a mesma LC começando no P0 com um degrau de 91 m³ (o bota-fora), e é ela a melhor solução com uma LC.</p>
+  <p><b>Leitura:</b> no modelo da aula, com bota-fora e empréstimo a só 150 m, o menor MT abre mão de parte da compensação: manda 62.840 m³ para bota-fora e traz 58.624 m³ de empréstimo, porque levar terra 150 m é mais curto que levá-la de um lado ao outro da obra. Só que o modelo não cobra a <b>escavação do empréstimo</b>, que exige achar uma jazida, licenciar e escavar. Esse foi o problema de Viracopos contado na aula 7.</p>
+  <p>Na variante, o empréstimo também paga a escavação. Com os preços do exercício 6 da lista (R$ 3,20/m³ de escavação e R$ 1,60/(m³·km) de transporte), escavar 1 m³ custa o mesmo que transportá-lo 2 km. Somando 150 m do bota-fora e 150 m do empréstimo, cada m³ que deixa de ser compensado custa 2,3 km de transporte, ou 1 150 m por parcela externa. Com essa DMT externa equivalente, o ótimo passa a ser <b>uma LC única do P0 ao PF, que compensa tudo</b>: só os 4.216 m³ de sobra do saldo vão para bota-fora. É a solução adotada.</p>
+  <p>Detalhe para não confundir: a busca de “LC única” do programa usa a convenção do exercício 2 (a LC vale entre o primeiro e o último cruzamento com o diagrama). Como o diagrama começa descendo, a LC na cota do saldo (+4.216 m³) só toca o diagrama no PF, e essa busca a corta. A otimização com degraus encontra a mesma LC começando no P0 com um degrau de 4.216 m³ (o bota-fora), e é ela a melhor solução com uma LC.</p>
   <figure><img src="img/11_distribuicao.png" alt="Diagrama de massas com as linhas de compensação"><figcaption>Em cima, a LC única ótima; embaixo, o ótimo do modelo da aula, com 150 m. Ondas acima da LC em azul-petróleo (sentido do estaqueamento), abaixo em lavanda (sentido contrário).</figcaption></figure>
   <h3>Ondas da solução recomendada</h3>
   <div class="tabela"><table>
     <tr><th>Onda</th><th class="n">De (m)</th><th class="n">Até (m)</th><th>Sentido</th><th class="n">V (m³)</th><th class="n">DMT (m)</th></tr>
-    <tr><td>1</td><td class="n">0</td><td class="n">352</td><td>← sentido contrário</td><td class="n">74.592</td><td class="n">162</td></tr>
-    <tr><td>2</td><td class="n">352</td><td class="n">699</td><td>→ sentido do estaqueamento</td><td class="n">51.110</td><td class="n">248</td></tr>
-    <tr><td>3</td><td class="n">699</td><td class="n">1.222</td><td>← sentido contrário</td><td class="n">232.661</td><td class="n">211</td></tr>
-    <tr><td>4</td><td class="n">1.222</td><td class="n">1.603</td><td>→ sentido do estaqueamento</td><td class="n">146.660</td><td class="n">246</td></tr>
-    <tr><td>5</td><td class="n">1.603</td><td class="n">1.670</td><td>← sentido contrário</td><td class="n">16.317</td><td class="n">42</td></tr>
-    <tr><td>6</td><td class="n">1.670</td><td class="n">2.020</td><td>→ sentido do estaqueamento</td><td class="n">165.830</td><td class="n">197</td></tr>
+    <tr><td>1</td><td class="n">0</td><td class="n">124</td><td>← sentido contrário</td><td class="n">3.410</td><td class="n">74</td></tr>
+    <tr><td>2</td><td class="n">188</td><td class="n">1.669</td><td>→ sentido do estaqueamento</td><td class="n">79.346</td><td class="n">745</td></tr>
+    <tr><td>3</td><td class="n">1.669</td><td class="n">1.780</td><td>← sentido contrário</td><td class="n">9.867</td><td class="n">72</td></tr>
+    <tr><td>4</td><td class="n">1.780</td><td class="n">2.020</td><td>→ sentido do estaqueamento</td><td class="n">39.723</td><td class="n">135</td></tr>
     
   </table></div>
-  <p>A limpeza (95.095 m³) não entra no diagrama: vai para bota-fora ou para estoque, para revestir os taludes.</p>
+  <p>A limpeza (92.401 m³) não entra no diagrama: vai para bota-fora ou para estoque, para revestir os taludes.</p>
   <div class="dizer"><b>Como dizer</b><p>“Otimizamos as linhas de compensação com o programa da aula. Com bota-fora e empréstimo a 150 m, o mínimo do momento de transporte troca compensação por empréstimo. Mas, contando a escavação do empréstimo, compensar tudo é mais barato, e é essa a solução que adotamos.”</p></div>
 </section>
 
 <section id="equip">
   <div class="etapa"><span>10</span><h2>Equipamentos e por que cada um</h2></div>
-  <p>Solo de 1ª categoria (DER-SP: escavável com lâmina e scraper), plataforma larga e plana e, na distribuição adotada, DMTs de 160 a 250 m nas ondas grandes. As razões vêm da aula 9.</p>
+  <p>Solo de 1ª categoria (DER-SP: escavável com lâmina e scraper), plataforma larga e plana e, na distribuição adotada, uma onda principal de 79 mil m³ com DMT de 745 m (o SICRO tem moto-scraper até 800–1000 m). As razões vêm da aula 9.</p>
   <div class="tabela"><table>
     <tr><th>Serviço</th><th>Equipamento</th><th>Por quê</th></tr>
     <tr><td>Limpeza e raspagem da camada vegetal</td><td>Trator de esteira com lâmina reta; motoniveladora</td><td>A lâmina reta serve para limpeza geral, cavando e amontoando; a motoniveladora faz capina de vegetação rasa. O sítio é pasto.</td></tr>
     <tr><td>Carga e remoção da limpeza</td><td>Pá carregadeira + basculantes</td><td>A pá carregadeira remove material solto; o basculante comum (4,5 a 6 m³) leva ao bota-fora ou ao estoque.</td></tr>
-    <tr><td>Corte → aterro (DMT de 160 a 250 m)</td><td>Moto-scraper, com trator empurrando na carga</td><td>Faz as quatro operações numa só (escavar, carregar, transportar, espalhar), em solo de 1ª categoria e distâncias médias.</td></tr>
-    <tr><td>Onda curta perto de 1640 m (DMT de 42 m)</td><td>Trator de lâmina</td><td>Empurra o material em distância curta, sem carregar.</td></tr>
+    <tr><td>Corte → aterro (onda principal, DMT de 745 m)</td><td>Moto-scraper, com trator empurrando na carga</td><td>Faz as quatro operações numa só (escavar, carregar, transportar, espalhar), em solo de 1ª categoria e distâncias médias.</td></tr>
+    <tr><td>Ondas curtas (DMT de 72 a 135 m) e compensação lateral</td><td>Trator de lâmina</td><td>Empurra o material em distância curta, sem carregar.</td></tr>
     <tr><td>Camadas compactas (eventual)</td><td>Escarificador no trator</td><td>Desagrega o terreno antes da escavação.</td></tr>
     <tr><td>Regularização a 1,5% e 2,5% e taludes</td><td>Motoniveladora</td><td>Acabamento da ordem de meio centímetro.</td></tr>
     <tr><td>Compactação do aterro</td><td>Rolo pé-de-carneiro</td><td>Compacta do fundo para o topo; indicado para solo coesivo (argiloso), o que predomina no sítio.</td></tr>
@@ -339,11 +339,11 @@ ordenada de Brückner = ordenada anterior + (volume de corte − aterro corrigid
   <h2>Perguntas prováveis</h2>
   <details><summary>O diagrama fecha em zero. Então não há transporte?</summary><p>Há. Fechar em zero só quer dizer que, no total, corte e aterro corrigido se equilibram. As ondas do diagrama mostram que o morro do meio abastece os aterros vizinhos, com DMTs de centenas de metros.</p></details>
   <details><summary>Por que não usar o Fh = 1,1 da aula?</summary><p>Porque o Fh é do solo, e o 1,1 era dado do exercício. Latossolo poroso tem densidade natural baixa e compacta bastante; 1,25 está no meio da faixa típica de 1,2 a 1,3. Num projeto real, ele viria de ensaio.</p></details>
-  <details><summary>Como a camada vegetal entra no cálculo?</summary><p>Toda a área entre os pés de talude perde 15 cm. As áreas de corte e aterro são medidas a partir do terreno já limpo, então o aterro nunca fica sobre a camada vegetal. O volume da limpeza (95.095 m³) não entra na compensação.</p></details>
+  <details><summary>Como a camada vegetal entra no cálculo?</summary><p>Toda a área entre os pés de talude perde 15 cm. As áreas de corte e aterro são medidas a partir do terreno já limpo, então o aterro nunca fica sobre a camada vegetal. O volume da limpeza (92.401 m³) não entra na compensação.</p></details>
   <details><summary>O que é a compensação lateral?</summary><p>É o volume que se compensa dentro do próprio trecho: corte de um lado, aterro do outro. Na planilha é o menor valor entre o corte e o aterro corrigido de cada trecho. Ele não precisa de transporte longitudinal.</p></details>
   <details><summary>Por que o ótimo do programa não é a solução adotada?</summary><p>Porque o modelo da aula cobra só o transporte. Com bota-fora e empréstimo a 150 m, ele prefere jogar fora o corte e escavar um empréstimo. Quando a escavação do empréstimo entra no custo (preços do exercício 6), compensar tudo sai mais barato.</p></details>
-  <details><summary>As áreas são mesmo do Civil 3D?</summary><p>Sim: 104 linhas de amostragem, seções das quatro superfícies, cotas lidas a cada 0,25 m. Um cálculo independente dá -0,04% de diferença no corte.</p></details>
-  <details><summary>Por que o volume é tão grande?</summary><p>Porque a faixa inteira de 300 m foi nivelada a 2,5%, como na figura do enunciado, num terreno ondulado. São cerca de 650 mil m² de plataforma. (A nota de serviço da aula 7, que nivela só ±75 m, é apenas um exemplo e não vale para este projeto.)</p></details>
+  <details><summary>As áreas são mesmo do Civil 3D?</summary><p>Sim: 104 linhas de amostragem, seções das quatro superfícies, cotas lidas a cada 0,25 m. Um cálculo independente dá -0,64% de diferença no corte.</p></details>
+  <details><summary>Por que o volume é tão grande?</summary><p>Porque a faixa inteira de 300 m foi nivelada a 2,5%, como na figura do enunciado, num terreno ondulado. São cerca de 630 mil m² de plataforma; em C1, mais plano, o corte caiu para 435 mil m³. (A nota de serviço da aula 7, que nivela só ±75 m, é apenas um exemplo e não vale para este projeto.)</p></details>
 </section>
 
 <section id="duvidas">

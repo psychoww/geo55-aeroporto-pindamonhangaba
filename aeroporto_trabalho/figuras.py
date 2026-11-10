@@ -90,7 +90,9 @@ ax.plot(s / 1000, sup, color=VIOL, lw=2, label='Superfícies limitadoras (aproxi
 ax.axvspan(-1.01, 1.01, ymax=0.42, color=CORTE, alpha=0.35, lw=0); ax.text(0, ze + 30, 'faixa', ha='center', color=MUTED)
 ax.set_xlabel('Distância ao centro da pista ao longo do rumo 060° (km)'); ax.set_ylabel('Cota (m)')
 ax.set_ylim(480, max(zt.max(), sup[np.isfinite(sup)].max()) + 40)
-ax.set_title(f'Obstáculos: nenhuma penetração relevante (máx. {max(r["pen_max"], 0):.0f} m em {r["area_pen_ha"]:.0f} ha, provavelmente árvores)')
+_pen = max(r["pen_max"], 0)
+ax.set_title((f'Obstáculos: nenhuma penetração relevante (máx. {_pen:.0f} m em {r["area_pen_ha"]:.0f} ha, provavelmente árvores)' if _pen < 10 else
+              f'Obstáculos: aproximação livre no eixo; em planta, morros furam a horizontal interna / cônica (máx. {_pen:.0f} m, {r["area_pen_ha"]:.0f} ha)'))
 ax.legend(frameon=False, loc='upper center', fontsize=9)
 ax.text(-15.8, 490, 'SW (cabeceira 06)', color=MUTED, fontsize=9); ax.text(15.8, 490, 'NE (cabeceira 24)', color=MUTED, fontsize=9, ha='right')
 salva(fig, '03_ols.png')
@@ -151,10 +153,13 @@ for k in range(len(PV) - 1):
     g = (zz[k + 1] - zz[k]) / (ex[k + 1] - ex[k]) * 100
     ax.text((ex[k] + ex[k + 1]) / 2, max(zz[k], zz[k + 1]) + 1.6, f'{g:+.3f}%'.replace('.', ','), ha='center', fontsize=10, weight='bold')
 for xx, t in [(60, 'CAB 06'), (1960, 'CAB 24')]:
-    ax.axvline(xx, color=CORTE, lw=1.5); ax.text(xx, 548.6, t, rotation=90, va='bottom', ha='right', fontsize=9, color=MUTED)
-ax.set_xlim(0, p.COMP); ax.set_ylim(547, 568)
+    ax.axvline(xx, color=CORTE, lw=1.5); ax.text(xx, np.floor(min(zte.min(), zge.min())) - 1.4, t, rotation=90, va='bottom', ha='right', fontsize=9, color=MUTED)
+ax.set_xlim(0, p.COMP); _z = np.concatenate([zte, zge]); ax.set_ylim(np.floor(_z.min()) - 2, np.ceil(_z.max()) + 3)
 ax.set_xlabel('Distância (m) — estaca 0 (P0) a 101 (PF)'); ax.set_ylabel('Cota (m)')
-ax.set_title('Perfil longitudinal: 3 curvas verticais (R ≥ 30 000 m), rampa máx. 0,80%, declividade efetiva 0,16%')
+_g = [(zz[k + 1] - zz[k]) / (ex[k + 1] - ex[k]) * 100 for k in range(len(PV) - 1)]
+_zr = p.greide(PV, np.arange(60, 1960.1, 1.0))
+ax.set_title((f'Perfil longitudinal: {len(M["curvas"])} curvas verticais (R ≥ 30 000 m), rampa máx. {max(map(abs, _g)):.2f}%, '
+              f'declividade efetiva {(_zr.max() - _zr.min()) / 1900 * 100:.2f}%').replace('.', ','))
 ax.legend(frameon=False, ncol=4, fontsize=9, loc='upper center', bbox_to_anchor=(0.5, -0.16))
 salva(fig, '05_perfil.png')
 

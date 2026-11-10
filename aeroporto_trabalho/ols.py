@@ -15,8 +15,20 @@ D = np.load('dados/grade_utm30.npz')
 Z, X0, Y0, P = D['Z'], float(D['x0']), float(D['y0']), float(D['passo'])
 
 
+_DEM = None
+
+
 def amostra(px, py):
-    return map_coordinates(Z, [(py - Y0) / P, (px - X0) / P], order=1, mode='nearest')
+    """Cota do DSM em coordenadas UTM. Lê os tiles Copernicus inteiros (−22° a −24°), porque a grade da busca
+    (dados/grade_utm30.npz, até −22,85°) não cobre as superfícies ao norte de C1; fora dela a amostragem antiga
+    repetia a borda. A grade Z continua sendo usada na busca (alturas sobre a várzea etc.)."""
+    global _DEM
+    from dem import carrega_dem, utm2geo
+    if _DEM is None:
+        _DEM = carrega_dem()
+    px = np.asarray(px, float); py = np.asarray(py, float)
+    lo, la = utm2geo.transform(px.ravel(), py.ravel())
+    return np.asarray(_DEM.bilinear(lo, la), float).reshape(px.shape)
 
 
 def superficie(s, t, ze, comp_faixa=2020.0):

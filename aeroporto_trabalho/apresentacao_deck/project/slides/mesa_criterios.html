@@ -1,0 +1,32 @@
+<section id="mesa_criterios" data-transition="fade" style="background:#FFFBF5;color:#33335B;font-family:'Spectral', Georgia, serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:24px">
+<div style="position:absolute;left:0px;top:330px;width:40px;height:420px;background:#9F9DB6"></div>
+<div style="position:absolute;left:1592px;top:1016px;width:200px;height:64px;background:#33335B"></div>
+<img src="/_blob/3603ec8169e4121cda33e4e85919be84" alt="" style="position:absolute;left:1612px;top:40px;width:180px;height:69px;object-fit:contain">
+<div style="display:flex;align-items:center"><p style="font-size:30px;letter-spacing:4px;text-transform:uppercase;color:#FFFBF5;background:#33335B;padding:12px 32px 8px 32px;white-space:nowrap;font-weight:500">Etapa 1 · método MESA (SAC/ITA, 2021)</p><div style="flex:1;height:2px;background:#9B9B9B"></div></div>
+<h2 style="font-family:'Spectral', Georgia, serif;font-size:54px;font-weight:500;line-height:1.12;color:#33335B">Critérios: primeiro eliminam, depois pontuam</h2>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:40px">
+<table style="font-size:24px;color:#273348">
+<tr style="background:#33335B"><th style="width:48%;color:#FFFBF5">Eliminatório</th><th style="width:52%;color:#FFFBF5">Limite usado</th></tr>
+<tr><td>ESP · espaço aéreo</td><td>≥ 10 km de SBSJ e SBTA</td></tr>
+<tr><td>MET · vento</td><td>utilização ≥ 95% com través ≤ 10 kt</td></tr>
+<tr><td>AMB · ambiente</td><td>água ≤ 1%; árvores ≤ 20%</td></tr>
+<tr><td>Várzea (alagamento)</td><td>≤ 5% da área a &lt; 8 m do fundo</td></tr>
+<tr><td>INF · infraestrutura</td><td>sem rodovia, ferrovia ou LT</td></tr>
+<tr><td>TOPAlt · relevo</td><td>ΔH ≤ 40 m na área física</td></tr>
+<tr><td>OBS · obstáculos</td><td>aproximação e transição livres</td></tr>
+<tr><td>URB · cidade</td><td>≥ 2 km da mancha urbana</td></tr>
+</table>
+<table style="font-size:24px;color:#273348">
+<tr style="background:#33335B"><th style="width:30%;color:#FFFBF5">Classificatório</th><th style="width:46%;color:#FFFBF5">Medida</th><th style="width:24%;color:#FFFBF5">Peso</th></tr>
+<tr><td>TOPVol</td><td>volume de aterro (m³)</td><td>33%</td></tr>
+<tr><td>GEO</td><td>CBR de campo</td><td>28% (igual)</td></tr>
+<tr><td>DIS</td><td>km ao centro da cidade</td><td>13%</td></tr>
+<tr><td>ACE</td><td>km à rodovia</td><td>13%</td></tr>
+<tr><td>RUI</td><td>ha construídos em 65 dB</td><td>8%</td></tr>
+<tr><td>DIP</td><td>km à rede elétrica</td><td>6% (igual)</td></tr>
+</table>
+</div>
+<p style="font-size:26px;line-height:1.4;color:#273348">50 778 combinações testadas: centros a cada 200 m num raio de 6 km × 18 rumos. Nota = Σ peso × (1/x)/Σ(1/x), como nas tabelas V-6 a V-8 do manual; GEO e DIP sem dado entram iguais para todos.</p>
+<p style="position:absolute;left:128px;bottom:56px;font-size:24px;color:#6E6E80;width:1420px">ITA · Engenharia Civil-Aeronáutica · GEO-55 · Manual de Apoio à Prospecção de Sítios Aeroportuários Regionais (SAC/MInfra + ITA, 2021); pesos do exemplo do manual</p>
+<aside>O manual do professor Cláudio Jorge, feito pela SAC com o ITA, separa critérios eliminatórios, que tiram áreas do mapa, de classificatórios, que dão nota aos sítios que sobram. Usamos os eliminatórios do manual com os limites da tabela, mais a várzea, que o manual lista como camada de áreas sujeitas a alagamento. A nota usa os pesos do exemplo do próprio manual, porque não montamos um painel de especialistas, e fizemos a análise de sensibilidade que o manual recomenda.</aside>
+</section>

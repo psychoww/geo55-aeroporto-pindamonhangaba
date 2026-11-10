@@ -55,7 +55,8 @@ deck = json.load(open(os.path.join(D, 'deck.json'), encoding='utf-8'))
 SL = {}
 for i, sid in enumerate(deck['order'], 1):
     t = open(os.path.join(D, 'slides', f'{sid}.html'), encoding='utf-8').read()
-    tit = re.search(r'<h[12][^>]*>(.*?)</h[12]>', t, re.S).group(1)
+    m = re.search(r'<h[12][^>]*>(.*?)</h[12]>', t, re.S)
+    tit = m.group(1) if m else 'Novo aeroporto em Pindamonhangaba'   # a capa do modelo não tem h1
     tit = html.unescape(re.sub(r'<[^>]+>', '', tit)).strip()
     nota = html.unescape(re.search(r'<aside>(.*?)</aside>', t, re.S).group(1)).strip()
     SL[sid] = (i, tit, nota)
@@ -67,13 +68,13 @@ ABERTURA = ('Pedro', ['cover', 'requisitos'], [
     ('Por que a PPD tem 1900 m, se o texto do enunciado diz 2300 m?',
      'A figura do enunciado mostra 1900 m dentro de uma faixa de 2020 m, e a professora confirmou 1900 m em 03/11.'),
     ('As declividades usadas não estão muito abaixo dos limites?',
-     'Sim, de propósito: o greide foi otimizado para o menor volume. Rampa máxima 0,80% (limite 1,5%), efetiva 0,16% (limite 1,0%), '
-     'mudança máxima 1,20% (limite 1,5%).'),
+     'Sim, de propósito: o greide foi otimizado para o menor volume. Rampa máxima 0,28% (limite 1,5%), efetiva 0,06% (limite 1,0%), '
+     'mudança máxima 0,49% (limite 1,5%). O terreno de C1 é baixo e quase plano.'),
 ])
 
 ETAPAS = [
     ('Etapa 1 · Identificação do local do sítio', 'etapa1', [
-        ('Pedro', ['etapa1', 'metodo', 'regiao'], [
+        ('Pedro', ['etapa1', 'metodo', 'mesa_criterios', 'mesa_azimute', 'mesa_ranking', 'mesa_custo', 'regiao'], [
             ('Por que uma busca automática, e não escolher o local olhando o mapa?',
              'Para que a escolha tenha critérios explícitos e verificáveis. Testamos 25 mil centros (a cada 300 m) em 36 rumos (a cada 5°) '
              'com quatro filtros aplicados em sequência: terraplenagem, distância da várzea, superfícies de proteção e entorno.'),
@@ -83,36 +84,42 @@ ETAPAS = [
              'Nele havia 35 066 centros a cada 300 m; tirando 10 km em volta de SBSJ e SBTA e a várzea, sobraram 25 062.'),
             ('A várzea é mais plana. Por que não construir lá?',
              'Ela daria a menor terraplenagem, mas é a planície de inundação do Paraíba: argila mole e turfa, lençol raso, arrozais e cavas de areia. '
-             'Seria preciso trocar solo, drenar e alteiar a plataforma acima da cheia. O sítio escolhido fica 21 m acima do fundo do vale.'),
+             'Seria preciso trocar solo, drenar e alteiar a plataforma acima da cheia. No MESA, a várzea virou critério eliminatório: no máximo 5% da área física a menos de 8 m do fundo do vale; C1 fica a 12,5 m.'),
             ('Por que o rumo da pista segue o vale?',
              'Porque o vale é estreito entre a Mantiqueira e a Serra do Mar. Uma pista atravessada teria morros furando a horizontal interna (+45 m num raio de 4 km) '
-             'e a cônica (5%). Só os rumos de 50° a 70°, no eixo do vale, passaram.'),
+             'e a cônica (5%). No MESA, que exige livres a aproximação e a transição, só os rumos de 20° a 80° passam; o vento não tira nenhum.'),
+            ('O que é o método MESA?',
+             'É o método do Manual de Apoio à Prospecção de Sítios Aeroportuários Regionais (SAC/MInfra com o ITA, 2021, coord. prof. Cláudio Jorge). '
+             'Critérios eliminatórios tiram áreas (espaço aéreo, ambiente, infraestrutura, relevo, obstáculos, cidade); os sítios que sobram recebem nota pelos '
+             'classificatórios (volume, ruído, distância à cidade, acesso, geotecnia, energia), com pesos de especialistas (usamos os do exemplo do manual).'),
+            ('Por que mudaram de sítio depois da prévia?',
+             'O sítio da prévia ficava colado à mancha urbana, e o MESA pede 2 km; só se flexibiliza quando não há outra área, e havia. C1 ficou em 1º: '
+             'corte de 435 mil m³ contra 1,23 milhão e 3,4 km da cidade. O custo de desapropriação não separa os dois: depende da área desapropriada.'),
             ('Que dados foram usados?',
              'Relevo: Copernicus GLO-30 (modelo de superfície de 30 m, medido pelo radar da missão TanDEM-X entre 2011 e 2015). Uso do solo: ESA WorldCover 2021 (10 m). Vento: reanálise ERA5 (2015–2024). '
              'Imagem: Esri World Imagery.'),
             ('Por que não perto de São José dos Campos?',
-             'Perto de SJC os locais planos estão na várzea ou têm morros nas superfícies de proteção, e exigimos 10 km de SBSJ e de SBTA. '
-             'Só dois locais passaram em todos os critérios.'),
+             'Perto de SJC os locais planos estão na várzea ou têm morros nas superfícies de proteção, e exigimos 10 km de SBSJ e de SBTA.'),
         ]),
         ('Guilherme', ['sitio'], [
             ('Quais são os pontos fracos do sítio?',
-             'As cavas de areia a cerca de 1,5 km ao norte atraem aves e pedem um plano de manejo de fauna; e a borda da cidade fica a cerca de 1 km do cone nordeste '
-             '(ruído lateral). Há 4% de mata no sítio.'),
-            ('Por que não o outro local que passou nos filtros?',
-             'O local B (−22,906; −45,406; rumo 25°) tinha uma rodovia cortando a faixa e uma indústria na cabeceira.'),
+             'Três: os morros ao norte furam a horizontal interna e a cônica; uma pista particular asfaltada (~1,4 km, rumo 020°) cruza a ponta SW e seria '
+             'desativada; e há chácaras na faixa (~1 ha construído) e arrozais e uma lagoa perto, que atraem aves.'),
+            ('E o aeródromo que já existe em Pindamonhangaba?',
+             'O SDPD fica a 8 km, com pista de terra de cerca de 1100 m (OpenStreetMap). É menor que a nossa PPD, então não elimina áreas pelo manual; '
+             'o novo aeroporto o substituiria, assim como a pista particular da Fazenda Santa Helena.'),
+            ('Por que não C2, o segundo do ranking?',
+             'Fica 600 m a oeste, com volume de 574 mil m³ contra 369 mil (proxy do manual) e nota 0,26 contra 0,31.'),
             ('O sítio cabe na área de 3000 × 1500 m do enunciado?',
              'Sim: o retângulo amarelo da imagem tem 3000 × 1500 m, alinhado à PPD, e contém a faixa de 2020 × 300 m.'),
-            ('O sítio pega parte de um bairro?',
-             'Pega a ponta de um bairro no canto sul do retângulo amarelo, perto da cabeceira 06: 10,9 ha construídos, 2,4% do sítio (ESA WorldCover, 10 m). '
-             'A faixa de 2020 × 300 m, onde há terraplenagem, não tem nada construído; a construção mais próxima fica a cerca de 160 m da borda, '
-             'então greide e volumes não mudam. Num projeto real, esse canto seria desapropriado ou o sítio seria deslocado: '
-             '470 m para nordeste e 230 m para noroeste, a faixa continua dentro e sobram só 0,45 ha construídos. '
-             'O bairro perto da pista também entraria no estudo de ruído.'),
+            ('Quantas construções o sítio atinge?',
+             'Pelo ESA WorldCover (10 m), 1,05 ha construído na faixa e cerca de 10 ha no retângulo de 3000 × 1500 m (chácaras). '
+             'Pela área do manual (curva de 75 dB, 179 ha), 3,1 ha. Isso entra no custo de desapropriação.'),
             ('Que solo se espera no sítio?',
-             'Latossolo vermelho-amarelo, profundo e poroso, sobre os sedimentos do Grupo Taubaté (argilas, siltes e areias). É solo de 1ª categoria '
+             'Solos argilosos porosos, latossolos e argissolos vermelho-amarelos, sobre os sedimentos terciários da Bacia de Taubaté (levantamento de solos de 1961). É solo de 1ª categoria '
              '(escavável com lâmina e scraper). Esse solo é a base da escolha do Fh = 1,25 na etapa 3.'),
             ('E o acesso?',
-             'Pela Via Dutra, a poucos quilômetros, e pela cidade de Pindamonhangaba.'),
+             'Por estrada até uma rodovia pavimentada a 0,5 km, e pela cidade, a 4,8 km do centro, atravessando o rio Paraíba.'),
         ]),
         ('Gilberto', ['vento', 'ols'], [
             ('O vento não deveria definir o rumo da pista?',
@@ -125,7 +132,9 @@ ETAPAS = [
              'Superfícies imaginárias do Anexo 14 / RBAC 154 que nenhum obstáculo pode furar: aproximação (2% e 2,5%), transição (14,3%), horizontal interna '
              '(+45 m num raio de 4 km) e cônica (5%). Usamos código 4, precisão CAT I.'),
             ('Alguma coisa furou as superfícies?',
-             'No máximo 2 m em 3 ha, provavelmente árvores: o Copernicus é modelo de superfície, então árvores e prédios aparecem como terreno, o que é conservador.'),
+             'As aproximações estão livres (máximo de 3,9 m em 3 ha, provavelmente árvores). Mas os morros ao norte passam acima da horizontal interna em até '
+             '144 m (675 ha) e da cônica em até 255 m (1422 ha). O MESA elimina só por aproximação, decolagem e transição e manda documentar o resto; '
+             'pelo Anexo 14 isso exigiria estudo aeronáutico e procedimentos de circuito que evitem o lado norte. É o preço de C1.'),
             ('A limitação do ERA5?',
              'É uma reanálise em grade de cerca de 30 km. O ideal seria uma estação local, como o METAR de SBTA.'),
         ]),
@@ -133,7 +142,7 @@ ETAPAS = [
     ('Etapa 2 · Modelo da área, alinhamentos e seção-tipo', 'etapa2', [
         ('Pedro', ['etapa2', 'civil3d'], [
             ('Como o terreno entrou no Civil 3D?',
-             'Os 8220 nós do modelo Copernicus, convertidos para UTM 23S (SIRGAS 2000), foram triangulados e importados como superfície por LandXML. '
+             'Os 8219 nós do modelo Copernicus, convertidos para UTM 23S (SIRGAS 2000), foram triangulados e importados como superfície por LandXML. '
              'É a mesma triangulação usada nos cálculos, então o Civil 3D e o memorial trabalham sobre o mesmo terreno.'),
             ('Como a imagem foi georreferenciada?',
              'Mosaico do Esri World Imagery com 1 m de pixel, reprojetado para UTM 23S e inserido com o arquivo de coordenadas (.jgw).'),
@@ -141,7 +150,7 @@ ETAPAS = [
              'Porque a PPD é reta. O eixo tem 2020 m no rumo 060°, com o P0 na extremidade SW da faixa; as cabeceiras ficam nas estacas 3 e 98.'),
             ('O modelo de terreno é confiável?',
              'Para esta fase, sim; para obra, não. O Copernicus tem grade de 30 m, precisão vertical absoluta menor que 4 m (90% dos pontos) e é modelo '
-             'de superfície: árvores e construções aparecem como terreno. O sítio tem só 4% de mata, então esse efeito é pequeno. Ele também é um retrato '
+             'de superfície: árvores e construções aparecem como terreno. O sítio tem 10% de árvores, então há algum efeito nas bordas. Ele também é um retrato '
              'de 2011 a 2015 (radar TanDEM-X): o que mudou no terreno depois não aparece. Num projeto real, seria trocado por levantamento topográfico '
              '(ou LiDAR) e sondagens.'),
             ('Por que não há corredor (assembly)?',
@@ -165,22 +174,24 @@ ETAPAS = [
              'Por otimização: as incógnitas são as cotas de 5 PIVs (0, 500, 1000, 1520 e 2020 m), e o programa minimiza corte + aterro com as restrições do '
              'enunciado e do Anexo 14, exigindo que o corte cubra o aterro corrigido pelo Fh.'),
             ('O que é a declividade efetiva?',
-             '(cota máxima − cota mínima ao longo da PPD) / comprimento da PPD. Aqui dá 0,16%, para um limite de 1,0%.'),
+             '(cota máxima − cota mínima ao longo da PPD) / comprimento da PPD. Aqui dá 0,06%, para um limite de 1,0%.'),
             ('De onde vêm o raio de 30 000 m e o limite de 0,8%?',
              'Do Anexo 14, para código 4: raio mínimo de curva vertical de 30 000 m (L = R·|Δi|) e rampa de no máximo 0,8% no primeiro e no último quarto da pista.'),
             ('Por que só 5 PIVs?',
              'Com 7 ou 9 PIVs o volume cai só cerca de 2%, e cada PIV a mais é uma curva vertical a mais. Ficamos com 3 curvas verticais.'),
             ('Quais são as rampas?',
-             '−0,432%, +0,067%, +0,395% e −0,800%; o último trecho tem 0,8% porque está no último quarto da PPD.'),
+             '−0,282%, +0,210%, −0,154% e 0,000%. PIVs em 542,38 / 540,97 / 542,02 / 541,22 / 541,22 m.'),
+            ('Por que as cotas ao centímetro?',
+             'O ótimo dá cotas com milímetros, que ninguém executa. Arredondamos ao centímetro e baixamos 1 cm, para o balanço fechar com as áreas do Civil 3D sem faltar terra.'),
         ]),
     ]),
     ('Etapa 3 · Terraplenagem', 'etapa3', [
         ('Pedro', ['etapa3', 'secoes', 'c3dsecoes'], [
             ('Quantas seções há, e onde?',
-             '104: as 102 estacas inteiras (0 a 101) e os PCV/PTV que não caem em estaca inteira (950 e 1050 m). As cabeceiras coincidem com as estacas 3 e 98.'),
+             '104: as 102 estacas inteiras (0 a 101) e os PCV/PTV que não caem em estaca inteira (1490 e 1550 m). As cabeceiras coincidem com as estacas 3 e 98.'),
             ('As áreas são mesmo do Civil 3D?',
-             'Sim. São 104 linhas de amostragem com seções do terreno limpo e da plataforma, lidas a cada 0,25 m. Um cálculo independente dá 0,04% de diferença '
-             'no corte e 0,05% no aterro.'),
+             'Sim. São 104 linhas de amostragem com seções do terreno limpo e da plataforma, lidas a cada 0,25 m. Um cálculo independente dá −0,6% de diferença '
+             'no corte e −0,4% no aterro.'),
             ('Como a camada vegetal entra?',
              'Há uma superfície do terreno 15 cm abaixo do natural (TN_limpo). As áreas são medidas a partir dela, então o aterro nunca fica sobre a camada vegetal. '
              'A limpeza, 0,15 m × largura entre os pés de talude, é calculada à parte e não entra na compensação.'),
@@ -189,37 +200,37 @@ ETAPAS = [
         ]),
         ('Guilherme', ['volumes', 'mao'], [
             ('Por que Fh = 1,25, e não o 1,1 da aula?',
-             'O Fh é propriedade do solo: Fh = γs compactado / γs in situ. O 1,1 era dado do exercício. Nosso solo é latossolo poroso, com densidade natural baixa, '
+             'O Fh é propriedade do solo: Fh = γs compactado / γs in situ. O 1,1 era dado do exercício. Nosso solo é argiloso e poroso, com densidade natural baixa, '
              'que adensa bastante na compactação; a faixa usual fica entre 1,2 e 1,3. Num projeto real ele viria de ensaio in situ (frasco de areia) e Proctor.'),
             ('O que é a compensação lateral?',
              'É o volume que se resolve dentro do próprio trecho: corte de um lado da seção indo para o aterro do outro, sem transporte ao longo do eixo. '
-             'Na planilha, é o menor valor entre o corte e o aterro corrigido de cada trecho. Aqui são 534 mil m³; só 693 mil m³ viajam ao longo do eixo.'),
-            ('Por que o saldo é +91 m³ e não zero?',
-             'O greide foi otimizado nas estacas inteiras e depois baixado 3 mm para que o memorial, com as seções extras, também feche sem déficit. '
-             '91 m³ em 1,2 milhão é praticamente zero, e vão para bota-fora.'),
+             'Na planilha, é o menor valor entre o corte e o aterro corrigido de cada trecho. Aqui são 238 mil m³; só 197 mil m³ viajam ao longo do eixo.'),
+            ('Por que o saldo é +4.216 m³ e não zero?',
+             'As cotas foram arredondadas ao centímetro e baixadas 1 cm para não faltar terra com as áreas do Civil 3D. 4,2 mil m³ são menos de 1% do corte '
+             'e vão para bota-fora.'),
             ('Áreas médias ou prismoide?',
              'O enunciado pede áreas médias: V = (A₁ + A₂)/2 × d. O prismoide usa a área da seção do meio; as áreas médias superestimam um pouco, '
              'principalmente na passagem de corte para aterro.'),
             ('Na tabela da aula o Fh multiplica a área. Muda alguma coisa?',
              'Não. O volume é linear na área, então aplicar o Fh na área de aterro ou no volume de aterro dá o mesmo resultado.'),
-            ('O volume não é grande demais?',
-             'É grande porque a faixa inteira de 300 m foi nivelada, num terreno ondulado: cerca de 650 mil m² de plataforma, com uns 1,9 m de corte médio.'),
+            ('Por que o volume caiu tanto em relação à prévia?',
+             'Porque o terreno de C1 é mais plano: o corte foi de 1,23 milhão para 435 mil m³, com a mesma faixa de 300 m nivelada (cerca de 630 mil m² de plataforma).'),
         ]),
         ('Gilberto', ['brueckner', 'distribuicao', 'equipamentos'], [
             ('O diagrama fecha em zero. Então não há transporte?',
-             'Há. Fechar em zero só quer dizer que corte e aterro corrigido se equilibram no total. As ondas mostram o transporte ao longo do eixo, com DMTs de 42 a 248 m.'),
+             'Há. Fechar em zero só quer dizer que corte e aterro corrigido se equilibram no total. As ondas mostram o transporte ao longo do eixo: a principal leva 79 mil m³ por 745 m em média.'),
             ('O que são LC, DMT e momento de transporte?',
              'A LC é a linha horizontal sobre o diagrama; entre dois cruzamentos, corte e aterro se compensam. Acima dela a terra anda no sentido do estaqueamento; '
              'abaixo, no sentido contrário. DMT = área da onda / altura da onda. Momento de transporte = Σ V·DMT + volume externo × 150 m, em m³·dam.'),
             ('Por que vocês não ficaram com o ótimo do programa?',
-             'O ótimo com bota-fora e empréstimo a 150 m (12,32 milhões de m³·dam) manda 144 mil m³ para bota-fora e traz 143 mil de empréstimo, porque o modelo '
+             'O ótimo com bota-fora e empréstimo a 150 m (3,37 milhões de m³·dam) manda 63 mil m³ para bota-fora e traz 59 mil de empréstimo, porque o modelo '
              'cobra só o transporte. Contando a escavação do empréstimo (exercício 6: R$ 3,20/m³ e R$ 1,60/(m³·km), ou seja, 2 km de transporte por m³), '
-             'o ótimo passa a ser a LC única do P0 ao PF, que compensa tudo (14,34 milhões de m³·dam).'),
+             'o ótimo passa a ser compensar tudo, com 2 LCs (6,61 milhões de m³·dam) e só 4,2 mil m³ de bota-fora.'),
             ('De onde vem a DMT externa de 150 m?',
              'Da aula 8, para empréstimos e bota-foras eventuais.'),
             ('Por que moto-scraper?',
-             'Solo de 1ª categoria, plataforma larga e plana e DMTs de 160 a 250 m: o moto-scraper escava, carrega, transporta e espalha numa operação só (aula 9). '
-             'A onda curta, de 42 m, pode ser feita com trator de lâmina.'),
+             'Solo de 1ª categoria e plataforma larga e plana: o moto-scraper escava, carrega, transporta e espalha numa operação só (aula 9). A onda principal tem DMT '
+             'de 745 m, e o SICRO tem composições de moto-scraper até 800–1000 m (5501714: R$ 18,14/m³). As ondas curtas e a compensação lateral ficam com trator de lâmina.'),
             ('Por que rolo pé-de-carneiro?',
              'Porque o solo é coesivo (argiloso): as patas compactam do fundo para o topo da camada. Ele não serve para solo não coesivo; nas lentes de areia, '
              'rolo vibratório. O topo do subleito é selado com rolo pneumático.'),

@@ -20,7 +20,7 @@ from scipy.interpolate import LinearNDInterpolator
 from dem import carrega_dem, geo2utm, utm2geo
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
-LAT_C, LON_C, RUMO = -22.9300, -45.4993, 60.0
+LAT_C, LON_C, RUMO = -22.8885, -45.4874, 60.0   # C1 da análise MESA (10/11); prévia: -22.9300, -45.4993 (tag git previa-10-11)
 # Teste de outro sítio sem mexer no da prévia: GEO55_SITIO="lat,lon,rumo" (usa cache de terreno próprio).
 _SITIO = os.environ.get('GEO55_SITIO')
 if _SITIO:

@@ -30,7 +30,7 @@ FONTE = "'Spectral', Georgia, serif"
 ESCUROS = {'etapa1', 'etapa2', 'etapa3', 'proximos'}          # continuam escuros (índigo)
 CLAREAR = {'civil3d', 'c3dsecoes'}                            # eram escuros; passam a marfim
 LOGO = '/_blob/3603ec8169e4121cda33e4e85919be84'
-SITIO = '/_blob/197e509a97d1b790a3cdfbc713a07011'   # figuras/15_capa_sitio.png (sem eixos)
+SITIO = '/_blob/434ea1a0958da3d424b5d0fc7cf23f86'   # figuras/15_capa_sitio.png (sem eixos)
 
 MAPA = {  # cores ITA → modelo (depois de tratar fundos de seção e de cartões)
     '#13306B': IND, '#0B1F4A': '#26264A', '#F8F6EF': MARF, '#EEF0F4': TINTA, '#E0C25A': '#C8C5DA',
@@ -117,7 +117,7 @@ CAPA = f"""<section id="cover" data-transition="fade" style="background:{MARF};c
 <div style="position:absolute;left:0px;top:842px;width:1920px;height:2px;background:{CINZA}"></div>
 <div style="position:absolute;left:0px;top:300px;width:56px;height:460px;background:{LAV}"></div>
 <div style="position:absolute;left:1836px;top:0px;width:84px;height:842px;background:{LAV}"></div>
-<img src="{SITIO}" alt="Imagem de satélite do sítio, em preto e branco, com a faixa de pista desenhada" style="position:absolute;left:820px;top:262px;width:960px;height:524px;object-fit:cover;filter:grayscale(1) contrast(1.08)">
+<img src="{SITIO}" alt="Imagem de satélite do sítio C1, em preto e branco, com a faixa de pista desenhada" style="position:absolute;left:820px;top:262px;width:960px;height:524px;object-fit:cover;filter:grayscale(1) contrast(1.08)">
 <img src="{LOGO}" alt="Brasão do ITA" style="position:absolute;left:128px;top:64px;width:280px;height:108px;object-fit:contain">
 <p style="position:absolute;left:236px;top:398px;width:900px;font-size:36px;letter-spacing:5px;text-transform:uppercase;color:{IND}">Novo aeroporto em</p>
 <p style="position:absolute;left:206px;top:456px;font-size:112px;line-height:1.05;letter-spacing:3px;text-transform:uppercase;color:{MARF};background:{IND};padding:14px 36px 4px 30px;white-space:nowrap">Pindamonhangaba</p>

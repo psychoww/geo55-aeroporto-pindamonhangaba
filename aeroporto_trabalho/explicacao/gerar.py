@@ -47,7 +47,7 @@ zr = p.greide([tuple(x) for x in pv], np.arange(60, 1960.1, 1.0))
 efet = (zr.max() - zr.min()) / 1900 * 100
 
 # par sugerido para a conta à mão (mesma regra da planilha)
-par = next(i for i in range(1, len(lin)) if est[i] - est[i - 1] == 20 and min(ac[i - 1], aa[i - 1], ac[i], aa[i]) > 300)
+par = max((i for i in range(1, len(lin)) if est[i] - est[i - 1] == 20), key=lambda i: min(ac[i - 1], aa[i - 1], ac[i], aa[i]))
 par_lin = ''.join(f'<tr><td>{lin[i]["estaca"]}</td><td class="n">{br(ac[i], 2)}</td><td class="n">{br(aa[i], 2)}</td></tr>' for i in (par - 1, par))
 
 nomes = {'eco_aula': 'Adotada: 1 LC do P0 ao PF (compensa tudo)', 'lc_unica': 'LC única entre cruzamentos (busca de LC única)',

@@ -159,13 +159,12 @@ wm.add_chart(ch, f'V5')
 
 # ------------------------------------------------------------------ Cálculo à mão
 wh = wb.create_sheet('Cálculo à mão')
-# par escolhido: duas estacas inteiras consecutivas com corte e aterro (seções mistas)
-par = None
-for i in range(1, len(lin)):
-    a, b = lin[i - 1], lin[i]
-    if b['est_m'] - a['est_m'] == 20 and min(C3[str(round(a['est_m'], 3))]['ac'], C3[str(round(a['est_m'], 3))]['aa'],
-                                             C3[str(round(b['est_m'], 3))]['ac'], C3[str(round(b['est_m'], 3))]['aa']) > 300:
-        par = i; break
+# par escolhido: duas estacas inteiras consecutivas (d = 20 m), as duas seções mistas, com o maior mínimo entre as quatro
+# áreas (corte e aterro de cada seção) — vale para qualquer sítio
+def _min4(i):
+    x, y = C3[str(round(lin[i - 1]['est_m'], 3))], C3[str(round(lin[i]['est_m'], 3))]
+    return min(x['ac'], x['aa'], y['ac'], y['aa'])
+par = max((i for i in range(1, len(lin)) if lin[i]['est_m'] - lin[i - 1]['est_m'] == 20), key=_min4)
 a, b = lin[par - 1], lin[par]
 ca, cb = C3[str(round(a['est_m'], 3))], C3[str(round(b['est_m'], 3))]
 ra, rb = r0 + par - 1, r0 + par
