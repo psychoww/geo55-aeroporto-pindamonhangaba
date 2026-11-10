@@ -145,8 +145,8 @@ ETAPAS = [
             ('De onde vêm os taludes?',
              'O enunciado não dá. Adotamos 1V:1,5H no corte e 1V:2H no aterro, valores usuais para solo coesivo. Por isso estão na lista de perguntas à professora.'),
             ('A faixa de 300 m inteira precisa ser nivelada?',
-             'Fizemos como na figura do enunciado: 2,5% em toda a largura. O Anexo 14 exige nivelar só a parte central (cerca de 75 m de cada lado), e o exemplo '
-             'de nota de serviço da aula 7 também nivela ±75 m. Se a professora aceitar, o volume cai bastante.'),
+             'Sim. Seguimos a figura do enunciado: 2,5% em toda a largura de 300 m. A nota de serviço da aula 7, que nivela só ±75 m, '
+             'é apenas um exemplo de formato e não vale para este projeto.'),
         ]),
         ('Gilberto', ['perfil'], [
             ('Como o greide foi escolhido?',

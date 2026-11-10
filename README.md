@@ -83,4 +83,4 @@ pip install -r requirements.txt
 
 - Corredor com a assembly da seção-tipo e tabela de volumes do Civil 3D (Compute Materials).
 - Pranchas (planta, perfil, seções) e memorial final.
-- Confirmar com a professora: nivelamento da faixa inteira (300 m) ou só da parte central; taludes; Fh = 1,25.
+- Confirmar com a professora: taludes; Fh = 1,25. (A faixa de 300 m é nivelada inteira; a nota de serviço de ±75 m da aula 7 é só um exemplo.)

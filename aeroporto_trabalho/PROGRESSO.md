@@ -84,7 +84,7 @@ Pasta: `D:\documentos\ita\civil\4semestre\geo55\aeroporto_trabalho\`. Os scripts
 
 ### Primeira coisa na próxima sessão
 1. **Perguntar o que a Cláudia respondeu na prévia** e registrar aqui e em `../anotacoes.md`:
-   - ~~(a) faixa de 300 m toda nivelada ou só ±75 m?~~ **Resolvido (10/11, Guilherme):** a nota de serviço do slide 21 da aula 7 (parte 1) é só um exemplo e não vale para o projeto. Mantém-se a faixa de 300 m toda nivelada (`B_FAIXA = 150.0` de cada lado).
+   - ~~(a) faixa de 300 m toda nivelada ou só ±75 m?~~ **Resolvido (10/11, Guilherme):** a nota de serviço do slide 21 da aula 7 (parte 1) é só um exemplo e não vale para o projeto. Mantém-se a faixa de 300 m toda nivelada (`B_FAIXA = 150.0` de cada lado). Texto corrigido no roteiro (PDF regenerado), no slide `proximos` (pergunta removida; apresentação versão 14, publicada com autorização), na página explicativa (versão 3) e no README.
    - (b) taludes 1V:1,5H / 1V:2H?
    - (c) Fh = 1,25?
    - (d) quanto das etapas foi pedido e o que ela comentou.
