@@ -99,7 +99,7 @@ Pasta: `D:\documentos\ita\civil\4semestre\geo55\aeroporto_trabalho\`. Os scripts
 ### Primeira coisa na próxima sessão
 1. **Perguntar o que a Cláudia respondeu na prévia** e registrar aqui e em `../anotacoes.md`:
    - ~~(a) faixa de 300 m toda nivelada ou só ±75 m?~~ **Resolvido (10/11, Guilherme):** a nota de serviço do slide 21 da aula 7 (parte 1) é só um exemplo e não vale para o projeto. Mantém-se a faixa de 300 m toda nivelada (`B_FAIXA = 150.0` de cada lado). Texto corrigido no roteiro (PDF regenerado), no slide `proximos` (pergunta removida; apresentação versão 14, publicada com autorização), na página explicativa (versão 3) e no README.
-   - (b) taludes 1V:1,5H / 1V:2H?
+   - ~~(b) taludes 1V:1,5H / 1V:2H?~~ **Resolvido (10/11, Guilherme): os taludes podem ser mantidos assim.**
    - (c) Fh = 1,25?
    - (d) quanto das etapas foi pedido e o que ela comentou.
 2. Se algo mudar (por exemplo, `B_FAIXA`, taludes ou `FH` em `projeto.py`), rodar de novo, **nesta ordem**:
@@ -126,7 +126,7 @@ Pasta: `D:\documentos\ita\civil\4semestre\geo55\aeroporto_trabalho\`. Os scripts
 3. **Se for escolhido outro sítio: uma região mais carente de infraestrutura aeroportuária.** Muda a área de busca (hoje um recorte em volta de São José dos Campos) e acrescenta um critério de demanda (por exemplo, distância ao aeroporto com voo regular mais próximo e população atendida). Trocar o sítio refaz as etapas 2 e 3 inteiras: a cadeia de scripts roda de novo, mas o Civil 3D, as figuras e os slides também.
 
 ### Para a versão final (Guilherme, 10/11)
-- **Estaqueamento de 5 em 5 m** ("em aeroportos, a estaca comumente é de 5 em 5 metros"). Hoje é de 20 em 20 m. Impactos: 405 estacas inteiras (0 a 404) em vez de 102, mais as seções extras de PCV/PTV que não caírem em estaca; extração no Civil 3D (`civil3d_extrai_secoes.ps1`, ~25 min hoje) deve levar umas 4 vezes mais; refazer linhas de amostragem, vistas, memorial, Brückner, distribuição, planilha, figuras e textos que citam "estaca 3/98/101", "104 seções", "d = 20 m". O par da conta à mão (estacas 10 → 11) muda de lugar e de distância: escolher de novo e avisar o Guilherme. Conferir a fonte da convenção de 5 m (aula ou norma) para citar.
+- ~~Estaqueamento de 5 em 5 m~~ **Descartado (10/11, Guilherme): a versão final fica com estacas de 20 em 20 m.** (Ele lembrou que em aeroportos a estaca costuma ser de 5 m, mas decidiu manter 20 m.)
 
 ### Pendências
 - **A fazer depois (pedido em 10/11): conferir geologia e solo do sítio.** A frase "latossolo vermelho-amarelo poroso sobre o Grupo Taubaté" (slide `volumes`, roteiro, página explicativa, documento explicativo) foi escrita sem consultar mapa. Consultar no ponto (−22,9300; −45,4993) o mapa geológico do Serviço Geológico do Brasil (GeoSGB) e o mapa pedológico do Estado de SP. Suspeita: o terraço pode estar sobre a **Formação Pindamonhangaba** (Mioceno–Quaternário, sobre o Grupo Taubaté em discordância; Riccomini et al. 1991) ou terraços mais novos. Se der diferente, corrigir a frase nesses lugares (publicar slide só com autorização). O raciocínio do Fh = 1,25 (solo argilo-arenoso poroso) deve continuar valendo.
