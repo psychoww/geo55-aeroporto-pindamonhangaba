@@ -86,11 +86,13 @@ Pasta: `D:\documentos\ita\civil\4semestre\geo55\aeroporto_trabalho\`. Os scripts
 
 - **Sítio × bairro** (pergunta: "a faixa amarela pega um pouco da cidade, está tudo bem?"): ESA WorldCover (10 m) no sítio 3000 × 1500 centrado: 10,9 ha construídos (2,4%), quase todos no canto sul (perto da cabeceira 06, lado SE); faixa 2020 × 300: 0 ha; construído mais próximo a ~160 m da borda da faixa. Varredura de 11 979 posições do sítio com a faixa dentro: nenhuma zera; a melhor (+470 m para NE, −230 m para NW) deixa 0,45 ha. Decisão do Guilherme (opção 2): **manter o sítio e justificar** — pergunta nova no roteiro (parte do Guilherme). Observação não corrigida: o WorldCover dá 70% de cultivo e 23% de pasto/campo no sítio, e os textos dizem "pasto".
 
+- **Data do relevo** (pergunta: "isso está escrito na apresentação?"): não estava. Conferido na página oficial (https://dataspace.copernicus.eu/explore-data/data-collections/copernicus-contributing-missions/collections-description/COP-DEM): Copernicus DEM = DSM, radar TanDEM-X, aquisições 2011–2015, precisão vertical absoluta < 4 m (LE90). Escrito no rodapé e nas notas do slide `regiao` (apresentação v17, autorizada) e no roteiro ("Que dados foram usados?" e "O modelo de terreno é confiável?").
+
 ## Retomar daqui (fim da sessão de 09/11/2026, ~21h)
 
 ### Estado
 - Prévia pronta para ter 10/11, 13h30. Arquivos: DWG (Fh = 1,25, 104 seções e 104 vistas), `../Memorial_terraplenagem_PPD.xlsx` (recalculada, 0 erros) e `../Roteiro_aeroporto.pdf` (por etapas, com perguntas por parte).
-- Apresentação: https://claude.ai/artifact/8Ugecg9baS44AKMVL9Zja2, versão 16 (10/11), **compartilhada por link** (todos veem as atualizações). Tem 21 slides, divididos nas etapas 1, 2 e 3.
+- Apresentação: https://claude.ai/artifact/8Ugecg9baS44AKMVL9Zja2, versão 17 (10/11), **compartilhada por link** (todos veem as atualizações). Tem 21 slides, divididos nas etapas 1, 2 e 3.
 - Página explicativa: https://claude.ai/artifact/9kwHf7hYZsok92DvXD9j2D (**privada**; compartilhar pelo Share se Pedro e Gilberto forem usar). Para atualizar: `PYTHONPATH=. python explicacao/gerar.py`, depois publicar de novo o mesmo `explicacao/index.html` (root `explicacao/`, com `img/`).
 - GitHub público: https://github.com/psychoww/geo55-aeroporto-pindamonhangaba, último commit `6edc590`. Depois de cada mudança: `git add` + commit + push na pasta `geo55/` (o .gitignore é lista branca; `aeroporto_trabalho/tmp/` fica fora).
 

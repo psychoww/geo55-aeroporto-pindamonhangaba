@@ -88,7 +88,7 @@ ETAPAS = [
              'Porque o vale é estreito entre a Mantiqueira e a Serra do Mar. Uma pista atravessada teria morros furando a horizontal interna (+45 m num raio de 4 km) '
              'e a cônica (5%). Só os rumos de 50° a 70°, no eixo do vale, passaram.'),
             ('Que dados foram usados?',
-             'Relevo: Copernicus GLO-30 (modelo de superfície de 30 m). Uso do solo: ESA WorldCover 2021 (10 m). Vento: reanálise ERA5 (2015–2024). '
+             'Relevo: Copernicus GLO-30 (modelo de superfície de 30 m, medido pelo radar da missão TanDEM-X entre 2011 e 2015). Uso do solo: ESA WorldCover 2021 (10 m). Vento: reanálise ERA5 (2015–2024). '
              'Imagem: Esri World Imagery.'),
             ('Por que não perto de São José dos Campos?',
              'Perto de SJC os locais planos estão na várzea ou têm morros nas superfícies de proteção, e exigimos 10 km de SBSJ e de SBTA. '
@@ -140,8 +140,10 @@ ETAPAS = [
             ('Por que o alinhamento horizontal é uma reta só?',
              'Porque a PPD é reta. O eixo tem 2020 m no rumo 060°, com o P0 na extremidade SW da faixa; as cabeceiras ficam nas estacas 3 e 98.'),
             ('O modelo de terreno é confiável?',
-             'O Copernicus tem 30 m e é modelo de superfície. O sítio tem só 4% de mata, então o efeito é pequeno; num projeto real ele seria trocado por '
-             'levantamento topográfico (ou LiDAR) e sondagens.'),
+             'Para esta fase, sim; para obra, não. O Copernicus tem grade de 30 m, precisão vertical absoluta menor que 4 m (90% dos pontos) e é modelo '
+             'de superfície: árvores e construções aparecem como terreno. O sítio tem só 4% de mata, então esse efeito é pequeno. Ele também é um retrato '
+             'de 2011 a 2015 (radar TanDEM-X): o que mudou no terreno depois não aparece. Num projeto real, seria trocado por levantamento topográfico '
+             '(ou LiDAR) e sondagens.'),
             ('Por que não há corredor (assembly)?',
              'A superfície de projeto foi montada a partir da seção-tipo e importada por LandXML, com a mesma geometria. O corredor e o Compute Materials '
              'estão programados para a entrega de 17/11.'),
