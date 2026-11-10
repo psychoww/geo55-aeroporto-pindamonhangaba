@@ -84,6 +84,8 @@ Pasta: `D:\documentos\ita\civil\4semestre\geo55\aeroporto_trabalho\`. Os scripts
 
 - **Texto explicativo completo** (pedido: "Gere um texto explicando do começo ao fim tudo que foi feito", fora do roteiro e da apresentação): documento Claude Docs https://claude.ai/artifact/L9u1kecHSBQXH3pUDuYMbt (privado), 11 seções, do enunciado às pendências.
 
+- **Sítio × bairro** (pergunta: "a faixa amarela pega um pouco da cidade, está tudo bem?"): ESA WorldCover (10 m) no sítio 3000 × 1500 centrado: 10,9 ha construídos (2,4%), quase todos no canto sul (perto da cabeceira 06, lado SE); faixa 2020 × 300: 0 ha; construído mais próximo a ~160 m da borda da faixa. Varredura de 11 979 posições do sítio com a faixa dentro: nenhuma zera; a melhor (+470 m para NE, −230 m para NW) deixa 0,45 ha. Decisão do Guilherme (opção 2): **manter o sítio e justificar** — pergunta nova no roteiro (parte do Guilherme). Observação não corrigida: o WorldCover dá 70% de cultivo e 23% de pasto/campo no sítio, e os textos dizem "pasto".
+
 ## Retomar daqui (fim da sessão de 09/11/2026, ~21h)
 
 ### Estado

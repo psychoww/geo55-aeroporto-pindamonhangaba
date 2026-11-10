@@ -102,6 +102,12 @@ ETAPAS = [
              'O local B (−22,906; −45,406; rumo 25°) tinha uma rodovia cortando a faixa e uma indústria na cabeceira.'),
             ('O sítio cabe na área de 3000 × 1500 m do enunciado?',
              'Sim: o retângulo amarelo da imagem tem 3000 × 1500 m, alinhado à PPD, e contém a faixa de 2020 × 300 m.'),
+            ('O sítio pega parte de um bairro?',
+             'Pega a ponta de um bairro no canto sul do retângulo amarelo, perto da cabeceira 06: 10,9 ha construídos, 2,4% do sítio (ESA WorldCover, 10 m). '
+             'A faixa de 2020 × 300 m, onde há terraplenagem, não tem nada construído; a construção mais próxima fica a cerca de 160 m da borda, '
+             'então greide e volumes não mudam. Num projeto real, esse canto seria desapropriado ou o sítio seria deslocado: '
+             '470 m para nordeste e 230 m para noroeste, a faixa continua dentro e sobram só 0,45 ha construídos. '
+             'O bairro perto da pista também entraria no estudo de ruído.'),
             ('Que solo se espera no sítio?',
              'Latossolo vermelho-amarelo, profundo e poroso, sobre os sedimentos do Grupo Taubaté (argilas, siltes e areias). É solo de 1ª categoria '
              '(escavável com lâmina e scraper). Esse solo é a base da escolha do Fh = 1,25 na etapa 3.'),
