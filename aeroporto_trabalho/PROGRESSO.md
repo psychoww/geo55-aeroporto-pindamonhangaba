@@ -77,13 +77,13 @@ Pasta: `D:\documentos\ita\civil\4semestre\geo55\aeroporto_trabalho\`. Os scripts
 ## 10/11 (manhã) — faixa de 300 m e pasta da apresentação
 - Faixa de 300 m mantida: a nota de serviço da aula 7 é só exemplo (ver item (a) abaixo). Apresentação v14 publicada.
 - **Pasta `../Apresentacao_aeroporto/`** (pedido: "Organize uma pasta aqui que tenham os arquivos desta apresentação"), montada por `montar_pasta_apresentacao.py`: `Apresentacao_PPD.html` (slides offline; setas, F = tela cheia, N = notas), `Apresentacao_PPD.pdf` (Edge headless, 21 páginas), `img/`, cópias do roteiro, memorial e DWG, `LEIA-ME.md`. As imagens /_blob/ do deck foram baixadas e conferidas por sha256: são idênticas às de `figuras/` (mapa `BLOBS` no script; 09_c3d_perfil não é usada). A pasta só tem cópias e fica fora do git; **rodar o script de novo depois de mudar slides, figuras, roteiro, memorial ou DWG.**
-- Slide `distribuicao` estourava a altura (título em 2 linhas + figura de 660 px; o parágrafo final ficava sob o rodapé). Corrigido no fonte: título "Linhas de compensação do programa da aula 8" e figura com 560 px. **Ainda não publicado na apresentação on-line** (precisa de autorização).
+- Slide `distribuicao` estourava a altura (título em 2 linhas + figura de 660 px; o parágrafo final ficava sob o rodapé). Corrigido no fonte: título "Linhas de compensação do programa da aula 8" e figura com 560 px. Publicado com autorização: apresentação versão 15.
 
 ## Retomar daqui (fim da sessão de 09/11/2026, ~21h)
 
 ### Estado
 - Prévia pronta para ter 10/11, 13h30. Arquivos: DWG (Fh = 1,25, 104 seções e 104 vistas), `../Memorial_terraplenagem_PPD.xlsx` (recalculada, 0 erros) e `../Roteiro_aeroporto.pdf` (por etapas, com perguntas por parte).
-- Apresentação: https://claude.ai/artifact/8Ugecg9baS44AKMVL9Zja2, versão 13, **compartilhada por link** (todos veem as atualizações). Tem 21 slides, divididos nas etapas 1, 2 e 3.
+- Apresentação: https://claude.ai/artifact/8Ugecg9baS44AKMVL9Zja2, versão 15 (10/11), **compartilhada por link** (todos veem as atualizações). Tem 21 slides, divididos nas etapas 1, 2 e 3.
 - Página explicativa: https://claude.ai/artifact/9kwHf7hYZsok92DvXD9j2D (**privada**; compartilhar pelo Share se Pedro e Gilberto forem usar). Para atualizar: `PYTHONPATH=. python explicacao/gerar.py`, depois publicar de novo o mesmo `explicacao/index.html` (root `explicacao/`, com `img/`).
 - GitHub público: https://github.com/psychoww/geo55-aeroporto-pindamonhangaba, último commit `6edc590`. Depois de cada mudança: `git add` + commit + push na pasta `geo55/` (o .gitignore é lista branca; `aeroporto_trabalho/tmp/` fica fora).
 
