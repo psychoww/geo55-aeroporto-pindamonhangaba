@@ -87,7 +87,9 @@ TEORIA = {
         ('Offset e pé de talude', 'Onde o talude encontra o terreno fica o <b>offset</b> (pé do talude no aterro, crista no corte). A distância do eixo até '
          'ele, dos dois lados, define a largura da obra, a área de limpeza e a desapropriação mínima.'),
         ('Nota de serviço', 'É a tabela que vai para o campo (aula 7): por estaca, as cotas do terreno e do greide, a altura de corte ou aterro no eixo e os '
-         'offsets com as cotas. A topografia crava as estacas de offset e a obra trabalha até elas.'),
+         'offsets com as cotas. A topografia crava as estacas de offset e a obra trabalha até elas. No formato completo da aula, cada estaca traz os '
+         'pontos notáveis da seção (pés de talude, bordas da faixa, do acostamento e da pista, eixo) com distância transversal, cota primitiva, cota de '
+         'projeto e espessura (primitiva − projeto), e os volumes de corte e aterro do trecho.'),
         ('Limpeza', 'A camada vegetal (15 cm) é orgânica e compressível: sai antes de tudo, vai para bota-fora ou estoque (revestir taludes) e não entra na '
          'compensação. Por isso as áreas são medidas a partir do terreno limpo.'),
     ],

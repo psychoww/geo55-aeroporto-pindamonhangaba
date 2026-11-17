@@ -196,10 +196,19 @@ ETAPAS = [
         ]),
     ]),
     ('Etapa 3 · Terraplenagem', 'etapa3', [
-        ('Pedro', ['etapa3', 'secoes', 'c3dsecoes', 'notaservico'], [
+        ('Pedro', ['etapa3', 'secoes', 'c3dsecoes', 'notaservico', 'notaservico2'], [
             ('Para que serve a nota de serviço?',
              'É o que a topografia leva ao campo: para cada estaca, a cota do terreno e a do greide de terraplenagem, a altura de corte ou aterro no eixo '
              'e a distância do eixo ao pé do talude de cada lado. Com ela se cravam as estacas de offset, que limitam a obra.'),
+            ('Por que a espessura no eixo da 52 é 1,29 m de aterro no slide da seção completa e 1,44 m no anterior?',
+             'São convenções diferentes. Na seção completa, como na nota da aula 7, a espessura é cota primitiva − cota de projeto (539,56 − 540,85 = −1,29). '
+             'No slide do trecho 50–56, o h é medido do terreno limpo, 15 cm abaixo, e por isso dá 1,44 m.'),
+            ('Por que a cota de projeto no acostamento (540,93) é maior que na borda da pista (540,51)?',
+             'Porque a cota é a do topo do subleito. Sob a pista, o pavimento tem 1,10 m; sob o acostamento, 0,50 m. A superfície acabada desce com o '
+             'caimento, mas o subleito do acostamento fica mais alto, com um degrau logo fora de cada borda (prancha 03).'),
+            ('O que quer dizer a falta de 381 m³ no trecho 51 → 52?',
+             'O aterro do trecho, corrigido pelo Fh (4.595 × 1,25 = 5.744 m³), passa do corte do próprio trecho (5.363 m³). Todo o corte vira compensação lateral '
+             'e faltam 381 m³, que vêm de corte de outro trecho pela onda principal do Brückner (estacas 9 a 83). Por isso a ordenada desce de 43.940 para 43.559 m³.'),
             ('Por que na estaca 52 o eixo é aterro e os pés de talude são de corte?',
              'Porque a seção é mista: no eixo o terreno está 1,44 m abaixo da plataforma, mas nas bordas, a 150 m, ele sobe acima dela. '
              'O talude que encontra o terreno nas bordas é, então, de corte.'),

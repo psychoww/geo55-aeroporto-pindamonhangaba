@@ -13,7 +13,7 @@ Trabalho do 2º bimestre de 2026 (exame): projeto geométrico e de terraplenagem
 | `Memorial_final_aeroporto_PPD.pdf` | Memorial descritivo e de cálculo (14 páginas): requisitos, escolha do sítio (MESA), alinhamentos e seção-tipo, geologia e sensibilidade do Fh, terraplenagem com a tabela completa de volumes, Brückner, distribuição, verificação pelo corredor e a nota de serviço de terraplenagem |
 | `Pranchas_aeroporto_PPD.pdf` | 5 pranchas A3: planta geral, perfil longitudinal, seção-tipo cotada, seções transversais, diagrama de Brückner e quadro de volumes |
 | `Memorial_terraplenagem_PPD.xlsx` | Memorial de cálculo com fórmulas: premissas, greide e verificações, volumes por áreas médias (104 seções), aterro corrigido (Fh = 1,25), compensação lateral, ordenadas e diagrama de Brückner, cálculo à mão (estacas 52 → 53, modelo a preencher), conferência, distribuição (LCs, bota-fora, empréstimo, momento de transporte), equipamentos e a verificação pelo corredor do Civil 3D |
-| `Roteiro_aeroporto.pdf` | Roteiro da apresentação final (13 páginas), pelas etapas 1, 2 e 3: em cada parte, a fala, a bagagem teórica (`roteiro_teoria.py`) e as perguntas prováveis; apêndice com fórmulas e números |
+| `Roteiro_aeroporto.pdf` | Roteiro da apresentação final (14 páginas), pelas etapas 1, 2 e 3: em cada parte, a fala, a bagagem teórica (`roteiro_teoria.py`) e as perguntas prováveis; apêndice com fórmulas e números |
 | `aeroporto_trabalho/explicacao/` | Página explicativa (artefato, `gerar.py`) e `documento_explicativo_backup.md`, cópia do documento explicativo da prévia (Claude Docs, excluído em 16/11) |
 | `aeroporto_trabalho/figuras/` | Figuras da apresentação (PNG) |
 | `aeroporto_trabalho/apresentacao_deck/` | Fonte dos slides (formato Slides do claude.ai) |
