@@ -4,7 +4,8 @@ Conteúdo gerado:
   Apresentacao_PPD.html         slides offline (setas/espaço passam, F = tela cheia, N = notas do apresentador)
   Apresentacao_PPD.pdf          os mesmos slides em PDF, 1 slide por página (impresso pelo Edge em modo headless)
   img/                          figuras usadas nos slides (cópias de figuras/)
-  Roteiro_aeroporto.pdf, Memorial_terraplenagem_PPD.xlsx, Aeroporto_PPD_Civil3D.dwg   cópias dos arquivos da raiz
+  Roteiro_aeroporto.pdf, Memorial_terraplenagem_PPD.xlsx, Memorial_final_aeroporto_PPD.pdf, Pranchas_aeroporto_PPD.pdf,
+  Aeroporto_PPD_Civil3D.dwg     cópias dos arquivos da raiz
   LEIA-ME.md
 
 As fontes dos slides são as de apresentacao_deck/project/ (as mesmas publicadas no artefato). As imagens do artefato
@@ -181,6 +182,8 @@ ficam em `aeroporto_trabalho/` e na raiz; rode o script de novo para atualizar.
 | `Apresentacao_PPD.pdf` | Os mesmos slides em PDF, um por página (sem as notas). |
 | `Roteiro_aeroporto.pdf` | Roteiro da fala por etapa e por pessoa, com perguntas prováveis e respostas. |
 | `Memorial_terraplenagem_PPD.xlsx` | Memorial de cálculo (áreas, volumes, Fh, compensação lateral, Brückner, conta à mão). |
+| `Memorial_final_aeroporto_PPD.pdf` | Memorial descritivo e de cálculo (14 p.): requisitos, escolha do sítio (MESA), modelo e alinhamentos, terraplenagem, Brückner e distribuição, conferência pelo corredor do Civil 3D, nota de serviço completa e referências. |
+| `Pranchas_aeroporto_PPD.pdf` | 5 pranchas A3: 01 planta geral, 02 perfil longitudinal, 03 seção-tipo, 04 seções transversais, 05 diagrama de Brückner e volumes. |
 | `Aeroporto_PPD_Civil3D.dwg` | Modelo do Civil 3D (superfícies, eixo, perfis, 104 seções). |
 | `img/` | Figuras usadas nos slides. |
 
