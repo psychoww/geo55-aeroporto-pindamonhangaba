@@ -37,9 +37,9 @@ def cel(ws, ref, v, font=PRETO, fmt=None, fill=None, al=None):
 # ------------------------------------------------------------------ Premissas
 ws = wb.active; ws.title = 'Premissas'
 cel(ws, 'A1', 'Projeto de terraplenagem da PPD 06/24 — premissas', TIT)
-cel(ws, 'A2', 'Azul = dado de entrada; preto = fórmula; verde = vínculo com outra aba. Sítio: oeste de Pindamonhangaba-SP, centro (−22,9300; −45,4993), SIRGAS 2000 / UTM 23S.', Font(name=F, italic=True, size=9))
+cel(ws, 'A2', 'Azul = dado de entrada; preto = fórmula; verde = vínculo com outra aba. Sítio C1 (método MESA): norte de Pindamonhangaba-SP, além do rio Paraíba, centro (−22,8885; −45,4874), PPD 06/24 (rumo 060°), SIRGAS 2000 / UTM 23S.', Font(name=F, italic=True, size=9))
 prem = [
-    ('Fh', 'Fator de homogeneização (aterro corrigido = Fh × aterro)', p.FH, '0.00', 'Adotado: latossolo vermelho-amarelo poroso sobre o Grupo Taubaté (γs in situ baixo); faixa usual 1,2–1,3. A aula usou 1,1 só no exercício'),
+    ('Fh', 'Fator de homogeneização (aterro corrigido = Fh × aterro)', p.FH, '0.00', 'Adotado, sem ensaios (a aula usou 1,1 só no exercício). Geologia (SGB 1:100.000): Formação Tremembé até a estaca 65, aluvião daí ao fim. O balanço fecha exatamente com Fh = 1,26'),
     ('h_limpeza', 'Limpeza da camada vegetal (m)', p.LIMPEZA, '0.00', 'Aula 7: remover 15 cm em toda a faixa; não entra na compensação'),
     ('h_pav_PPD', 'Espessura do pavimento da PPD (m)', p.H_PPD, '0.00', 'Enunciado do trabalho'),
     ('h_pav_acost', 'Espessura do pavimento dos acostamentos (m)', p.H_ACOST, '0.00', 'Enunciado do trabalho'),
@@ -100,7 +100,7 @@ wg.column_dimensions['A'].width = 8
 # ------------------------------------------------------------------ Memorial
 wm = wb.create_sheet('Memorial')
 cel(wm, 'A1', 'Memorial de cálculo de volumes — método das áreas médias (seções do Civil 3D: TN limpo × plataforma de terraplenagem)', TIT)
-cel(wm, 'A2', 'Áreas de corte e aterro extraídas das 106 seções do Civil 3D (linhas de amostragem "SL - PPD", superfícies TN_limpo e TERRAPLENAGEM). Áreas já descontam a limpeza de 0,15 m (medidas a partir do TN limpo) e consideram a espessura do pavimento (seção no greide de terraplenagem = acabado − pavimento, aula 7). Compensação lateral = menor valor entre o corte e o aterro corrigido do trecho (não sujeita a transporte longitudinal). Fh e limpeza na aba Premissas.', Font(name=F, italic=True, size=9))
+cel(wm, 'A2', 'Áreas de corte e aterro extraídas das 104 seções do Civil 3D (linhas de amostragem "SL - PPD", superfícies TN_limpo e TERRAPLENAGEM). Áreas já descontam a limpeza de 0,15 m (medidas a partir do TN limpo) e consideram a espessura do pavimento (seção no greide de terraplenagem = acabado − pavimento, aula 7). Compensação lateral = menor valor entre o corte e o aterro corrigido do trecho (não sujeita a transporte longitudinal). Fh e limpeza na aba Premissas.', Font(name=F, italic=True, size=9))
 cols = ['Ponto', 'Estaca', 'Dist. acum. (m)', 'Cota TN eixo (m)', 'Cota greide (m)', 'Cota terrapl. eixo (m)',
         'Área corte (m²)', 'Área aterro (m²)', 'Á. média corte (m²)', 'Á. média aterro (m²)', 'Dist. (m)',
         'Vol. corte (m³)', 'Vol. aterro (m³)', 'Aterro corrigido Fh×A (m³)', 'Compensação lateral (m³)', 'Vol. acum. corte (m³)', 'Vol. acum. aterro corr. (m³)',
@@ -278,7 +278,7 @@ if os.path.exists('dados/distribuicao.json'):
 # ------------------------------------------------------------------ Equipamentos
 we = wb.create_sheet('Equipamentos')
 cel(we, 'A1', 'Equipamentos de terraplenagem e razões da escolha (aula 9: máquinas e equipamentos)', TIT)
-cel(we, 'A2', 'Solo esperado: latossolo vermelho-amarelo e sedimentos do Grupo Taubaté (argilas, siltes e areias), 1ª categoria (DER-SP: escavável com lâmina e scraper). '
+cel(we, 'A2', 'Geologia (SGB 1:100.000, folha Pindamonhangaba): Formação Tremembé (argilitos, folhelhos, margas) até a estaca 65 e depósito aluvionar no fim; cortes rasos no solo de alteração, 1ª categoria (lâmina e scraper; escarificador no argilito são). '
               'As faixas de DMT por equipamento são referência usual de manuais de terraplenagem, não da aula.', Font(name=F, italic=True, size=9))
 for k, h in enumerate(['Serviço', 'Quantidade', 'Equipamento', 'Por que este equipamento'], 1):
     cel(we, f'{L(k)}4', h, NEG, fill=CAB, al=CENT)
@@ -313,6 +313,44 @@ for i, linha in enumerate(EQ, 5):
         fmt = '#,##0" m³"' if (k == 2 and str(v).startswith('=')) else None
         cel(we, f'{L(k)}{i}', v, NEG if k == 1 else PRETO, fmt, al=Alignment(wrap_text=True, vertical='top'))
 we.column_dimensions['A'].width = 40; we.column_dimensions['B'].width = 22; we.column_dimensions['C'].width = 40; we.column_dimensions['D'].width = 90
+
+# ------------------------------------------------------------------ Corredor (verificação no Civil 3D)
+import numpy as np
+AQUI = os.path.dirname(os.path.abspath(__file__))
+wr = wb.create_sheet('Corredor')
+cel(wr, 'A1', 'Verificação: corredor do Civil 3D com a montagem da seção-tipo × Memorial', TIT)
+cel(wr, 'A2', 'Montagem "PPD 06-24": pista básica 22,5 m (−1,5%, pavimento 1,10 m), acostamento básico 7,5 m (−2,5%, 0,50 m), link 120 m (−2,5%), '
+              'talude 1V:1,5H (corte) / 1V:2H (aterro) até o TN_limpo. Corredor no eixo e no greide acabado, a cada 20 m. Calcular materiais: TN_limpo × '
+              'superfície Datum do corredor (topo do subleito), linhas "SL - PPD". Áreas copiadas do Relatório de volume do Civil 3D (16/11/2026).',
+    Font(name=F, italic=True, size=9))
+for k, h in enumerate(['Estaca (m)', 'Corte corredor (m²)', 'Aterro corredor (m²)', 'Dist. (m)', 'Vol. corte (m³)', 'Vol. aterro (m³)',
+                       'Aterro corrigido (m³)', 'Corte Memorial (m²)', 'Aterro Memorial (m²)'], 1):
+    cel(wr, f'{L(k)}4', h, NEG, fill=CAB, al=CENT)
+REL = np.genfromtxt(os.path.join(AQUI, 'civil3d', 'relatorio_volume_corredor.csv'), delimiter=';', skip_header=1)
+assert len(REL) == len(lin), (len(REL), len(lin))
+for i, (e, ac, aa) in enumerate(REL):
+    r = 5 + i
+    cel(wr, f'A{r}', float(e), AZUL, '0.00'); cel(wr, f'B{r}', float(ac), AZUL, '#,##0.00'); cel(wr, f'C{r}', float(aa), AZUL, '#,##0.00')
+    if i:
+        cel(wr, f'D{r}', f'=A{r}-A{r-1}', fmt='0.00'); cel(wr, f'E{r}', f'=(B{r-1}+B{r})/2*D{r}', fmt='#,##0')
+        cel(wr, f'F{r}', f'=(C{r-1}+C{r})/2*D{r}', fmt='#,##0'); cel(wr, f'G{r}', f'=F{r}*Premissas!$C$5', fmt='#,##0')
+    cel(wr, f'H{r}', f'=Memorial!G{r0+i}', VERDE, '#,##0.00'); cel(wr, f'I{r}', f'=Memorial!H{r0+i}', VERDE, '#,##0.00')
+rf = 5 + len(REL) - 1; rs = rf + 2
+cel(wr, f'D{rs}', 'Totais', NEG); cel(wr, f'E{rs}', f'=SUM(E6:E{rf})', NEG, '#,##0'); cel(wr, f'F{rs}', f'=SUM(F6:F{rf})', NEG, '#,##0')
+cel(wr, f'G{rs}', f'=SUM(G6:G{rf})', NEG, '#,##0')
+cel(wr, f'A{rs+2}', 'Comparação', NEG, fill=CAB); cel(wr, f'B{rs+2}', 'Corredor', NEG, fill=CAB); cel(wr, f'C{rs+2}', 'Memorial', NEG, fill=CAB); cel(wr, f'D{rs+2}', 'Dif.', NEG, fill=CAB)
+for j, (nome, a1, a2) in enumerate([('Corte (m³)', f'=E{rs}', f'=Memorial!L{rt}'), ('Aterro (m³)', f'=F{rs}', f'=Memorial!M{rt}'),
+                                    ('Aterro corrigido (m³)', f'=G{rs}', f'=Memorial!M{rt}*Premissas!$C$5')]):
+    r = rs + 3 + j
+    cel(wr, f'A{r}', nome); cel(wr, f'B{r}', a1, fmt='#,##0'); cel(wr, f'C{r}', a2, VERDE, '#,##0'); cel(wr, f'D{r}', f'=B{r}/C{r}-1', fmt='0.0%')
+r = rs + 6
+cel(wr, f'A{r}', 'Saldo (corte − aterro corrigido)', NEG); cel(wr, f'B{r}', f'=B{r-3}-B{r-1}', NEG, '#,##0'); cel(wr, f'C{r}', f'=C{r-3}-C{r-1}', NEG, '#,##0')
+cel(wr, f'D{r}', f'=B{r}/B{r-3}', fmt='0.0%')
+cel(wr, f'A{r+2}', 'O corte confere com o Memorial; o aterro do corredor é maior porque, nas estacas extremas, a seção do corredor é completa e a superfície '
+                   'Datum (triangulada) suaviza o degrau do pavimento entre pista, acostamento e faixa. O Memorial continua sendo a base do Brückner e da distribuição.',
+    Font(name=F, italic=True, size=9))
+for k, w in enumerate([11, 13, 13, 9, 13, 13, 14, 14, 14], 1):
+    wr.column_dimensions[L(k)].width = w
 
 wb.save(SAIDA)
 print('salvo', SAIDA, 'par à mão:', a['estaca'], '→', b['estaca'], 'linhas', rb)

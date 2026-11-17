@@ -48,8 +48,9 @@ BLOBS = {
     'fbd8f3f6cf2cea955bd0967feea2c634': '14_mesa_sensibilidade.png',
     '434ea1a0958da3d424b5d0fc7cf23f86': '15_capa_sitio.png',
     'cefe0c2fa8d554cdfeba0f3d5b8113e9': '16_ols_planta.png',
+    'a23ae7471235ea9a7bd4d46604038a54': '17_c3d_corredor.png',
 }
-COPIAS = ['Roteiro_aeroporto.pdf', 'Memorial_terraplenagem_PPD.xlsx', 'Aeroporto_PPD_Civil3D.dwg']
+COPIAS = ['Roteiro_aeroporto.pdf', 'Memorial_terraplenagem_PPD.xlsx', 'Memorial_final_aeroporto_PPD.pdf', 'Pranchas_aeroporto_PPD.pdf', 'Aeroporto_PPD_Civil3D.dwg']
 EDGE = [r'C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe',
         r'C:\Program Files\Microsoft\Edge\Application\msedge.exe']
 

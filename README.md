@@ -9,10 +9,12 @@ Trabalho do 2º bimestre de 2026 (exame): projeto geométrico e de terraplenagem
 
 | Arquivo | O que é |
 |---|---|
-| `Aeroporto_PPD_Civil3D.dwg` | Modelo no Civil 3D 2027: imagem georreferenciada, superfícies TN / TN_limpo / TERRAPLENAGEM / ACABADA, eixo "EIXO PPD 06-24", perfis (terreno e greide), 104 linhas de amostragem e vistas de seção |
-| `Memorial_terraplenagem_PPD.xlsx` | Memorial de cálculo com fórmulas: premissas, greide e verificações, volumes por áreas médias (104 seções), aterro corrigido (Fh = 1,25), compensação lateral, ordenadas e diagrama de Brückner, cálculo à mão (estacas 10 → 11, modelo a preencher), conferência, distribuição (LCs, bota-fora, empréstimo, momento de transporte) e equipamentos |
-| `Roteiro_aeroporto.pdf` | Roteiro da apresentação, dividido pelas etapas 1, 2 e 3 do enunciado: cada integrante apresenta uma parte de cada etapa, com as notas de fala e as perguntas prováveis daquela parte |
-| `aeroporto_trabalho/explicacao/` | Página explicativa (artefato): o que foi feito em cada etapa, de onde vem cada número e como explicar (`gerar.py` monta `index.html` a partir de `modelo.html`) |
+| `Aeroporto_PPD_Civil3D.dwg` | Modelo no Civil 3D 2027: imagem georreferenciada, superfícies TN / TN_limpo / TERRAPLENAGEM / ACABADA, eixo "EIXO PPD 06-24", perfis (terreno e greide), 104 linhas de amostragem e vistas de seção, montagem "PPD 06-24" e corredor "Corredor PPD" (superfícies Top e Datum, lista de materiais) |
+| `Memorial_final_aeroporto_PPD.pdf` | Memorial descritivo e de cálculo (14 páginas): requisitos, escolha do sítio (MESA), alinhamentos e seção-tipo, geologia e sensibilidade do Fh, terraplenagem com a tabela completa de volumes, Brückner, distribuição, verificação pelo corredor e a nota de serviço de terraplenagem |
+| `Pranchas_aeroporto_PPD.pdf` | 5 pranchas A3: planta geral, perfil longitudinal, seção-tipo cotada, seções transversais, diagrama de Brückner e quadro de volumes |
+| `Memorial_terraplenagem_PPD.xlsx` | Memorial de cálculo com fórmulas: premissas, greide e verificações, volumes por áreas médias (104 seções), aterro corrigido (Fh = 1,25), compensação lateral, ordenadas e diagrama de Brückner, cálculo à mão (estacas 52 → 53, modelo a preencher), conferência, distribuição (LCs, bota-fora, empréstimo, momento de transporte), equipamentos e a verificação pelo corredor do Civil 3D |
+| `Roteiro_aeroporto.pdf` | Roteiro da apresentação final (13 páginas), pelas etapas 1, 2 e 3: em cada parte, a fala, a bagagem teórica (`roteiro_teoria.py`) e as perguntas prováveis; apêndice com fórmulas e números |
+| `aeroporto_trabalho/explicacao/` | Página explicativa (artefato, `gerar.py`) e `documento_explicativo_backup.md`, cópia do documento explicativo da prévia (Claude Docs, excluído em 16/11) |
 | `aeroporto_trabalho/figuras/` | Figuras da apresentação (PNG) |
 | `aeroporto_trabalho/apresentacao_deck/` | Fonte dos slides (formato Slides do claude.ai) |
 
@@ -41,8 +43,8 @@ Para só ler o projeto, bastam este README, o enunciado, a planilha `Memorial_te
 - **Obstáculos (documentados):** aproximações livres (3,9 m em 3 ha, árvores); morros ao norte furam a horizontal interna (144 m, 675 ha) e a cônica (255 m, 1422 ha) — `ols_planta.py`, `figuras/16_ols_planta.png`. Exigiria estudo aeronáutico.
 - **Seção-tipo:** PPD 22,5 m para cada lado a −1,5% (pavimento 1,10 m); acostamento 7,5 m a −2,5% (0,50 m); faixa até 150 m a −2,5%; taludes 1V:1,5H (corte) e 1V:2H (aterro, adotados).
 - **Greide:** 5 PIVs e 3 curvas verticais (R ≥ 30 000 m), PIVs ao centímetro (542,38 / 540,97 / 542,02 / 541,22 / 541,22 m, 1 cm abaixo do ótimo), rampas −0,282% / +0,210% / −0,154% / 0,000%, declividade efetiva 0,06%, otimizado para corte = Fh × aterro.
-- **Fh = 1,25** (adotado): solos argilosos porosos (latossolos e argissolos vermelho-amarelos) sobre os sedimentos terciários da Bacia de Taubaté; faixa usual de 1,2 a 1,3.
-- **Volumes (áreas médias, seções do Civil 3D):** corte 435.440 m³; aterro 344.978 m³ (× 1,25 = 431.223 m³); saldo +4.216 m³; compensação lateral 238.422 m³; limpeza de 15 cm 92.401 m³. Conferência independente: −0,64% (corte) e −0,39% (aterro).
+- **Fh = 1,25** (adotado, sem ensaios; o balanço fecha exato com 1,26). Geologia pelo mapa do SGB 1:100.000 (folha Pindamonhangaba, 2020; `dados/geologia_sgb_100k.json`): Formação Tremembé (argilitos, folhelhos e margas do Grupo Taubaté) da estaca 0 à 65 e depósito aluvionar daí ao fim, sob o maior aterro (sondagem por recalque).
+- **Volumes (áreas médias, seções do Civil 3D):** corte 435.440 m³; aterro 344.978 m³ (× 1,25 = 431.223 m³); saldo +4.216 m³; compensação lateral 238.422 m³; limpeza de 15 cm 92.401 m³. Conferência independente: −0,64% (corte) e −0,39% (aterro). **Corredor do Civil 3D** (montagem da seção-tipo, Calcular materiais TN_limpo × Datum): corte 435.037 m³ (−0,1%), aterro × 1,25 = 442.740 m³ (+2,7%), saldo −7.703 m³ (−1,8% do corte).
 - **Distribuição (programa da aula 8, DMT externa 150 m):** adotada a solução que compensa tudo, com 2 LCs (MT = 6,61 × 10⁶ m³·dam; onda principal de 79 mil m³ com DMT de 745 m). O ótimo do modelo da aula (3,37 × 10⁶) troca 63 mil m³ de bota-fora por 59 mil m³ de empréstimo; contando a escavação do empréstimo (preços do exercício 6), compensar tudo sai mais barato.
 
 Regras da disciplina aplicadas (aula 7): limpeza de 15 cm em toda a área, aterro nunca sobre a camada vegetal, espessura do pavimento considerada (seções no greide de terraplenagem = acabado − pavimento), Fh = 1,25 (adotado para o solo do sítio) numa coluna de aterro corrigido, coluna de compensação lateral. Aula 8: o volume entre duas estacas consecutivas é feito à mão.
@@ -68,6 +70,9 @@ pip install -r requirements.txt
 | `distribuicao.py` | LCs, bota-fora e momento de transporte com o programa `../diagrama_massas/` (MATLAB, `distribuicao_massas.m`) → `dados/distribuicao.json`, `figuras/11_distribuicao.png` |
 | `explicacao/gerar.py` | página explicativa (rodar com `PYTHONPATH=.`) |
 | `figuras.py`, `roteiro_aeroporto.py` | figuras e roteiro |
+| `memorial_aeroporto.py`, `pranchas_aeroporto.py` | memorial final e pranchas em PDF |
+| `nota_servico.py` | nota de serviço de terraplenagem → `dados/nota_servico.json`, `Tabelas/nota_servico.csv` |
+| `corredor_volumes.py` | áreas TN_limpo × Datum do corredor a partir de `civil3d/secoes_corredor.csv` (exportado por `civil3d_corredor_secoes.ps1`) |
 
 **Civil 3D 2027 (Windows, PowerShell, Civil 3D aberto com o DWG):** `civil3d_aeroporto.ps1` (superfícies, imagem, eixo, perfis), `civil3d_secoes.ps1` (linhas de amostragem e seções), `civil3d_extrai_secoes.ps1` (exporta as seções), `civil3d_vistas_secoes.ps1` (vistas de seção). Controle via COM (`AeccXUiLand.AeccApplication.13.9`).
 
@@ -81,8 +86,8 @@ pip install -r requirements.txt
 - Imagem de satélite: Esri World Imagery (uso acadêmico).
 - Brasão e cores: identidade visual do ITA.
 
-## Pendências (entrega de 17/11)
+## Para uma próxima fase
 
-- Corredor com a assembly da seção-tipo e tabela de volumes do Civil 3D (Compute Materials).
-- Pranchas (planta, perfil, seções) e memorial final.
-- Confirmar com a professora: taludes; Fh = 1,25. (A faixa de 300 m é nivelada inteira; a nota de serviço de ±75 m da aula 7 é só um exemplo.)
+- Estudo aeronáutico da horizontal interna e da cônica (morros ao norte).
+- Sondagens e ensaios (densidade in situ, Proctor) para confirmar o Fh = 1,25; levantamento topográfico no lugar do modelo Copernicus.
+- Preços conferidos na planilha oficial do SICRO (DNIT).

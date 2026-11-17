@@ -1,4 +1,4 @@
-"""Roteiro de apresentação da prévia do aeroporto (PDF), a partir dos slides e das notas.
+"""Roteiro de apresentação final do aeroporto (PDF), a partir dos slides, das notas e da bagagem teórica (roteiro_teoria.py).
 Dividido pelas etapas do enunciado (1, 2 e 3); em cada etapa os três integrantes apresentam uma parte,
 e cada parte traz as perguntas prováveis da professora com as respostas. Identidade visual do ITA.
 Uso: python roteiro_aeroporto.py ../Roteiro_aeroporto.pdf"""
@@ -14,6 +14,7 @@ from reportlab.lib.styles import ParagraphStyle
 from reportlab.lib.units import cm
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
+from roteiro_teoria import TEORIA, FORMULAS, NUMEROS
 from reportlab.platypus import BaseDocTemplate, CondPageBreak, Frame, KeepTogether, PageTemplate, Paragraph, Spacer, Table, TableStyle
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
@@ -40,6 +41,11 @@ ST = {
     'pq': ParagraphStyle('pq', fontName='SEB', fontSize=9.6, leading=13, textColor=NAVY, backColor=CLARO, borderPadding=4, spaceBefore=8, spaceAfter=4),
     'dest': ParagraphStyle('dest', fontName='SEB', fontSize=9.2, leading=13, textColor=NAVY, backColor=PAPEL, borderPadding=6,
                            spaceBefore=6, spaceAfter=10),
+    'th': ParagraphStyle('th', fontName='SEB', fontSize=9.6, leading=13, textColor=colors.white, backColor=colors.HexColor('#3C5A8C'), borderPadding=4,
+                         spaceBefore=10, spaceAfter=4),
+    'tt': ParagraphStyle('tt', fontName='SEB', fontSize=9.0, leading=12.5, textColor=NAVY, leftIndent=8, spaceBefore=3),
+    'tx': ParagraphStyle('tx', fontName='SE', fontSize=8.9, leading=12.6, alignment=TA_JUSTIFY, leftIndent=8, spaceAfter=4,
+                         textColor=colors.HexColor('#26324A')),
     'pl': ParagraphStyle('pl', fontName='SE', fontSize=9.2, leading=13, spaceAfter=5),
     'cel': ParagraphStyle('cel', fontName='SE', fontSize=8.6, leading=11),
     'celb': ParagraphStyle('celb', fontName='SEB', fontSize=8.6, leading=11, textColor=colors.white),
@@ -116,8 +122,12 @@ ETAPAS = [
              'Pelo ESA WorldCover (10 m), 1,05 ha construído na faixa e cerca de 10 ha no retângulo de 3000 × 1500 m (chácaras). '
              'Pela área do manual (curva de 75 dB, 179 ha), 3,1 ha. Isso entra no custo de desapropriação.'),
             ('Que solo se espera no sítio?',
-             'Solos argilosos porosos, latossolos e argissolos vermelho-amarelos, sobre os sedimentos terciários da Bacia de Taubaté (levantamento de solos de 1961). É solo de 1ª categoria '
-             '(escavável com lâmina e scraper). Esse solo é a base da escolha do Fh = 1,25 na etapa 3.'),
+             'Pelo mapa geológico do SGB na escala 1:100.000 (folha Pindamonhangaba, 2020): da estaca 0 à 65, Formação Tremembé, do Grupo Taubaté (argilitos verdes, folhelhos e margas de um antigo lago, '
+             'terciário); da 70 ao fim, depósito aluvionar (cascalho, areia e lama inconsolidada). Por cima, solo de alteração argiloso. Os cortes são rasos (até ~5 m), escaváveis '
+             'com lâmina e scraper; em argilito mais são, escarificador. Os argilitos do Tremembé podem ter argila expansiva (esmectita), o que pede ensaio do subleito, e o aterro sobre o aluvião pede sondagem (recalque).'),
+            ('Então o Fh = 1,25 está certo?',
+             'É adotado, não medido. O balanço fecha exatamente com Fh = 1,26. Com 1,20 sobram 21 mil m³; com 1,30 faltam 13 mil (3% do corte): cada 0,05 muda o saldo em ~17 mil m³. '
+             'Num projeto real, viria de ensaio de densidade in situ nos cortes e Proctor do material de aterro, e o greide seria reajustado.'),
             ('E o acesso?',
              'Por estrada até uma rodovia pavimentada a 0,5 km, e pela cidade, a 4,8 km do centro, atravessando o rio Paraíba.'),
         ]),
@@ -153,9 +163,9 @@ ETAPAS = [
              'de superfície: árvores e construções aparecem como terreno. O sítio tem 10% de árvores, então há algum efeito nas bordas. Ele também é um retrato '
              'de 2011 a 2015 (radar TanDEM-X): o que mudou no terreno depois não aparece. Num projeto real, seria trocado por levantamento topográfico '
              '(ou LiDAR) e sondagens.'),
-            ('Por que não há corredor (assembly)?',
-             'A superfície de projeto foi montada a partir da seção-tipo e importada por LandXML, com a mesma geometria. O corredor e o Compute Materials '
-             'estão programados para a entrega de 17/11.'),
+            ('Como a superfície de projeto foi feita?',
+             'Montada a partir da seção-tipo e importada por LandXML, com a mesma geometria. Depois, o corredor com a montagem da seção-tipo '
+             'e o Calcular materiais confirmaram os volumes (etapa 3).'),
         ]),
         ('Guilherme', ['secaotipo'], [
             ('Como o pavimento entra no volume?',
@@ -186,7 +196,13 @@ ETAPAS = [
         ]),
     ]),
     ('Etapa 3 · Terraplenagem', 'etapa3', [
-        ('Pedro', ['etapa3', 'secoes', 'c3dsecoes'], [
+        ('Pedro', ['etapa3', 'secoes', 'c3dsecoes', 'notaservico'], [
+            ('Para que serve a nota de serviço?',
+             'É o que a topografia leva ao campo: para cada estaca, a cota do terreno e a do greide de terraplenagem, a altura de corte ou aterro no eixo '
+             'e a distância do eixo ao pé do talude de cada lado. Com ela se cravam as estacas de offset, que limitam a obra.'),
+            ('Por que na estaca 52 o eixo é aterro e os pés de talude são de corte?',
+             'Porque a seção é mista: no eixo o terreno está 1,44 m abaixo da plataforma, mas nas bordas, a 150 m, ele sobe acima dela. '
+             'O talude que encontra o terreno nas bordas é, então, de corte.'),
             ('Quantas seções há, e onde?',
              '104: as 102 estacas inteiras (0 a 101) e os PCV/PTV que não caem em estaca inteira (1490 e 1550 m). As cabeceiras coincidem com as estacas 3 e 98.'),
             ('As áreas são mesmo do Civil 3D?',
@@ -198,10 +214,21 @@ ETAPAS = [
             ('O que é uma seção mista?',
              'Uma seção com corte e aterro ao mesmo tempo. Com 300 m de largura, a plataforma corta um morro de um lado e aterra um vale do outro.'),
         ]),
-        ('Guilherme', ['volumes', 'mao'], [
+        ('Guilherme', ['volumes', 'corredor', 'mao'], [
+            ('Como foi feito o corredor?',
+             'A seção-tipo virou uma montagem no Civil 3D: pista básica de 22,5 m (−1,5%, pavimento 1,10 m), acostamento básico de 7,5 m (−2,5%, 0,50 m), '
+             'link de 120 m a −2,5% (faixa) e talude 1V:1,5H no corte e 1V:2H no aterro até o terreno limpo. O corredor corre essa montagem pelo eixo e pelo greide, '
+             'de 20 em 20 m, e o Calcular materiais compara o terreno limpo com a superfície Datum, que é o topo do subleito.'),
+            ('Por que o corredor dá aterro 2,7% maior e saldo negativo?',
+             'Nas estacas extremas o corredor fecha a seção inteira, enquanto o memorial parou na borda da superfície; e a superfície triangulada suaviza o degrau '
+             'do pavimento (1,10 m na pista, 0,50 m no acostamento, zero na faixa). O corte bate (−0,1%). O saldo de −7,7 mil m³ é 1,8% do corte, dentro da precisão do terreno; '
+             'para zerar bastaria baixar o greide cerca de 6 mm (cada milímetro muda o saldo em ~1,4 mil m³).'),
+            ('Então qual volume vale?',
+             'O do memorial, que é o das seções da plataforma e o que alimenta o Brückner e a distribuição. O corredor é a verificação independente com a seção-tipo.'),
             ('Por que Fh = 1,25, e não o 1,1 da aula?',
-             'O Fh é propriedade do solo: Fh = γs compactado / γs in situ. O 1,1 era dado do exercício. Nosso solo é argiloso e poroso, com densidade natural baixa, '
-             'que adensa bastante na compactação; a faixa usual fica entre 1,2 e 1,3. Num projeto real ele viria de ensaio in situ (frasco de areia) e Proctor.'),
+             'O Fh é propriedade do solo: Fh = γs compactado / γs in situ, e o 1,1 era dado do exercício. Sem ensaios, adotamos 1,25, valor usual para solo '
+             'argiloso de alteração. O mapa geológico do SGB põe a faixa sobre argilitos e folhelhos da Formação Tremembé e, no fim, aluvião. '
+             'O balanço fecha exato com 1,26; com 1,20 sobrariam 21 mil m³, com 1,30 faltariam 13 mil. Num projeto real: frasco de areia nos cortes e Proctor.'),
             ('O que é a compensação lateral?',
              'É o volume que se resolve dentro do próprio trecho: corte de um lado da seção indo para o aterro do outro, sem transporte ao longo do eixo. '
              'Na planilha, é o menor valor entre o corte e o aterro corrigido de cada trecho. Aqui são 238 mil m³; só 197 mil m³ viajam ao longo do eixo.'),
@@ -216,7 +243,7 @@ ETAPAS = [
             ('Por que o volume caiu tanto em relação à prévia?',
              'Porque o terreno de C1 é mais plano: o corte foi de 1,23 milhão para 435 mil m³, com a mesma faixa de 300 m nivelada (cerca de 630 mil m² de plataforma).'),
         ]),
-        ('Gilberto', ['brueckner', 'distribuicao', 'equipamentos'], [
+        ('Gilberto', ['brueckner', 'distribuicao'], [
             ('O diagrama fecha em zero. Então não há transporte?',
              'Há. Fechar em zero só quer dizer que corte e aterro corrigido se equilibram no total. As ondas mostram o transporte ao longo do eixo: a principal leva 79 mil m³ por 745 m em média.'),
             ('O que são LC, DMT e momento de transporte?',
@@ -240,14 +267,14 @@ ETAPAS = [
 FECHAMENTO = ('Pedro', ['proximos'], [])
 ASSUNTO = {'etapa1': 'método da busca e a região', 'sitio': 'o sítio escolhido', 'vento': 'vento e superfícies de proteção',
            'etapa2': 'imagem, superfícies e alinhamento horizontal no Civil 3D', 'secaotipo': 'seção-tipo e espessura do pavimento',
-           'perfil': 'alinhamento vertical (greide otimizado)', 'etapa3': 'seções transversais no Civil 3D',
-           'volumes': 'volumes, Fh, compensação lateral e conta à mão', 'brueckner': 'diagrama de massas, distribuição e equipamentos'}
+           'perfil': 'alinhamento vertical (greide otimizado)', 'etapa3': 'seções transversais no Civil 3D e nota de serviço',
+           'volumes': 'volumes, Fh, compensação lateral, corredor e conta à mão', 'brueckner': 'diagrama de massas e distribuição'}
 
 
 def rodape(canvas, doc):
     canvas.saveState()
     canvas.setFont('BS', 7.5); canvas.setFillColor(CINZA)
-    canvas.drawString(2 * cm, 1.2 * cm, 'ITA · Engenharia Civil-Aeronáutica · GEO-55 · Aeroporto em Pindamonhangaba · roteiro da prévia · 10/11/2026')
+    canvas.drawString(2 * cm, 1.2 * cm, 'ITA · Engenharia Civil-Aeronáutica · GEO-55 · Aeroporto em Pindamonhangaba · roteiro da apresentação final · 17/11/2026')
     canvas.drawRightString(19 * cm, 1.2 * cm, str(doc.page))
     canvas.setStrokeColor(OURO); canvas.setLineWidth(1.5); canvas.line(2 * cm, 27.6 * cm, 19 * cm, 27.6 * cm)
     canvas.drawImage(LOGO, 15.4 * cm, 27.75 * cm, width=3.6 * cm, height=3.6 * cm * 1032 / 2700, mask='auto')
@@ -266,6 +293,11 @@ def parte(quem, ids, perg):
         i, tit, nota = SL[s]
         cab = [P(f'{quem} · slides {faixa(ids)}', 'pe')] if k == 0 else []
         out.append(KeepTogether(cab + [P(f'Slide {i} · {tit}', 'h2'), P(nota)]))
+    teo = TEORIA.get((quem, ids[0]), [])
+    if teo:
+        cab = P(f'Bagagem teórica desta parte ({quem})', 'th')
+        for k, (t, x) in enumerate(teo):
+            out.append(KeepTogether(([cab] if k == 0 else []) + [P(t, 'tt'), P(x, 'tx')]))
     if perg:
         cab = P(f'Perguntas prováveis sobre esta parte ({quem})', 'pq')
         for k, (q, r) in enumerate(perg):
@@ -275,9 +307,9 @@ def parte(quem, ids, perg):
 
 def main(saida):
     doc = BaseDocTemplate(saida, pagesize=A4, leftMargin=2 * cm, rightMargin=2 * cm, topMargin=2.4 * cm, bottomMargin=2 * cm,
-                          title='Roteiro - Aeroporto (prévia)', author=GRUPO)
+                          title='Roteiro - Aeroporto (apresentação final)', author=GRUPO)
     doc.addPageTemplates([PageTemplate(id='p', frames=[Frame(2 * cm, 1.8 * cm, 17 * cm, 25.4 * cm)], onPage=rodape)])
-    S = [P('Roteiro de apresentação · Aeroporto em Pindamonhangaba (prévia)', 'h1'), P(f'<b>Grupo:</b> {GRUPO}'),
+    S = [P('Roteiro de apresentação · Aeroporto em Pindamonhangaba (apresentação final, 17/11)', 'h1'), P(f'<b>Grupo:</b> {GRUPO}'),
          P(f'{N} slides, divididos nas três etapas do enunciado. Em cada etapa os três apresentam uma parte, e cada etapa abre com um slide próprio. '
            'Apresentação: https://claude.ai/artifact/8Ugecg9baS44AKMVL9Zja2 (compartilhada por link).', 'pl')]
     tab = [[Paragraph('Etapa', ST['celb']), Paragraph('Pedro', ST['celb']), Paragraph('Guilherme', ST['celb']), Paragraph('Gilberto', ST['celb'])]]
@@ -297,17 +329,26 @@ def main(saida):
     for nome, _, partes in ETAPAS:
         ult = max(SL[s][0] for _, ids, _ in partes for s in ids)
         fims.append(f'{nome.split(" · ")[0]}: termina no slide {ult}')
-    S += [P('<b>Se a professora pedir só até uma etapa:</b> ' + '; '.join(fims) + f'. Depois, pule para o slide {FIM} (o que falta e as perguntas à professora).', 'dest'),
-          P('<b>Mensagem central:</b> o sítio saiu de uma busca com critérios explícitos (terreno, várzea, superfícies de proteção, entorno e vento). '
-            'O modelo está todo no Civil 3D; o greide foi otimizado para o corte pagar o aterro corrigido pelo Fh de 1,25, adotado para o solo do sítio; '
-            'e a distribuição de massas foi otimizada com o programa da aula 8. O volume é grande porque a faixa inteira de 300 m foi nivelada: '
-            'é a principal pergunta para a professora.', 'dest')]
+    S += [P('<b>Se a professora pedir só até uma etapa:</b> ' + '; '.join(fims) + f'. Depois, pule para o slide {FIM} (o que mudou e as próximas fases).', 'dest'),
+          P('<b>Mensagem central:</b> o sítio saiu de um método com critérios explícitos (o MESA do manual SAC/ITA): C1 fica longe da cidade e tem um terço '
+            'do volume da prévia, ao preço de morros ao norte que furam a horizontal interna e a cônica, documentados. O modelo está todo no Civil 3D; o greide '
+            'foi otimizado para o corte pagar o aterro corrigido pelo Fh de 1,25 (adotado; fecha exato com 1,26); o corredor com a seção-tipo confirma o corte; '
+            'e a distribuição compensa tudo com 2 LCs.', 'dest'),
+          P('<b>Como usar este roteiro:</b> cada parte traz a fala (as notas do slide), a bagagem teórica que sustenta a fala e as perguntas prováveis com '
+            'as respostas. No fim, as fórmulas e os números para ter na ponta da língua.', 'pl')]
     S += [P('Abertura', 'et')] + parte(*ABERTURA)
     for nome, _, partes in ETAPAS:
         S += [CondPageBreak(6 * cm), P(nome, 'et')]
         for q, ids, perg in partes:
             S += parte(q, ids, perg)
     S += [P('Fechamento', 'et')] + parte(*FECHAMENTO)
+    S += [CondPageBreak(8 * cm), P('Apêndice · fórmulas e números', 'et'), P('Fórmulas', 'pe')]
+    def tabela(linhas, larg):
+        t = Table([[Paragraph(f'<b>{a}</b>', ST['cel']), Paragraph(b, ST['cel'])] for a, b in linhas], colWidths=larg)
+        t.setStyle(TableStyle([('LINEBELOW', (0, 0), (-1, -1), 0.4, colors.HexColor('#C9CFDB')), ('VALIGN', (0, 0), (-1, -1), 'TOP'),
+                               ('TOPPADDING', (0, 0), (-1, -1), 3), ('BOTTOMPADDING', (0, 0), (-1, -1), 3)]))
+        return t
+    S += [tabela(FORMULAS, [4.2 * cm, 12.8 * cm]), P('Números do projeto', 'pe'), tabela(NUMEROS, [3.2 * cm, 13.8 * cm])]
     doc.build(S)
     print('ok', saida, N, 'slides')
 

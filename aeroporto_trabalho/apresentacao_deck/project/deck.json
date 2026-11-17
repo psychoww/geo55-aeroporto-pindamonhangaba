@@ -26,11 +26,12 @@
     "etapa3",
     "secoes",
     "c3dsecoes",
+    "notaservico",
     "volumes",
+    "corredor",
     "mao",
     "brueckner",
     "distribuicao",
-    "equipamentos",
     "proximos"
   ],
   "sections": {
@@ -47,11 +48,11 @@
       "start": "etapa2"
     },
     "s4": {
-      "description": "Etapa 3: terraplenagem (seções, volumes por áreas médias, diagrama de massas, distribuição e equipamentos)",
+      "description": "Etapa 3: terraplenagem (seções, nota de serviço, volumes por áreas médias, corredor, diagrama de massas e distribuição)",
       "start": "etapa3"
     },
     "s5": {
-      "description": "O que mudou desde a prévia e o que falta",
+      "description": "O que mudou desde a prévia e as próximas fases",
       "start": "proximos"
     }
   },
